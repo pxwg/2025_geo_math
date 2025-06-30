@@ -1,4 +1,4 @@
-% !TeX program = xelatex
+% !TeX program = pdflatex
 \documentclass[10pt]{article}
 \input{../preamble.tex}
 \fancyhf{}
@@ -21,6 +21,63 @@
 
 \begin{document}
 \maketitle
+
+\textbf{Warning}: Lots of possible types!!!!!!!!!!!!
+
+\section{Day I: Overall Discussion and Mathematical Preliminaries}
+
+\subsection{Actions and Path Integrals}
+
+Action $ S: \mathcal{E} \rightarrow \mathbb{k}$ where $ \mathcal{E}$ always has infinite dimension, and $ \mathbb{k}$ is a field (usually $ \mathbb{R}$ or $ \mathbb{C}$).
+
+\begin{equation*}
+  \text{QM in Imaginary Time} \xrightarrow{\text{ Brownian Motion}} \text{Wiener Measure on Phase Space}
+\end{equation*}
+
+\begin{equation*}
+  \text{Asymptotic Analysis} \xrightarrow{\quad} \text{Perturbative Renormalisation Theory}
+\end{equation*}
+
+\begin{example} Some Examples of Classical Field Theories
+  \begin{enumerate}[(a)]
+    \item Scalar Field Theory $ \mathcal{E} = C^{\infty }(X)$
+    \item Gauge Theory $ \mathcal{E} = \mathrm{Conn}(P,X)$
+    \item $ \sigma$ Model $ \mathcal{E} = \text{Maps}(\Sigma, X)$
+    \item Gravity $ \mathcal{E} = \text{Metrics}(X)$ (More better descriptions does not depends on the background)
+  \end{enumerate}
+\end{example}
+
+\subsection{Observables}
+
+Observables are functions on the space of fields, i.e. $ \mathcal{O} \in C^{\infty }(\mathcal{E})$.
+
+\begin{example}[field theory]
+  \begin{enumerate}[(a)]
+    \item   Consider $ X = pt$, thus $ \mathcal{E} = \mathbb{R}^{n}$ for example.
+    \item $ \dim X > 0$, the new algebraic structure arise form topological structures of $ X$.
+  \end{enumerate}
+\end{example}
+
+The Key Point is: Capture the data of open sets of $ X$ $\longrightarrow$ Consider the observables supported on open set $ U$  of $ X$ denoted by $ \mathrm{Obs}(U)$ where $ U$ is an open set of $ X$.
+
+Local data captures the open sets of $ X$. The relations between open sets captures the global data of $ X$ $\longrightarrow$ The algebraic structure of the observables is a sheaf of $ X$.
+\begin{equation*}
+  \bigsqcup_{i} U_{i} \longrightarrow \bigotimes_{i} \mathrm{Obs}(U_i)
+\end{equation*}
+Which implies OPE in physics and factorization algebra in mathematics.
+
+Higher product in QFT: The generalization of products of algebra ('products in any direction instead of left and right') e.g. QM gives only left and right module of an algebra; OPE has products in various directions.
+
+Consider the $\dim X = 2$ case in detailed
+\begin{example}[Holomorphic/Chiral Field Theory]
+  Various angle of product $ A(w) B(z)$  could be denoted by the time of $ A(w)$ rotations around $ B(z)$, which could be captured by the Fourier mode of $ A(w)$, thus one can have
+  \begin{equation*}
+    A(w) B(z) = \sum_{m \in \mathbb{Z}} \frac{( A_{(m) B(z)})}{(z - w)^{m+1}}
+  \end{equation*}
+  which is the Chiral algebra due to Beilinson and Drinfeld and generalized by Gui
+\end{example}
+
+\subsection{de Rham Cohomology}
 
 \label{LastPage}
 \end{document}

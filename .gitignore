@@ -1,0 +1,24 @@
+# Ignore LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.xdv
+
+# Ignore other common LaTeX files
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.run.xml
+*.bcf
+*.nav
+*.snm
+*.vrb
+
+# Keep .gitignore
+!.gitignore
+!README.md
