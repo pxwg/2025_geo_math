@@ -13,7 +13,7 @@
 
 %-------------------basic info-------------------
 
-\title{\textbf{QFT by Si Li}}
+\title{\textbf{QFT}}
 \author{Xinyu Xiang}
 \date{Jun. 2025}
 
@@ -23,12 +23,23 @@
 \maketitle
 
 \textbf{Warning}: Lots of possible types!!!!!!!!!!!!
+\textbf{Notations}:
+\begin{itemize}
+  \item $ X$: a smooth manifold, usually a compact manifold.
+  \item $ \mathcal{E}$: the space of fields, usually infinite dimensional.
+  \item $ \mathbf{k}$: a field, usually $ \mathbb{R}$ or $ \mathbb{C}$.
+  \item $ \mathrm{Conn}(P,X)$: the space of connections on a principal bundle $ P$ over $ X$.
+  \item $ \text{Maps}(\Sigma, X)$: the space of maps from a surface $\Sigma$ to $ X$.
+  \item $ \Omega^{\bullet}(X)$: the space of differential forms on $ X$.
+  \item $ \Omega^{\bullet}_{c}(X)$: the space of differential forms with compact support on $ X$.
+  \item $ \mathrm{Vect}(M)$: the space of smooth vector fields on a manifold $ M$, which is Lie algebra of $ \mathrm{Diff}(M)$.
+\end{itemize}
 
 \section{Day I: Overall Discussion and Mathematical Preliminaries}
 
 \subsection{Actions and Path Integrals}
 
-Action $ S: \mathcal{E} \rightarrow \mathbb{k}$ where $ \mathcal{E}$ always has infinite dimension, and $ \mathbb{k}$ is a field (usually $ \mathbb{R}$ or $ \mathbb{C}$).
+Action $ S: \mathcal{E} \rightarrow \mathbf{k}$ where $ \mathcal{E}$ always has infinite dimension, and $ \mathbb{k}$ is a field (usually $ \mathbb{R}$ or $ \mathbb{C}$).
 
 \begin{equation*}
   \text{QM in Imaginary Time} \xrightarrow{\text{ Brownian Motion}} \text{Wiener Measure on Phase Space}
@@ -74,10 +85,92 @@ Consider the $\dim X = 2$ case in detailed
   \begin{equation*}
     A(w) B(z) = \sum_{m \in \mathbb{Z}} \frac{( A_{(m) B(z)})}{(z - w)^{m+1}}
   \end{equation*}
-  which is the Chiral algebra due to Beilinson and Drinfeld and generalized by Gui
+  which is the Chiral algebra due to Beilinson and Drinfeld.
 \end{example}
 
 \subsection{de Rham Cohomology}
+
+Chain of differential forms $ \Omega^{\bullet}(X)$
+\begin{equation}\label{eq:deRhamChain}
+  \Omega^{\bullet}(X) = \left( \cdots \xrightarrow{\mathrm{d}} \Omega^{n-1}(X) \xrightarrow{\mathrm{d}} \Omega^{n}(X) \xrightarrow{\mathrm{d}} \Omega^{n+1}(X) \xrightarrow{\mathrm{d}} \cdots \right)
+\end{equation}
+where $ \mathrm{d} $ is the exterior derivative, and $ \Omega^{n}(X)$ is the space of $ n$-forms on $ X$. The general construction of differential forms could be constructed over open set $ U$ by
+\begin{equation*}
+  \Omega^{n}(U) = \bigoplus_{1 \le i_1 \le \cdots \le i_n \le n} C^{\infty }(U) \mathrm{d} x^{i_1} \wedge \cdots \wedge \mathrm{d} x^{i_n}
+\end{equation*}
+where one can prove that $ \mathrm{d} ^{2} = 0$ and thus $\left( \Omega^{\bullet}(U), \mathrm{d} \right)$  is a cochain complex. The cohomology of it is called the de Rham cohomology $ H^{\bullet}(X)$.
+\begin{proof}
+  TBD.
+\end{proof}
+\begin{proposition}
+  The definition of de Rham cohomology does not depend on the choice of the open set $ U$ and the choice of the coordinate system i.e. it is intrinsic $\longrightarrow$ we can define the de Rham cochain complex on smooth manifold $ X$.
+\end{proposition}
+\begin{proof}
+  TBD.
+\end{proof}
+
+\begin{definition}[de Rham Cohomology on Compact Support]
+  Let $ X$ be a smooth manifold, then the de Rham cohomology on compact support is defined as
+  \begin{equation}
+    H^{\bullet}_{c}(X) = H^{\bullet}(\Omega^{\bullet}_{c}(X),\mathrm{d})
+  \end{equation}
+  where $ \Omega^{\bullet}_{c}(X)$ is the space of differential forms with compact support.
+\end{definition}
+
+\begin{theorem}[Stokes' Theorem]
+  Let $ X$ be a smooth manifold with boundary, then for any $ \omega \in \Omega^{n}(X)$, we have
+  \begin{equation*}
+    \int_{X} \mathrm{d} \omega = \int _{\partial X} \omega
+  \end{equation*}
+  which connects the local data $ \mathrm{d} \Omega^{\bullet}(X)$ and the global data $\partial X$.
+\end{theorem}
+\begin{theorem}[Poincaré Lemma]
+  \begin{equation*}
+    H^{p}(\mathbb{R}^{n}) =
+    \begin{cases}
+      \mathbb{R} & p = 0 \\
+      0 & p > 0
+    \end{cases}, \quad
+    H^{p}_{c}(\mathbb{R}^{n}) =
+    \begin{cases}
+      0 & p <0 \\
+      \mathbb{R} & p = n \\
+    \end{cases}
+  \end{equation*}
+  Generator: $ H^{p}(\mathbb{R}^{n})$ $\rightarrow $ constant function, $ H^{p}_{c}(\mathbb{R}^{n})$ $\rightarrow $ a compact support function $ \alpha = f(x) \mathrm{vol}_{n}$, and $ \int _{\mathbb{R}^{n}} \alpha = 1$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+Important: An \emph{Integration} arises from the de Rham cohomology!
+\begin{observation}
+  \begin{enumerate}[(1)]
+    \item if $ \alpha = \mathrm{d} \beta$ where $ \beta \in \Omega_{c}^{n-1}(X)$, then $ \int _{X} \alpha = 0$, thus the generator is $ \alpha$ whose integral is non-zero.
+    \item \textbf{Dual Site}: Integration could be captured by the cohomology
+      \begin{equation*}
+        \int _{\mathbb{R}^{n}} \leftrightarrow H^{n}_{c}(\mathbb{R}^{n}) \cong \mathbb{R}
+      \end{equation*}
+      Path integral could be interpreted as the integration over $ \mathcal{E}$, which leads to consider the cohomology of it.
+  \end{enumerate}
+\end{observation}
+
+\subsection{Cartan Formula}
+
+Vector fields could acts on smooth functions via
+\begin{equation*}
+  V(f) = V^{i} \frac{\partial f}{\partial x^{i}} = \frac{\mathrm{d} }{\mathrm{d} t} f(\varphi_{t}(x)) \bigg|_{t=0} = \frac{\mathrm{d} }{\mathrm{d} t} \varphi_{t}^{*} f(x) \bigg|_{t=0}
+\end{equation*}
+Such an action could be extended to differential forms by
+\begin{equation*}
+  \mathrm{Vect}(M) \ni V : \alpha \mapsto \mathcal{L}_{V} \alpha = \frac{\mathrm{d} }{\mathrm{d} t} \varphi_{t}^{*} \alpha \bigg|_{t=0}
+\end{equation*}
+which has the property $ \mathcal{L}_{V}(\alpha \wedge \beta) = \mathcal{L}_{V} \alpha \wedge \beta + \alpha \wedge \mathcal{L}_{V} \beta$, which implies that the Lie derivative is a derivation on the algebra of differential forms with degree $ 0$. And we have contraction $ \iota_{V}$ which is a derivation of degree $ -1$ on the algebra of differential forms.
+\begin{equation*}
+  \mathcal{L}_{V}  = \mathrm{d} \iota_{V} + \iota_{V} \mathrm{d}
+\end{equation*}
+Lie derivative is homotopy trivial i.e. chain homotopic.
+
+Rescaling invariance of $ \mathbb{R}^{n}$ leads to the Euler vector field $ E = x^{i} \frac{\partial }{\partial x^{i}}$.
 
 \label{LastPage}
 \end{document}
