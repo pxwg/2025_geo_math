@@ -14,7 +14,7 @@
 %-------------------basic info-------------------
 
 \title{\textbf{Quantum Field Theory}}
-\author{Xinyu Xiang}
+\author{Lectured by Prof. Si Li and Noted by Xinyu Xiang}
 \date{Jun. 2025}
 
 %-------------------document---------------------
@@ -28,7 +28,7 @@
   \item $ X$: a smooth manifold, usually a compact manifold.
   \item $ \mathcal{E}$: the space of fields, usually infinite dimensional.
   \item $ \mathrm{Conn}(P,X)$: the space of connections on a principal bundle $ P$ over $ X$.
-  \item $ \text{Maps}(\Sigma, X)$: the space of maps from a surface $\Sigma$ to $ X$.
+  \item $ \text{Maps}(\Sigma, X)$: the space of maps from $\Sigma$ to $ X$.
   \item $ \Omega^{\bullet}(X)$: the space of differential forms on $ X$.
   \item $ \Omega^{\bullet}_{c}(X)$: the space of differential forms with compact support on $ X$.
   \item $ \mathrm{Vect}(M)$: the space of smooth vector fields on a manifold $ M$, which is Lie algebra of $ \mathrm{Diff}(M)$.
@@ -185,7 +185,87 @@ Use Cartan Formula, one can proof Poincaré Lemma.
   thus, the closed form $ \alpha$ is exact, which implies that the de Rham cohomology $ H^{p}(\mathbb{R}^{n})$ is trivial for $ p>0$ . The same idea could be applied to the de Rham cohomology on compact support $ H^{p}_{c}(\mathbb{R}^{n})$.
 \end{proof}
 
-\section{Day II: Classical Mechanics}
+\section{Day II: Classical Field Theory}
+
+Assume $ \mathcal{E} = \Gamma(E,X)$ i.e. a section of a bundle $ E \rightarrow X$, where $ X$ is oriented manifold.
+And the action would be written as $ S[\phi] = \int _{X} \mathcal{L}[\phi(x)]$ where $ \phi \in \mathcal{E}$ .
+Lagrangian $ \mathcal{L}$ satisfies:
+\begin{enumerate}[(a)]
+  \item built up by jets of $ \phi$ (locality);
+  \item valued in $ n$ form on $ X$ (oriented).
+\end{enumerate}
+The solution of Euler-Lagrange equation forms $ \mathrm{Crit}(S)$, which denotes the critical of the action $S$.
+
+\subsection{Examples}
+
+\begin{example}[Phase Space Quantum Mechanics]
+  Consider $ X = \mathbb{R}$, then $ \mathcal{E} = \mathbb{R}^{2n}$, and the action is
+  \begin{equation*}
+    \begin{aligned}
+      S[\phi] = & \int _{\mathbb{R}^{2n}} p \mathrm{d} q - H(q,p) \mathrm{d} t
+      = & \int \left[ p \dot{q} - H \right]\mathrm{d} t
+    \end{aligned}
+  \end{equation*}
+  where $ H$ is the Hamiltonian. The Euler-Lagrange equation would become $ \mathrm{d} H = - \iota_{x_{*} \partial} \omega$, where $ x: \mathbb{R}\rightarrow \mathcal{E}$.
+\end{example}
+
+\begin{example}[Scalar Field Theory]
+  Consider $(X,g)$ a Riemann Manifold, then $ \mathcal{E} = C^{\infty }(X)$, and the action is
+  \begin{equation*}
+    S[\phi] = \int _{X} \left[ \frac{1}{2} \left| \nabla \phi \right|^{2} + V(\phi) \right] \mathrm{d} \mathrm{vol}_{g}
+  \end{equation*}
+  where $ V(\phi)$ is a potential function, and $ \mathrm{d} \mathrm{vol}_{g} = \sqrt{\left| g \right|} \mathrm{d}^{d} x$. Assume $\partial X = \empty$, then the Euler-Lagrange equation is
+  \begin{equation*}
+    \Delta \phi = \frac{\partial V}{\partial \phi}
+  \end{equation*}
+  where $ \Delta f = \frac{1}{\sqrt{\left| g \right|}} \partial_{i}\left( \sqrt{\left| g \right|} g^{ij} \partial_{j} f\right)$.
+\end{example}
+
+\begin{example}[Chern-Simons Theory]
+  Consider $ X$ a 3-manifold and $ \mathfrak{g}$ a semi-simple Lie algebra. Denote $ P$ is a principal $ \mathfrak{g}$-bundle over $ X$, then the space of fields is $ \mathcal{E} = \mathrm{Conn}(P,X)$. Assume $ \mathfrak{g}$ is equipped with a non-degenerate invariant bilinear form $ \langle \cdot, \cdot \rangle$ (Killing form), then the action is
+  \begin{equation*}
+    \mathrm{CS}[A] = \int _{X} \frac{1}{2} \langle A, F_{A} \rangle + \frac{1}{6} \langle A, [A,A] \rangle,
+  \end{equation*}
+  and the Euler-Lagrange equation encoded by the flat connection $ F_{A} = 0$.
+\end{example}
+
+\subsection{Symmetry}
+
+\subsubsection{Global Symmetry and Noether's Theorem}
+
+Consider a classical action $ S: \mathcal{E} \rightarrow \mathbb{R}$ with a group action $ G \curvearrowright \mathcal{E}$ s.t. $ S[g(\phi)] = S[\phi]$. Then $ G$ would become a global symmetry of the action $ S$.
+
+Consider the continuous symmetry i.e. $ G$ is a Lie group, then the infinitesimal action of $ G$ on $ \mathcal{E}$ is given by a vector field $ V \in \mathrm{Vect}(\mathcal{E})$, which satisfies
+\begin{equation*}
+  \delta_{V^{\alpha}} \phi = V^{\alpha} (\phi),
+\end{equation*}
+thus the variation of the Lagrangian is
+\begin{equation*}
+  \delta_{V^{\alpha}} \mathcal{L} = \mathrm{d} K_{\alpha},
+\end{equation*}
+where $ K_{\alpha}$ is a $ n-1$ form. Furthermore, one can use the Euler-Lagrange equation and it's boundary contribution to obtain
+\begin{equation*}
+  \delta_{V^{\alpha}} \mathcal{L} \xrightarrow{\mathrm{EL} = 0} \mathrm{d} \iota_{V^{\alpha}} \Theta = \mathrm{d} K_{\alpha},
+\end{equation*}
+thus one have the Noether's current
+\begin{equation}\label{eq:NoetherCurrent}
+  J_{\alpha} = \iota_{V^{\alpha}}\Theta - K_{\alpha}, \quad \mathrm{d} J_{\alpha} + EL[\phi] V_{\alpha} = 0,
+\end{equation}
+which is a $ n-1$ form on $ X$ and satisfies $ \mathrm{d} J_{\alpha}\big|_{\mathrm{Crit}(S)} = 0$ while the Euler-Lagrangian equation is satisfied.
+If we consider $ Y_1, Y_2 \subset X$ is codimension $ 1$ (hyper)surface, which are homologous by $ \Sigma$, then we have
+\begin{equation*}
+  \int _{Y_1} J_{\alpha} - \int _{Y_2} J_{\alpha} = \int _{\Sigma} \mathrm{d} J_{\alpha} = 0, \quad \phi \in \mathrm{Crit}(S),
+\end{equation*}
+and the integration over $ J_{\alpha}$ is independent of the choice of the hyper surface, thus we can define the Noether charge as the integration over $ J_{\alpha}$ on a hyper surface $ Y$
+\footnote{In physics, one always consider the Noether current which is the Hodge dual of $J_{\alpha}$.}.
+
+Their is a alernative way to define the Noether current, which is more suitable for practical use. In brief, on can consider the 'gauged' symmetry which would promote $ \epslion$ to become a field $ \epsilon(x)$, and the variation of the action could be compute by integrating by parts, finally one can obtain
+\begin{equation*}
+  \delta_{V^{\alpha}} S = \int _{X} - \epsilon(x) \mathrm{d} \hat{J}_{\alpha},
+\end{equation*}
+and $ \hat{J}$ would become the Noether current which satisfies \eqref{eq:NoetherCurrent} so that $ \hat{J}_{\alpha}$ is identical to $ J_{\alpha}$ up to an exact form.
+
+\subsubsection{Gauge 'Symmetry'}
 
 \label{LastPage}
 \end{document}
