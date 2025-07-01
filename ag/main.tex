@@ -168,6 +168,8 @@ From here on, we assume that $ \mathbb{K}$ is an algebraic closed field.
   \end{equation*}
 \end{definition}
 
+\subsection{Definition}
+
 \begin{definition}[Intersection Number]
   Consider $ F, G \in \mathbb{K}[x,y]$ irreducible, $ P = V(F) \cap V(G)$, then the intersection number $ I_P(F,G)$ is defined as:
   \begin{equation*}
@@ -182,7 +184,7 @@ From here on, we assume that $ \mathbb{K}$ is an algebraic closed field.
     \item $ P \in F \cap G \Leftrightarrow I_{P}(F,G) \ge 1$, $ I_{P}(F,G) = 1 \Leftrightarrow \left< F,G \right> = I_{P}$
     \item $ I_{P}(F,G) = I_{P}(G,F)$;
     \item $ I_{P}(F, G+FH) = I_{P}(F,G)$;
-    \item $ I_{P}(FG, H) = I_{P}(F,H) + I_{P(G,H)};$
+    \item $ I_{P}(FG, H) = I_{P}(F,H) + I_{P}(G,H);$
     \item $ I_{(0,0)}(x,y) = 1$,
   \end{enumerate}
 \end{proposition}
@@ -238,6 +240,58 @@ The most important part is to use the property (4) to reduce the degree of the p
     I_{0}(y - x - x^{2} , y^{2} - x^{2} - 3 x^{2}y) = \mathfrak{m}_0\left( (x+x^{2})^{2} - x^{2} - 3 x^{2}(x+x^{2}) \right) = \mathfrak{m}_0 \left( x^{3}(-1-2x) \right) = 0.
   \end{equation*}
 \end{solution}
+
+\begin{proposition}
+  If the lowest degree of $ F$ is $ x^{n}$ and the lowest degree of $ G$ is $ y^{m}$, then the intersection number $ I_{(0,0)}(F,G)$ is $ nm$.
+\end{proposition}
+
+\begin{definition}[Short Exact Sequence]
+  A short exact sequence of modules is a sequence of modules and homomorphisms
+  \begin{equation*}
+    0 \rightarrow A \xrightarrow{f} B \xrightarrow{g} C \rightarrow 0,
+  \end{equation*}
+  such that the image of $ f$ is equal to the kernel of $ g$, i.e., $ \mathrm{Im}(f) = \ker(g)$.
+\end{definition}
+We would use the short exact sequence for linear space.
+\begin{definition}
+  Consider $ P \in \mathbb{A}^{2}$ and $ F, G, H \in \mathbb{K}[x,y]$, then
+  \begin{enumerate}[(1)]
+    \item If $ F, G$ has no common component cross $ P$, then
+      \begin{equation*}
+        0 \rightarrow \mathcal{O}_{P}/\left< F,H \right> \xrightarrow{\bullet G} \mathcal{O}_{p}/\left< F, GH \right> \xrightarrow{\pi} \mathcal{O}_{P}/\left< F,G \right> \rightarrow 0,
+      \end{equation*}
+      where $ \pi$ is the natural projection map.
+    \item $ I_{P}(F, GH) = I_{P}(F,G) + I_{P}(F,H)$.
+  \end{enumerate}
+\end{definition}
+% TODO: Prove the above theorem.
+\begin{proof}
+  \begin{enumerate}[(1)]
+    \item $ \pi$ is surjection;
+    \item Consider an element acted by multiplication by $ G$:
+      \begin{equation*}
+        \bullet G: \frac{f}{g} + a F + b H \mapsto F(a G) + G\left( \frac{f}{g} + b H \right) \in \ker{\pi},
+      \end{equation*}
+      where $ a, b \in \mathbb{K}[x,y]$ and $ g \in \mathcal{O}_{P}$. On the other side, consider $ f/g \in \ker{\pi}$, thus $ f / g = a F + b G \rightarrow b \in \mathcal{O}_{p} / \left< F,H \right>$.
+    \item $\bullet G$ is injection.
+  \end{enumerate}
+  Note that all the vector spaces are finite dimensional, thus the dimension of the kernel is equal to the dimension of the image, and we can conclude that
+  \begin{equation*}
+    I_{P}(F, G H) = I_{P}(F,G) + I_{P}(F,H),
+  \end{equation*}
+  which proofs the proposition (5).
+\end{proof}
+
+\subsection{The Algorithm to Compute Intersection Number}
+
+Consider $ F(x,y) \in \mathbb{K}[x,y]$, in order to compute the insertion number $ I_{0}(y, F(x,y))$, we can expand $ F$ as $ F(x,y) = F(x,0) + y H(x,y)$, thus
+\begin{equation*}
+  I_0(y, F(x,y)) = I_0(y, F(x,0) + y H(x,y)) = I_0(y, F(x,0)).
+\end{equation*}
+Assume $ F(x,0) = x^{m} f(x)$ where $ f(x)$ is no vanishing at $ x=0$, thus
+\begin{equation*}
+  I_0(y, F(x,y)) = m.
+\end{equation*}
 
 \label{LastPage}
 \end{document}
