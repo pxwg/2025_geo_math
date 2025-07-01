@@ -14,7 +14,7 @@
 %-------------------basic info-------------------
 
 \title{\textbf{Algebraic Curve}}
-% \author{Xinyu Xiang}
+\author{Lectured by Wenchuan Hu and Noted by Xinyu Xiang}
 \date{Jun. 2025}
 
 %-------------------document---------------------
@@ -292,6 +292,25 @@ Assume $ F(x,0) = x^{m} f(x)$ where $ f(x)$ is no vanishing at $ x=0$, thus
 \begin{equation*}
   I_0(y, F(x,y)) = m.
 \end{equation*}
+
+Now we shell consider the linear (homogeneous 1 degree part). We denote $ F \in \mathbb{K}[x,y]$ as
+\begin{equation*}
+  F = F_0 + F_1 +\cdots
+\end{equation*}
+where $ F_{i}$ is homogeneous degree $ i$ part. The $ F_{1}$ part is important, because of the theorem below:
+\begin{theorem}[2.17 Intersection multiplicity 1]
+  If $ F, G \in \mathbb{K}[x,y]$ pass through the origin, then
+  \begin{equation*}
+    I_0(F,G) = 1 \Leftrightarrow F, G \text{ Linear Independent}
+  \end{equation*}
+\end{theorem}
+
+\begin{definition}[Tangents and multiplicities of points] Let $ F \in \mathbb{K}[x,y]$ be a curve, then
+  \begin{enumerate}[(1)]
+    \item The smallest \( m \in \mathbb{N} \) for which the homogeneous part \( F_m \) is non-zero is called the multiplicity \( m_0(F) \) of \( F \) at the origin. Any linear factor of \( F_m \) (considered as a curve) is called a tangent to \( F \) at the origin.
+    \item For a general point \( P = (x_0, y_0) \in \mathbb{A}^2 \), tangents at \( P \) and the multiplicity \( m_P(F) \) are defined by first shifting coordinates to \( x' = x - x_0 \) and \( y' = y - y_0 \), and then applying (a) to the origin \( (x', y') = (0, 0) \).
+  \end{enumerate}
+\end{definition}
 
 \label{LastPage}
 \end{document}
