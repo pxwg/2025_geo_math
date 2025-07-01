@@ -84,7 +84,7 @@ Consider the $\dim X = 2$ case in detailed
   \begin{equation*}
     A(w) B(z) = \sum_{m \in \mathbb{Z}} \frac{( A_{(m) B(z)})}{(z - w)^{m+1}}
   \end{equation*}
-  which is the Chiral algebra due to Beilinson and Drinfeld.
+  which is the Chiral algebra due to Beilinson and Drinfeld and associated with the Doubult cohomology $ H^{1}_{\bar{ \partial }}(\Sigma^{2} - \Delta)$, where $ \Sigma^{2}$ is the complex surface and $ \Delta$ is the diagonal of $ \Sigma^{2}$. The higher structure could be captured by the higher cohomology $ H^{p}_{\bar{ \partial }}(\Sigma^{2} - \Delta)$, which is the higher chiral algebra associated to the derived holomorphic section.
 \end{example}
 
 \subsection{de Rham Cohomology}
@@ -98,14 +98,11 @@ where $ \mathrm{d} $ is the exterior derivative, and $ \Omega^{n}(X)$ is the spa
   \Omega^{n}(U) = \bigoplus_{1 \le i_1 \le \cdots \le i_n \le n} C^{\infty }(U) \mathrm{d} x^{i_1} \wedge \cdots \wedge \mathrm{d} x^{i_n}
 \end{equation*}
 where one can prove that $ \mathrm{d} ^{2} = 0$ and thus $\left( \Omega^{\bullet}(U), \mathrm{d} \right)$  is a cochain complex. The cohomology of it is called the de Rham cohomology $ H^{\bullet}(X)$.
-\begin{proof}
-  TBD.
-\end{proof}
 \begin{proposition}
-  The definition of de Rham cohomology does not depend on the choice of the open set $ U$ and the choice of the coordinate system i.e. it is intrinsic $\longrightarrow$ we can define the de Rham cochain complex on smooth manifold $ X$.
+  The definition of de Rham cohomology does not depend on the choice of the open set $U$ and the choice of the coordinate system i.e. it is intrinsic $\longrightarrow$ we can define the de Rham cochain complex on smooth manifold $ X$.
 \end{proposition}
 \begin{proof}
-  TBD.
+  Consider
 \end{proof}
 
 \begin{definition}[de Rham Cohomology on Compact Support]
@@ -169,7 +166,26 @@ which has the property $ \mathcal{L}_{V}(\alpha \wedge \beta) = \mathcal{L}_{V} 
 \end{equation*}
 Lie derivative is homotopy trivial i.e. chain homotopic.
 
-Rescaling invariance of $ \mathbb{R}^{n}$ leads to the Euler vector field $ E = x^{i} \frac{\partial }{\partial x^{i}}$.
+\subsubsection{Proof of Poincaré Lemma}
+Use Cartan Formula, one can proof Poincaré Lemma.
+
+\begin{proof}
+  Rescaling invariance of $ \mathbb{R}^{n}$ leads to the Euler vector field $ E = x^{i} \frac{\partial }{\partial x^{i}}$. One can consider the associated diffeomorphism $ \varphi_{t}$, where we assume $ \varphi_{0} = 1$ and thus $ \varphi^{*}_{-\infty } \alpha = 0$, thus the closed form $ \alpha$ could be rewritten as
+  \begin{equation*}
+    \begin{aligned}
+      \alpha = & \varphi^*_{0} \alpha - \varphi^*_{-\infty } \alpha \\
+      = & \int_{-\infty }^{0} \frac{\mathrm{d} }{\mathrm{d} t} \varphi_{t}^{*} \alpha \mathrm{d} t \\
+      = & \int_{-\infty }^{0} \mathcal{L}_{E} (\varphi^{*}_{t} \alpha )\mathrm{d} t \\
+    \end{aligned}
+  \end{equation*}
+  using the Cartan formula and $ \mathrm{d} \varphi^{*} = \varphi^{*} \mathrm{d} $ , we have
+  \begin{equation*}
+    \alpha = \mathrm{d} \int_{-\infty }^{0} \varphi^{*}_{t} \iota_{E} \alpha \, \mathrm{d} t = \mathrm{d} \beta,
+  \end{equation*}
+  thus, the closed form $ \alpha$ is exact, which implies that the de Rham cohomology $ H^{p}(\mathbb{R}^{n})$ is trivial for $ p>0$ . The same idea could be applied to the de Rham cohomology on compact support $ H^{p}_{c}(\mathbb{R}^{n})$.
+\end{proof}
+
+\section{Day II: Classical Mechanics}
 
 \label{LastPage}
 \end{document}
