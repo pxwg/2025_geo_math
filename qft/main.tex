@@ -296,6 +296,17 @@ Under the choice of basis above, we have $[e_{\alpha} , e_{\beta}] = f^{\gamma}_
 \end{equation*}
 Using the Leibniz rule, we can extend it to the exterior algebra $ \bigwedge \mathfrak{g}^{*}$. Using the Jacobi identity, one can prove that $ \mathrm{d} _{\mathrm{CE}}^{2} = 0$ (left as exercise), thus we have a cochain complex $\left( \bigwedge \mathfrak{g}^{*}, \mathrm{d} _{\mathrm{CE}} \right)$ which is a differential graded algebra (dga),
 where the generator $ c^{\alpha} $ is called the 'ghost field' in physics, the degree is 'ghost number' and $ \mathrm{d} _{\mathrm{CE}}$ is BRST operator.
+\begin{proof}
+  Consider $ \mathrm{d} _{\mathrm{CE}}^{2}$ acts on $ c^{\alpha}$, the higher structure could be derived from Leibniz's rule.
+  \begin{equation*}
+    \begin{aligned}
+      \mathrm{d} ^{2}_{\mathrm{CE}} c^{\alpha} = & \frac{1}{2} f^{\alpha}_{\beta \gamma} \left[ \frac{1}{2} f^{\beta}_{\rho \lambda} c^{\rho} c^{\lambda} c^{\gamma} - \frac{1}{2} f^{\gamma}_{\rho \lambda} c^{\beta} c^{\rho} c^{\lambda} \right] \\
+      = & - \frac{1}{2} f^{\alpha}_{\gamma \beta} f^{\beta}_{\rho \lambda} c^{\rho} c^{\lambda} c^{\lambda} \\
+      = & \frac{1}{12} f_{\beta [\gamma}^{\alpha} f_{\rho \lambda]}^{\beta} c^{\rho} c^{\lambda} c^{\lambda} \\
+      = & 0
+    \end{aligned}
+  \end{equation*}
+\end{proof}
 
 Let $ M$ be a $ \mathfrak{g}$ representation where $ \rho : \mathfrak{g} \rightarrow \operatorname{End}(W)$ satisfies
 \begin{equation*}
@@ -320,7 +331,22 @@ which is compatible with derivation
 \begin{equation*}
   \mathrm{d} _{\mathrm{CE}} (a\wedge v) = \mathrm{d} _{\mathrm{CE}} a \wedge v + (-1)^{\left| a \right|} a \wedge \mathrm{d} _{\mathrm{CE}} v,
 \end{equation*}
-where $ m \in M$ and $ a \in \wedge^{\bullet} \mathfrak{g}^{*}$.
+where $ m \in M$ and $ a \in \wedge^{\bullet} \mathfrak{g}^{*}$. The derivation could be written explicitly with basis $ a_{k}$ of $ M$ and it's dual basis $ b^{k}$:
+\begin{equation*}
+  \mathrm{d} _{\mathrm{CE}} = \left( \rho_{\alpha} \right)^{k}_{i} b^{i} a_{k} c^{\alpha} + \frac{1}{2} f^{\alpha}_{\beta \gamma} c^{\beta} c^{\gamma} a_{\alpha},
+\end{equation*}
+which could be easily verified that $ \mathrm{d} ^{2}_{\mathrm{CE}} = 0$.
+\begin{proof}
+  Consider the Chevalley-Eilenberg differential $ \mathrm{d} _{\mathrm{CE}}$ acts on $ a \otimes m$, we have
+  \begin{equation*}
+    \begin{aligned}
+      \mathrm{d} _{\mathrm{CE}}(a\otimes m) = & \mathrm{d} _{\mathrm{CE}} a \otimes m + (-1)^{|a|} a \wedge \mathrm{d} _{\mathrm{CE}} m \\
+      = & \frac{1}{2} f^{\alpha}_{\beta \gamma} c^{\beta} c^{\gamma} a_{\alpha} m + (-1)^{|a|} a_{\beta} (\rho^{i}_{j})_{\alpha} v^{j} m_{i} c^{\beta} c^{\alpha}, \\
+      \mathrm{d} ^{2}_{\mathrm{CE}}(a \otimes m) = & \frac{1}{2} f^{\alpha}_{\beta \gamma} c^{\beta} c^{\gamma} a_{\alpha} \left( \rho^{i}_{j} \right)_{\rho} c^{\rho} + (-1)^{\left| a \right|}
+    \end{aligned}
+  \end{equation*}
+
+\end{proof}
 
 \subsection{Differential Graded Lie Algebra}
 
