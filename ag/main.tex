@@ -470,11 +470,14 @@ Recall that a field $ \mathbb{K}$ is called \textbf{algebraically closed} if eve
 \end{theorem}
 
 \begin{theorem}[B\'ezout Theorem]
-  Let $ F, G \in \mathbb{K}[x,y]$ be two projective curves of degrees $ d_F$ and $ d_G$, respectively. If $ F$ and $ G$ have no common component, then the number of intersection points of $ F$ and $ G$ in $\mathbb{P}^2_{\mathbb{K}}$ is given by
+  Let $ F, G \in \mathbb{K}[x,y]$ be two projective curves of degrees $ d_F$ and $ d_G$, respectively. If $ F$ and $ G$ have no common component, $ \mathbb{K}$ is algebraically closed, then the number of intersection points of $ F$ and $ G$ in $\mathbb{P}^2_{\mathbb{K}}$ is given by
   \begin{equation*}
-    \mu_{P}(F,G) = d_F \cdot d_G,
+    \sum_{P \in F \cap G} \mu_{P}(F,G) = d_F \cdot d_G,
   \end{equation*}
-  where $ P \in \mathbb{P}^{2}_{\mathbb{K}}$.
+  where $ P \in \mathbb{P}^{2}_{\mathbb{K}}$. If $ \mathbb{K}$ is not algebraically closed, then the intersection number is satisfied
+  \begin{equation*}
+    \sum_{P \in F \cap G} \mu_{P}(F,G) < \deg F \cdot \deg G.
+  \end{equation*}
 \end{theorem}
 
 \begin{lemma}[Finiteness of the intersection multiplicity]\label{lemma:finite_intersection}
@@ -508,9 +511,25 @@ Recall that a field $ \mathbb{K}$ is called \textbf{algebraically closed} if eve
   \begin{equation*}
     f = \prod_{i: x_{i} \neq x_{0}} \left( x-x_{i} \right)^{n} \prod_{i:y_{i} \neq y_0} \left( y - y_{i} \right)^{n}\in \mathbb{K}[x,y],
   \end{equation*}
+  TBD.
 \end{proof}
 
 %%% How to proof it is injective? Check phi(f) = 0, if f = 0 or not.
+\begin{lemma}
+  $ F, G$ are two projective curves, if $ F_{\deg F}$ and $ G_{\deg G}$  has no common component, then for all $ f \in \left< F,G \right> \subset \mathbb{K}[x,y]$ of degree $ d $ can be written as $ f = aF+ b G$, where $\deg a \le d - m$ and $\deg b \le d - n$.
+\end{lemma}
+
+\begin{corollary}[Max Noether's Theorem]
+  Let $F$ be a smooth projective curve over an algebraically closed field. Moreover, let $G$ and $H$ be two projective curves that do not have a common component with $F$.
+  If $\mu_P(F,G) \leq \mu_P(F,H)$ for all points $P \in F \cap G$ then there are homogeneous polynomials $A$ and $B$ (of degrees $\deg H - \deg F$ resp. $\deg H - \deg G$ if non-zero), such that
+  \begin{enumerate}[(a)]
+    \item $H = AF + BG$;
+    \item $\mu_P(F,H) = \mu_P(F,G) + \mu_P(F,B)$ for all $P \in \mathbb{P}^2$.
+  \end{enumerate}
+\end{corollary}
+\begin{proof}
+  Where the second part of the corollary is trivial.
+\end{proof}
 
 \label{LastPage}
 \end{document}
