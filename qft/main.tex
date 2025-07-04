@@ -506,6 +506,50 @@ We can consider the Chevalley-Eilenberg complex for a DGLA $\left( \mathfrak{g},
 
 \subsection{\texorpdfstring{Homotopic Lie Algebra ($L_{\infty}$ Algebra)}{Homotopic Lie Algebra (L-infinity Algebra)}}
 
+\subsubsection{Coderivation Side}
+
+The original definition could be viewed as a homotopic generalization of the Lie algebra, which is a DGLA $ V$  with 'higher brackets' $ \mu_{n}: V^{\otimes n} \rightarrow V$, where the first term at the chain level formed a (co)chain complex i.e. $ \mu_1^{2} = 0$.
+The higher brackets needed to satisfy some self consistency conditions, which is so called 'homotopic Jacobian identity'.
+At some low level $ n$, which could be written explicitly as
+\begin{equation*}
+  \mu_1 \mu_2(a,b)
+  = -\,\mu_2(\mu_1 a, b)-(-1)^{|a|}\,\mu_2(a, \mu_1 b),
+\end{equation*}
+\begin{equation*}
+  \begin{aligned}
+    &\mu_1 \mu_3(a,b,c)
+    + \mu_3(\mu_1 a, b, c)
+    + (-1)^{|a|}\,\mu_3(a, \mu_1 b, c)
+    + (-1)^{|a|+|b|}\,\mu_3(a, b, \mu_1 c)\\
+    &\qquad
+    = -\,\mu_2\bigl(\mu_2(a,b),c\bigr)
+    - (-1)^{(|b|+|c|)|a|}\,\mu_2\bigl(\mu_2(b,c),a\bigr)
+    - (-1)^{(|a|+|b|)|c|}\,\mu_2\bigl(\mu_2(c,a),b\bigr).
+  \end{aligned}
+\end{equation*}
+where $ a, b, c \in V$ is the element of $ L_\infty$ algebra $ V$.
+
+The infinite number of brackets could be rewritten into a more compact form via coalgebra and it's coderivation. For this need, we introduce the graded algebra
+\begin{equation*}
+  S^{c} V = \bigoplus_{n=0}^{\infty} V^{\wedge n}[-n],
+\end{equation*}
+where we note that the monomial $ a_1 a_2\cdots a_n \in V^{\wedge n}$ satisfied
+\begin{equation*}
+  a_1 a_2 \cdots a_n = (-1)^{\left| a_i \right| \left| a_{i+1} \right|} a_1 a_2 \cdots a_{i+1} a_i \cdots a_n.
+\end{equation*}
+We introduce the coproduct $ \Delta : S^{c} V \rightarrow S^{c} V \otimes S^{c} V$, which is defined by
+\begin{equation*}
+  \Delta : a_1 \cdots a_n \mapsto \sum_{i=1}^{n} \sum_{\sigma \in \mathrm{Sh}(i,n)} (-1)^{\sigma} a_{\sigma(1)} \cdots a_{\sigma(i)} \otimes a_{\sigma(i+1)} \cdots a_{\sigma(n)},
+\end{equation*}
+where the shuffle map $ \mathrm{Sh}(i,n)$ is the set of all possible ways of permutations which satisfies $ \sigma(1) < \cdots \sigma(i)$ and $ \sigma(i+1) < \cdots < \sigma(n)$,
+and the sign $ (-1)^{\sigma}$ is the sign of the permutation $\sigma$.
+The coproduct is coassociative, i.e.
+\begin{equation*}
+  (\Delta \otimes Id) \Delta = (Id \otimes \Delta) \Delta.
+\end{equation*}
+
+\subsubsection{Derivation Side}
+
 \section{Day V: Perturbation Theory}
 
 \label{LastPage}
