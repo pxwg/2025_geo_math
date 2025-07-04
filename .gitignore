@@ -18,6 +18,7 @@
 *.nav
 *.snm
 *.vrb
+*.DS_Store
 
 # Keep .gitignore
 !.gitignore
