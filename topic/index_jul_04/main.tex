@@ -1,9 +1,9 @@
 % !TeX program = xelatex
-% ltex: enabled=false
 % TODO: fix typo
 \documentclass[10pt]{article}
 \input{../preamble.tex}
 \fancyhf{}
+% ltex: enabled=false
 \fancypagestyle{plain}{
   \lhead{2025}
   \chead{\centering{Introduction to Index Theory}}
@@ -21,6 +21,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
 \RequirePackage[font=small,format=plain,labelfont=bf,textfont=it]{caption}
+% ltex: enabled=true
 
 %-------------------basic info-------------------
 
@@ -37,7 +38,7 @@
 
 Consider $ T \in \mathcal{B}(\mathcal{H})$ which is a bounded operator in Hilbert space. The decomposition $ H = \ker(T) \oplus H_0$ and $ H = \in(T) \oplus H_1$ leads to an isomorphism (which is finite dimensional)
 \begin{equation*}
-  T |_{H_0 } : H_0 \rightarrow \im(T).
+  T |_{H_0 } : H_0 \rightarrow \im(T),
 \end{equation*}
 where the index of $ T$ is
 \begin{equation*}
@@ -45,7 +46,7 @@ where the index of $ T$ is
 \end{equation*}
 If index of $ T$ is $ 0 $, there would be no obstruction to extend an operator to an isomorphic one, i.e. index captured the obstruction to extend to an isomorphism.
 
-Consider an continuous transformation family of $ T$ which would be written as $ \left( T_{t} \right)_{t \in [0,1]} $. Which could be written as
+Consider a continuous transformation family of $ T$ which would be written as $ \left( T_{t} \right)_{t \in [0,1]} $. Which could be written as
 \begin{equation*}
   \mathrm{ind}(T_{1}) = \mathrm{ind}(T_0).
 \end{equation*}
@@ -56,7 +57,7 @@ Thus, one could expect the index of an operator is homotopy invariant.
   \begin{equation*}
     H^{2}(\mathbb{S}^{1}) = \left\{ \sum_{n \in \mathbb{N}} a_{n} z^{n}, \sum_{n \in \mathbb{N}} \left| a_n \right|^{2} < \infty \right\}
   \end{equation*}
-  There would be an projection operator $ p : L^{2}(\mathbb{S}^{1}) \rightarrow H^{2}(\mathbb{S}^{1})$, $ f \in C(\mathbb{S}^{1})$ and there is a multplication operator $ M_{f} : L^{2}(\mathbb{S}^{1}) \rightarrow L^{2}(\mathbb{S}^{1})$.
+  There would be a projection operator $ p : L^{2}(\mathbb{S}^{1}) \rightarrow H^{2}(\mathbb{S}^{1})$, $ f \in C(\mathbb{S}^{1})$ and there is a multiplication operator $ M_{f} : L^{2}(\mathbb{S}^{1}) \rightarrow L^{2}(\mathbb{S}^{1})$.
   Finally, one could consider the topological operator $ p M_{f} p : H^{2}(\mathbb{S}^{1}) \rightarrow H^{2}(\mathbb{S}^{1})$
 
   Now consider $ f(z) = z$ and $ f(z) = z^{-1}$, the shift operator $ T_{f} : H^{2}(\mathbb{S}^{1}) \rightarrow H^{2}(\mathbb{S}^{1})$ is defined as
@@ -67,7 +68,7 @@ Thus, one could expect the index of an operator is homotopy invariant.
     Suppose $ f \neq 0$ for all $ z \in \mathbb{S}^{2}$ (i.e. $ f$ is a loop on $ \mathbb{C}- {0}$), we have $ \mathrm{ind}(T_{f}) = - \mathrm{winding}(f)$.
   \end{theorem}
   \begin{proof}
-    The index is depends on on homotopy class of $ f: \mathbb{S}^{1} \rightarrow \mathbb{C}-\left\{ 0 \right\}$ which could be characterized by $ \pi_1(\mathbb{C}-\left\{ 0 \right\}) = \mathbb{Z}$. So that $[f] = [z^{k}]$ where $ k$ is the dimension of cokernel i.e. the index of $ f$, which is associated with the winding number of $ f$, thus one have
+    The index is depends on homotopy class of $ f: \mathbb{S}^{1} \rightarrow \mathbb{C}-\left\{ 0 \right\}$ which could be characterized by $ \pi_1(\mathbb{C}-\left\{ 0 \right\}) = \mathbb{Z}$. So that $[f] = [z^{k}]$ where $ k$ is the dimension of cokernel i.e. the index of $ f$, which is associated with the winding number of $ f$, thus one have
     \begin{equation*}
       \mathrm{ind}(T_{f}) = - \mathrm{winding}(f)
     \end{equation*}
@@ -89,8 +90,8 @@ $ \slashed{\mathcal{D}} = \gamma_{i} \partial_{i}$ is Dirac operator where
   \end{cases}
 \end{equation*}
 Now we want to define the Dirac operator $ \slashed{\mathcal{D}}$ on a manifold $ M$ with a Riemannian metric $ g$.
-$\slashed{\mathcal{D}} ^{2} = \Delta$ is always well defined on $ M$.
-If one want to extend the definition of Dirac operator, one need to introduce a spin structure on $ M$ i.e. taking an universal cover over $ SO(n) $ which is the automorphism group of $ \Delta$.
+$\slashed{\mathcal{D}} ^{2} = \Delta$ is always well-defined on $ M$.
+If one want to extend the definition of Dirac operator, one need to introduce a spin structure on $ M$ i.e. taking a universal cover over $ SO(n) $ which is the automorphism group of $ \Delta$.
 The result would lead to spin group $ Spin(n)$ which is a double cover of $ SO(n)$, and the spinor bundle $ S$ is defined as the associated vector bundle of $ Spin(n)$.
 A manifold with a spin structure is called a spin manifold, where is the Dirac operator lives in.
 \begin{theorem}
@@ -109,15 +110,15 @@ Here, $ \hat{A}(M)$ a characteristic class of a spin manifold $ M$ with dimensio
 It is well known that $ \chi(M) = 2 - 2g$ for a closed orientable surface $ M$ with genus $ g$. Use this consideration to $ M = \mathbb{S}^{2}$, one could consider the vector field over $ \mathbb{S}^{2}$, where $ \chi(\mathbb{S}^{2}) = 2$.
 
 % TODO: make it more precise
-Consider the vector filed $ V : M \rightarrow T M$, which could be interpreted as a section of the tangent bundle $ TM$, which could be also be written alternatively as the diagnal of embadding $ M \rightarrow M \times M$ thus one have
+Consider the vector filed $ V : M \rightarrow T M$, which could be interpreted as a section of the tangent bundle $ TM$, which could be also be written alternatively as the diagonal of embedding $ M \rightarrow M \times M$ thus one have
 \begin{equation*}
   \chi(\mathbb{S}^{2}) = \# (M, M),
 \end{equation*}
 which implies that the number of zeroes of a vector field on $ M$ is equal to the Euler characteristic of $ M$.
 
-\subsection{Thom Class}
+\subsection{Todd Class}
 
-The characteristic class could be viewed as the degree of 'non linearly independence' of the frame of the vector bundle $ E \rightarrow M$.
+The characteristic class could be viewed as the degree of 'non-linearly independence' of the frame of the vector bundle $ E \rightarrow M$.
 
 Generalize this idea to the complex vector bundle $ E \rightarrow M$ of rank $ k$, then the obstruction of the existence of linear independent frame is equivalent to the existence of characteristic class of the vector bundle $ E$ which is $ c_{i} \in H^{2i} (M)$.
 And the Pontryagin class would become $ p_{i}(E) = c_{2i} (E \otimes \mathbb{C})$.
@@ -130,7 +131,7 @@ And the Pontryagin class would become $ p_{i}(E) = c_{2i} (E \otimes \mathbb{C})
   where $ E$ is the vector bundle associated with the elliptic operator $ \mathcal{D}$, $ \sigma_{\mathcal{D}} \in K(TM)$.
 \end{theorem}
 
-\subsection{\texorpdfstring{Relation to $K$ Theory}{Relation to K Theory}}
+\subsection{\texorpdfstring{Relation to $K$ Theory}{ Relation to K Theory}}
 
 \section{Application}
 
@@ -138,7 +139,7 @@ Gauss-Bonnet theorem $ D = \mathrm{d} + \mathrm{d} ^{*}$; Riemann-Roch theorem: 
 
 \subsection{Signature Theorem}
 
-Consider the intersection number $\# (V,W) = \int _{M} P_{V}\wedge P_{W}$ where $ P_{V}$ is the Poincaré dual of the vector field $ V$. Let $ M$ be an closed oriented manifold, then the intersection number $ H^{2k}(M) \times H^{2k}(M) \rightarrow \mathbb{R}$ could be written as
+Consider the intersection number $\# (V,W) = \int _{M} P_{V}\wedge P_{W}$ where $ P_{V}$ is the Poincaré dual of the vector field $ V$. Let $ M$ be a closed oriented manifold, then the intersection number $ H^{2k}(M) \times H^{2k}(M) \rightarrow \mathbb{R}$ could be written as
 \begin{equation*}
   \left( \alpha,\beta \right) \mapsto \int_{M} \alpha \wedge \beta,
 \end{equation*}

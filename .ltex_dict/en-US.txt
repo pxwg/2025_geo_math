@@ -135,3 +135,12 @@ Homotopic
 act
 B
 surjection
+Harday
+Pontryagin
+Riemann
+Roch
+Thom
+cokernel
+diagnal
+orientable
+Riemann-Roch
