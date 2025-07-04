@@ -1,0 +1,62 @@
+name: LTeX Grammar Check (Advanced)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  ltex-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+    - name: Download and setup ltex-ls
+      run: |
+        wget https://github.com/valentjn/ltex-ls/releases/download/16.0.0/ltex-ls-16.0.0-linux-x64.tar.gz
+        tar -xzf ltex-ls-16.0.0-linux-x64.tar.gz
+        echo "$PWD/ltex-ls-16.0.0/bin" >> $GITHUB_PATH
+        
+    - name: Verify ltex-ls installation
+      run: ltex-ls --version
+      
+    - name: Update LTeX dictionary
+      run: python ./ltex_dict_update.py
+      
+    - name: Find and check all main.tex files
+      run: |
+        exit_code=0
+        find . -name "main.tex" -type f | while read -r file; do
+          echo "----------------------------------------"
+          echo "Checking: $file"
+          echo "----------------------------------------"
+          
+          if ltex-cli "$file" --client-configuration ltex_setting.json; then
+            echo "✅ $file passed LTeX check"
+          else
+            echo "❌ $file failed LTeX check"
+            exit_code=1
+          fi
+          echo ""
+        done
+        
+        if [ $exit_code -ne 0 ]; then
+          echo "One or more files failed LTeX check"
+          exit 1
+        fi
+        
+    - name: Upload LTeX reports (if any)
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: ltex-reports
+        path: |
+          **/*.ltex-report.json
+          **/*.ltex-report.txt
+        if-no-files-found: ignore
