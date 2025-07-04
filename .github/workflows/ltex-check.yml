@@ -17,6 +17,8 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
+        python-version: '3.x'
+        
     - name: Download and setup ltex-ls
       run: |
         wget https://github.com/valentjn/ltex-ls/releases/download/16.0.0/ltex-ls-16.0.0-linux-x64.tar.gz
@@ -37,7 +39,7 @@ jobs:
           echo "Checking: $file"
           echo "----------------------------------------"
           
-          if ltex-cli "$file" --client-configuration ltex_setting.json; then
+          if ltex-ls --check "$file"; then
             echo "✅ $file passed LTeX check"
           else
             echo "❌ $file failed LTeX check"
