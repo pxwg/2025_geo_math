@@ -1,0 +1,168 @@
+% !TeX program = xelatex
+\documentclass[10pt]{article}
+\input{../preamble.tex}
+\fancyhf{}
+\fancypagestyle{plain}{
+  \lhead{2025}
+  \chead{\centering{Introduction to Index Theory}}
+  \rhead{\thepage\ of \pageref{LastPage}}
+  \lfoot{}
+  \cfoot{}
+\rfoot{}}
+\pagestyle{plain}
+
+%-------------------fonts-------------------
+\usepackage[sc]{mathpazo}
+\usepackage{slashed}
+\usepackage{courier}
+% \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\RequirePackage[font=small,format=plain,labelfont=bf,textfont=it]{caption}
+
+%-------------------basic info-------------------
+
+\title{\textbf{Introduction to Index Theory}}
+\author{Xinyu Xiang}
+\date{Jul. 2025}
+
+%-------------------document---------------------
+
+\begin{document}
+\maketitle
+
+\section{Motivation}
+
+Consider $ T \in \mathcal{B}(\mathcal{H})$ which is a bounded operator in Hilbert space. The decomposition $ H = \ker(T) \oplus H_0$ and $ H = \in(T) \oplus H_1$ leads to an isomorphism (which is finite dimensional)
+\begin{equation*}
+  T |_{H_0 } : H_0 \rightarrow \im(T).
+\end{equation*}
+where the index of $ T$ is
+\begin{equation*}
+  \mathrm{ind}(T) = \dim \ker (T) - \dim \coker (T).
+\end{equation*}
+If index of $ T$ is $ 0 $, there would be no obstruction to extend an operator to an isomorphic one, i.e. index captured the obstruction to extend to an isomorphism.
+
+Consider an continuous transformation family of $ T$ which would be written as $ \left( T_{t} \right)_{t \in [0,1]} $. Which could be written as
+\begin{equation*}
+  \mathrm{ind}(T_{1}) = \mathrm{ind}(T_0).
+\end{equation*}
+Thus, one could expect the index of an operator is homotopy invariant.
+
+\begin{example}[The Topology of Harday Space]
+  Consider Harday space
+  \begin{equation*}
+    H^{2}(\mathbb{S}^{1}) = \left\{ \sum_{n \in \mathbb{N}} a_{n} z^{n}, \sum_{n \in \mathbb{N}} \left| a_n \right|^{2} < \infty \right\}
+  \end{equation*}
+  There would be an projection operator $ p : L^{2}(\mathbb{S}^{1}) \rightarrow H^{2}(\mathbb{S}^{1})$, $ f \in C(\mathbb{S}^{1})$ and there is a multplication operator $ M_{f} : L^{2}(\mathbb{S}^{1}) \rightarrow L^{2}(\mathbb{S}^{1})$.
+  Finally, one could consider the topological operator $ p M_{f} p : H^{2}(\mathbb{S}^{1}) \rightarrow H^{2}(\mathbb{S}^{1})$
+
+  Now consider $ f(z) = z$ and $ f(z) = z^{-1}$, the shift operator $ T_{f} : H^{2}(\mathbb{S}^{1}) \rightarrow H^{2}(\mathbb{S}^{1})$ is defined as
+  \begin{equation*}
+    (a_0, a_1, a_2, \ldots) \mapsto (0, a_0, a_1, \ldots), \quad \text{and } (a_0, a_1, a_2, \ldots) \mapsto (a_1, a_2, \ldots).
+  \end{equation*}
+  \begin{theorem}[Noether, Fuly 1935]
+    Suppose $ f \neq 0$ for all $ z \in \mathbb{S}^{2}$ (i.e. $ f$ is a loop on $ \mathbb{C}- {0}$), we have $ \mathrm{ind}(T_{f}) = - \mathrm{winding}(f)$.
+  \end{theorem}
+  \begin{proof}
+    The index is depends on on homotopy class of $ f: \mathbb{S}^{1} \rightarrow \mathbb{C}-\left\{ 0 \right\}$ which could be characterized by $ \pi_1(\mathbb{C}-\left\{ 0 \right\}) = \mathbb{Z}$. So that $[f] = [z^{k}]$ where $ k$ is the dimension of cokernel i.e. the index of $ f$, which is associated with the winding number of $ f$, thus one have
+    \begin{equation*}
+      \mathrm{ind}(T_{f}) = - \mathrm{winding}(f)
+    \end{equation*}
+    which proved the theorem.
+  \end{proof}
+\end{example}
+
+\section{A-S Index Theorem}
+
+Consider Elliptic differential operator $ \mathcal{D} = a_{\alpha}(x) \partial^{\alpha} \xrightarrow \sigma(x, \xi) \equiv a_{\alpha} \xi^{\alpha}$ which could be defined by Fourier transformation,
+where $ \xi^{\alpha}$ for $ \xi = (\xi_{1},\cdots ,\xi_{n})$ could be defined  $ \xi^{\alpha} = (\xi_{1}^{\alpha}, \cdots ,\xi_{n}^{\alpha})$ and $ a_{\alpha}$ is matrix take value in $ C^{\infty }_{c}(\mathbb{R}^{n})$.
+Elliptic means $ \sigma \in GL_{n}(\mathbb{C})$.
+
+$ \slashed{\mathcal{D}} = \gamma_{i} \partial_{i}$ is Dirac operator where
+\begin{equation*}
+  \begin{cases}
+    \gamma_{i}^{2} = 1, & \text{for } i = 1, \cdots , n,\\
+    \gamma_{i} \gamma_{j} + \gamma_{j} \gamma_{i} = 0, & \text{for } i \neq j.
+  \end{cases}
+\end{equation*}
+Now we want to define the Dirac operator $ \slashed{\mathcal{D}}$ on a manifold $ M$ with a Riemannian metric $ g$.
+$\slashed{\mathcal{D}} ^{2} = \Delta$ is always well defined on $ M$.
+If one want to extend the definition of Dirac operator, one need to introduce a spin structure on $ M$ i.e. taking an universal cover over $ SO(n) $ which is the automorphism group of $ \Delta$.
+The result would lead to spin group $ Spin(n)$ which is a double cover of $ SO(n)$, and the spinor bundle $ S$ is defined as the associated vector bundle of $ Spin(n)$.
+A manifold with a spin structure is called a spin manifold, where is the Dirac operator lives in.
+\begin{theorem}
+  Let $ \hat{A}$ be the A-S characteristic class of a spin manifold $ M$ with dimension $ n$, we have
+  \begin{equation*}
+    \int _{M} \hat{A}(M) \in \mathbb{Z}.
+  \end{equation*}
+\end{theorem}
+Here, $ \hat{A}(M)$ a characteristic class of a spin manifold $ M$ with dimension $ n$ and curvature $ R$, which is defined as
+\begin{equation*}
+  \hat{A}(M) = \left( \frac{R}{\sinh R} \right)^{1 / 2} \in H^{\bullet}(M).
+\end{equation*}
+
+\subsection{Interlude: Euler Characteristic and Ball}
+
+It is well known that $ \chi(M) = 2 - 2g$ for a closed orientable surface $ M$ with genus $ g$. Use this consideration to $ M = \mathbb{S}^{2}$, one could consider the vector field over $ \mathbb{S}^{2}$, where $ \chi(\mathbb{S}^{2}) = 2$.
+
+% TODO: make it more precise
+Consider the vector filed $ V : M \rightarrow T M$, which could be interpreted as a section of the tangent bundle $ TM$, which could be also be written alternatively as the diagnal of embadding $ M \rightarrow M \times M$ thus one have
+\begin{equation*}
+  \chi(\mathbb{S}^{2}) = \# (M, M),
+\end{equation*}
+which implies that the number of zeroes of a vector field on $ M$ is equal to the Euler characteristic of $ M$.
+
+\subsection{Thom Class}
+
+The characteristic class could be viewed as the degree of 'non linearly independence' of the frame of the vector bundle $ E \rightarrow M$.
+
+Generalize this idea to the complex vector bundle $ E \rightarrow M$ of rank $ k$, then the obstruction of the existence of linear independent frame is equivalent to the existence of characteristic class of the vector bundle $ E$ which is $ c_{i} \in H^{2i} (M)$.
+And the Pontryagin class would become $ p_{i}(E) = c_{2i} (E \otimes \mathbb{C})$.
+
+\begin{theorem}[Atiyah-Singer Index Theorem]
+  Let $ M$ be a closed spin manifold of dimension $ n$, and $ \mathcal{D}$ be an elliptic operator on $ M$ with index $ \mathrm{ind}(\mathcal{D})$. Then
+  \begin{equation*}
+    \mathrm{ind}(\mathcal{D}) = \int_{TM} \operatorname{Todd}(TM \otimes  \mathbb{C}) \operatorname{ch}(\sigma_{D}),
+  \end{equation*}
+  where $ E$ is the vector bundle associated with the elliptic operator $ \mathcal{D}$, $ \sigma_{\mathcal{D}} \in K(TM)$.
+\end{theorem}
+
+\subsection{\texorpdfstring{Relation to $K$ Theory}{Relation to K Theory}}
+
+\section{Application}
+
+Gauss-Bonnet theorem $ D = \mathrm{d} + \mathrm{d} ^{*}$; Riemann-Roch theorem: $ D = \bar{\partial} + \bar{\partial}^{*}$
+
+\subsection{Signature Theorem}
+
+Consider the intersection number $\# (V,W) = \int _{M} P_{V}\wedge P_{W}$ where $ P_{V}$ is the Poincaré dual of the vector field $ V$. Let $ M$ be an closed oriented manifold, then the intersection number $ H^{2k}(M) \times H^{2k}(M) \rightarrow \mathbb{R}$ could be written as
+\begin{equation*}
+  \left( \alpha,\beta \right) \mapsto \int_{M} \alpha \wedge \beta,
+\end{equation*}
+which is a quadratic form $ \eta$ on $ H^{2k}(M)$, and then one could define the signature of $ M$ as the signature of the quadratic form $ \eta$ on $ H^{2k}(M)$, which is defined as
+\begin{equation*}
+  \sigma(M) = \text{Signature}(M) = \left( \text{\# > 0 Eigenvalues} \right) - \left( \text{\# < 0 Eigenvalues} \right).
+\end{equation*}
+
+\begin{theorem}[Signature Theorem]
+  Let $ M$ be a closed oriented manifold of dimension $ n$, then
+  \begin{equation*}
+    \sigma(M) = \int _{M} L(M).
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  We have an algebra homomorphism: $ \sigma: \Omega^{SO}_{4 k} \otimes \mathbb{Q} \rightarrow \mathbb{Q}$ where $ \Omega_{4k}^{SO}$ is the cobordism group of oriented manifolds of dimension $ 4k$. However, we have an isomorphism
+  \begin{equation*}
+    \Omega^{SO}_{4k} \otimes \mathbb{Q} \cong \mathbb{Q}[\mathbb{P}^{2}(\mathbb{C}), \mathbb{P}^{2}(\mathbb{C}),\cdots ],
+  \end{equation*}
+  which is the polynomial algebra generated by the oriented cobordism classes $ \mathbb{P}^{2j}[\mathbb{C}]$, it's enough to verify
+  \begin{equation*}
+    \sigma (\mathbb {P} ^{2i})=1=\langle L_{i}(p_{1}(\mathbb {P} ^{2i}),\ldots ,p_{n}(\mathbb {P} ^{2i})),[\mathbb {P} ^{2i}]\rangle.
+  \end{equation*}
+\end{proof}
+
+\section{NCG Approach}
+
+\label{LastPage}
+\end{document}
