@@ -54,8 +54,7 @@ jobs:
             echo "🔍 Checking: $file"
             echo "=========================================="
             
-            # 使用 ltex-ls 的 CLI 模式检查文件
-            if java -jar "$PWD/ltex-ls-16.0.0/lib/ltex-ls-16.0.0.jar" --client-configuration ltex_setting.json --check "$file"; then
+            if ltex-cli "$file" --client-configuration ltex_setting.json; then
               echo "✅ $file passed LTeX check"
             else
               echo "❌ $file failed LTeX check"
