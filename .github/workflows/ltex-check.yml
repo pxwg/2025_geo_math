@@ -72,12 +72,3 @@ jobs:
         else
           echo "🎉 All files passed LTeX check"
         fi
-    - name: Upload LTeX reports (if any)
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: ltex-reports
-        path: |
-          **/*.ltex-report.json
-          **/*.ltex-report.txt
-        if-no-files-found: ignore
