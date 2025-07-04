@@ -8,5 +8,5 @@
 - 笔记节标题按照 `Day x: Title` 的格式命名，
 - Commit 按照 `update for dayx number` 来命名，其中 `x` 是课程的天数，`number` 是当前推送时间与当日授课预期时间的大致比例。
 
-## TODOs
+## TODOs 🤔
 - [ ] Integrate harper_ls with proper dictionary into CI.
