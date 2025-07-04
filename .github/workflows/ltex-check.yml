@@ -39,7 +39,7 @@ jobs:
           echo "Checking: $file"
           echo "----------------------------------------"
           
-          if ltex-ls --check "$file"; then
+          if ltex-cli "$file"; then
             echo "✅ $file passed LTeX check"
           else
             echo "❌ $file failed LTeX check"
