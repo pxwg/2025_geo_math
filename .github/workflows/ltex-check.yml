@@ -17,42 +17,57 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
         
-    - name: Download and setup ltex-ls
-      run: |
-        wget https://github.com/valentjn/ltex-ls/releases/download/16.0.0/ltex-ls-16.0.0-linux-x64.tar.gz
-        tar -xzf ltex-ls-16.0.0-linux-x64.tar.gz
-        echo "$PWD/ltex-ls-16.0.0/bin" >> $GITHUB_PATH
-        
-    - name: Verify ltex-ls installation
-      run: ltex-ls --version
+    - name: Install ltex-cli
+      run: npm install -g ltex-cli
       
     - name: Update LTeX dictionary
       run: python ./ltex_dict_update.py
       
     - name: Find and check all main.tex files
       run: |
-        exit_code=0
-        find . -name "main.tex" -type f | while read -r file; do
-          echo "----------------------------------------"
-          echo "Checking: $file"
-          echo "----------------------------------------"
-          
-          if ltex-cli "$file"; then
-            echo "✅ $file passed LTeX check"
-          else
-            echo "❌ $file failed LTeX check"
-            exit_code=1
-          fi
-          echo ""
-        done
+        overall_exit_code=0
         
-        if [ $exit_code -ne 0 ]; then
-          echo "One or more files failed LTeX check"
+        # 查找所有 main.tex 文件
+        tex_files=$(find . -name "main.tex" -type f)
+        
+        if [ -z "$tex_files" ]; then
+          echo "❌ No main.tex files found!"
           exit 1
         fi
         
+        echo "Found the following main.tex files:"
+        echo "$tex_files"
+        echo ""
+        
+        # 对每个文件执行检查
+        while IFS= read -r file; do
+          if [ -n "$file" ]; then
+            echo "=========================================="
+            echo "🔍 Checking: $file"
+            echo "=========================================="
+            
+            if ltex-cli "$file" --client-configuration ltex_setting.json; then
+              echo "✅ $file passed LTeX check"
+            else
+              echo "❌ $file failed LTeX check"
+              overall_exit_code=1
+            fi
+            echo ""
+          fi
+        done <<< "$tex_files"
+        
+        # 如果有任何文件失败，让整个 job 失败
+        if [ $overall_exit_code -ne 0 ]; then
+          echo "💥 One or more files failed LTeX check"
+          exit 1
+        else
+          echo "🎉 All files passed LTeX check"
+        fi
     - name: Upload LTeX reports (if any)
       if: always()
       uses: actions/upload-artifact@v4
