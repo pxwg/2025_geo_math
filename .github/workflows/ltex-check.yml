@@ -19,13 +19,14 @@ jobs:
       with:
         python-version: '3.x'
         
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+    - name: Download and setup ltex-ls
+      run: |
+        wget https://github.com/valentjn/ltex-ls/releases/download/16.0.0/ltex-ls-16.0.0-linux-x64.tar.gz
+        tar -xzf ltex-ls-16.0.0-linux-x64.tar.gz
+        echo "$PWD/ltex-ls-16.0.0/bin" >> $GITHUB_PATH
         
-    - name: Install ltex-cli
-      run: npm install -g ltex-cli
+    - name: Verify ltex-ls installation
+      run: ltex-ls --version
       
     - name: Update LTeX dictionary
       run: python ./ltex_dict_update.py
@@ -53,7 +54,8 @@ jobs:
             echo "🔍 Checking: $file"
             echo "=========================================="
             
-            if ltex-cli "$file" --client-configuration ltex_setting.json; then
+            # 使用 ltex-ls 的 CLI 模式检查文件
+            if java -jar "$PWD/ltex-ls-16.0.0/lib/ltex-ls-16.0.0.jar" --client-configuration ltex_setting.json --check "$file"; then
               echo "✅ $file passed LTeX check"
             else
               echo "❌ $file failed LTeX check"
@@ -70,7 +72,6 @@ jobs:
         else
           echo "🎉 All files passed LTeX check"
         fi
-        
     - name: Upload LTeX reports (if any)
       if: always()
       uses: actions/upload-artifact@v4
