@@ -1,4 +1,5 @@
 % !TeX program = LuaTeX
+% ltex: enabled=false
 \documentclass[10pt]{article}
 \input{../preamble.tex}
 \usepackage[compat=1.1.0]{tikz-feynman}
@@ -8,9 +9,7 @@
 \usetikzlibrary{external}
 \tikzexternalize
 \fancyhf{}
-% ltex: enabled=false
 \fancypagestyle{plain}{
-  % ltex: enabled=true
   \lhead{2025}
   \chead{\centering{Quantum Field Theory}}
   \rhead{\thepage\ of \pageref{LastPage}}
@@ -19,6 +18,7 @@
 \rfoot{}}
 \pagestyle{plain}
 \newcommand{\Hom}{\operatorname{Hom}}
+
 %-------------------basic info-------------------
 
 \title{\textbf{Quantum Field Theory}}
@@ -27,6 +27,7 @@
 
 %-------------------document---------------------
 
+% ltex: enabled=true
 \begin{document}
 \maketitle
 
@@ -587,10 +588,8 @@ for $ d>2$. Such an asymptotic expansion would lead to the divergence of the obs
 
 Consider the interaction term
 \begin{equation*}
-  \begin{aligned}
-    I_3(\phi) = & \int_{X} \mathrm{d}^{d} x \, \frac{\lambda_3}{3!} \phi^{3}, \\
-    I_4(\phi) = & \int_{X} \mathrm{d}^{d} x \, \frac{\lambda_4}{4!} \phi^{4},
-  \end{aligned}
+  I_3(\phi) = \int_{X} \mathrm{d}^{d} x \, \frac{\lambda_3}{3!} \phi^{3}, \quad
+  I_4(\phi) = \int_{X} \mathrm{d}^{d} x \, \frac{\lambda_4}{4!} \phi^{4},
 \end{equation*}
 which would twist the observables to a new form which could be also computed by Feynman diagrams.
 
@@ -658,7 +657,38 @@ We can use the Moyal product to construct the algebra of observables, whose prod
 
 % TODO: Hamiltonian as the deformation of the theory
 
-\subsection{Counter Term}
+\subsection{\texorpdfstring{Counter Term in Perturbative $\phi^{4}$}{ Counter Term in Perturbative phi^4}}
+
+If one consider the tree level Feynman diagram, we could proof that there is no UV divergence. However, if one consider the loop level Feynman diagram, some problems would occur. For example, consider the 1-loop Feynman diagram of the scalar field theory, which is given by
+\begin{equation*}
+  \hbar^{2} \lambda^{2} \int _{(\mathbb{R}^{4})^{2}} \mathrm{d} x_1 \mathrm{d} x_2 \, \phi^{2}(x_1) \phi^{2}(x_2) \frac{1}{\left| x_1 - x_2 \right|^{4}},
+\end{equation*}
+where we assume $ d=4$, such an integral would be divergent $ \sim \log r$. The physical interpreter is considering the cutting off and set the coupling constants depending on the cutting of scaling.
+
+After introducing the cutting off, the propagator would become
+\begin{equation*}
+  G(x,y) = \int \mathrm{d} ^{4} k \, \frac{\mathrm{e}^{\mathrm{i}k(x-y)}}{k^{2}} \xrightarrow{\text{Cutting Off}} \int _{\Lambda_{0} \le k \le \Lambda_1} \mathrm{d} ^{4} k \, \frac{\mathrm{e}^{\mathrm{i}k(x-y)}}{k^{2}},
+\end{equation*}
+another way to interpret the cutting off is to consider the heat kernel cutting off, which is given by
+\begin{equation*}
+  P^{L}_{\epsilon}= \int _{\epsilon}^{L} \mathrm{d} t \, \mathrm{e}^{-t\Box} = \int _{\epsilon}^{L} \frac{\mathrm{d} t}{(2 \pi t)^{2}} \, \mathrm{e}^{- \left| x-y \right|^{2} / 4t}.
+\end{equation*}
+Thus, using the heat kernel cutting off, we can rewrite the Feynman diagram with propagator as
+\begin{equation*}
+  \begin{aligned}
+    & \hbar \lambda^{2} \int _{(\mathbb{R}^{4})^{2}} \mathrm{d} ^{4} x_1 \mathrm{d} ^{4} x_2 \, \phi^{2}(x_1) \phi^{2}(x_2) \int _{[\epsilon, L]^{2}} \frac{\mathrm{d} t_1}{(2\pi t_1)^{2}} \frac{\mathrm{d} t_2}{(2\pi t_2)^{2}} \, \mathrm{e}^{- \left| x_1 - x_2 \right|^{2} / 4t_1} \mathrm{e}^{- \left| x_1 - x_2 \right|^{2} / 4t_2} \\
+    & = - h \lambda^{2} \frac{\ln \epsilon}{\pi^{2}} \int _{\mathbb{R}^{4}} \mathrm{d} ^{4} x \, \phi^{4}(x) + \text{Smooth Terms}.
+  \end{aligned}
+\end{equation*}
+To cancel the divergence, we need to introduce a counter term into action $ S[\phi]$, which is given by
+\begin{equation*}
+  S \rightarrow S + I_{1}^{\mathrm{ct}}, \quad
+  I_{1}^{\mathrm{ct}} = \frac{\hbar \lambda^{2}}{4! \pi^{2}} \ln \epsilon \int _{\mathbb{R}^{4}} \mathrm{d} ^{4} x \, \phi^{4}(x),
+\end{equation*}
+which could be interpreted as the renormalization of the coupling constant $ \lambda$:
+\begin{equation*}
+  \lambda \rightarrow \lambda + \frac{\hbar \lambda^{2}}{\pi^{2}} \ln \epsilon, \quad \frac{\mathrm{d} \lambda}{\mathrm{d} \ln \epsilon} = \frac{\hbar \lambda^{2}}{\pi^{2}}.
+\end{equation*}
 
 \label{LastPage}
 \end{document}
