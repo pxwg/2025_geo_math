@@ -1,6 +1,12 @@
-% !TeX program = pdflatex
+% !TeX program = LuaTeX
 \documentclass[10pt]{article}
 \input{../preamble.tex}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\tikzfeynmanset{warn luatex=false}
+\usetikzlibrary{positioning}
+\usepackage{tikz}
+\usetikzlibrary{external}
+\tikzexternalize
 \fancyhf{}
 % ltex: enabled=false
 \fancypagestyle{plain}{
@@ -552,6 +558,107 @@ The coproduct is coassociative, i.e.
 \subsubsection{Derivation Side}
 
 \section{Day V: Perturbation Theory}
+
+\section{Day VI: UV Divergence}
+
+\subsection{Perturbative Quantum Field Theory}
+
+We would consider the perturbative theory of a scaler field theory, where $ \mathcal{E} = C^{\infty }(X)$, $ X = \mathbb{R}^{d}$ and the action is given by
+\begin{equation*}
+  S[\phi] = \int _{X} \left( \frac{1}{2} \phi \Box \phi + \frac{1}{2} m^{2} \phi^{2} \right) \mathrm{d}^{d} x,
+\end{equation*}
+where the observables could be defined as correlators, which could be defined as the expectation value of the product of fields
+\begin{equation*}
+  \left< \mathcal{O} \right> = \frac{\int \mathcal{D}[\phi] \, \mathcal{O} \exp \left[ - \frac{1}{\hbar}\int_{X} \mathrm{d}^{d} x \, \left( \frac{1}{2} \phi \Box \phi + \frac{1}{2} m^{2} \phi^{2} \right) \right] }{\int \mathcal{D}[\phi] \, \exp \left[ - \frac{1}{\hbar} \int_{X} \mathrm{d}^{d} x \, \left( \frac{1}{2} \phi \Box \phi + \frac{1}{2} m^{2} \phi^{2}  \right)\right] },
+\end{equation*}
+which could be computed by Wick's contraction and Green's function
+\begin{equation*}
+  \left( \Box + m^{2} \right) G(x,y) = \hbar \delta(x-y),
+\end{equation*}
+thus the observable $\left< \phi(x_1) \phi(x_2) \cdots \phi(x_n) \right>$ could be computed by
+\begin{equation*}
+  \left< \phi(x_1) \phi(x_2) \cdots \phi(x_2n) \right> = \hbar^{n} \sum_{\sigma \in \mathbb{S}_{2n}} G(x_{\sigma(1)}, x_{\sigma(2)}) G(x_{\sigma(3)}, x_{\sigma(4)}) \cdots G(x_{\sigma(2n-1)}, x_{\sigma(2n)}),
+\end{equation*}
+which has asymptotic expansion in the limit $ x-y \rightarrow \infty $:
+\begin{equation*}
+  G(x,y) \sim \frac{1}{\left| x - y \right|^{d-2}},
+\end{equation*}
+for $ d>2$. Such an asymptotic expansion would lead to the divergence of the observable, which is called ultraviolet (UV) divergence.
+
+Consider the interaction term
+\begin{equation*}
+  \begin{aligned}
+    I_3(\phi) = & \int_{X} \mathrm{d}^{d} x \, \frac{\lambda_3}{3!} \phi^{3}, \\
+    I_4(\phi) = & \int_{X} \mathrm{d}^{d} x \, \frac{\lambda_4}{4!} \phi^{4},
+  \end{aligned}
+\end{equation*}
+which would twist the observables to a new form which could be also computed by Feynman diagrams.
+
+\subsection{Canonical Quantization}
+
+In classical mechanics, one would consider the phase space $(M, \omega)$, where $ \omega$ is the symplectic form, which defined a symplectic structure on the phase space $ M$
+\begin{equation*}
+  \omega(V_{f}, V_{g}) = \left\{ f, g \right\},
+\end{equation*}
+where $ \iota_{V_f} \omega = \mathrm{d} f$. The deformation quantization would lead to a non-communitative, where the communitve product in $ C^{\infty }(M)$ is replaced by the Moyal product:
+\begin{equation*}
+  \left( \mathcal{A} = \mathbb{R}[x,y], \cdot, \left\{ ~, ~ \right\} \right) \xrightarrow{\text{Deformation Quantization}} \left( \mathcal{A}[[\hbar]], \star, [~,~] \right),
+\end{equation*}
+where the Moyal product is defined by
+\begin{equation*}
+  f \star g = f(x,p) \exp\left( \frac{\mathrm{i}\hbar}{2} \left( \overleftarrow{\partial_x} \overrightarrow{\partial_p} - \overleftarrow{\partial_p} \overrightarrow{\partial_x} \right) \right) g(x,p),
+\end{equation*}
+which is a non-commutative and associative product on the algebra $ \mathcal{A}[[\hbar]]$.
+\begin{proof}[The Associativity of Moyal Product]
+  TBD.
+\end{proof}
+
+We can derive the Moyal product from the path integral, where the action is
+\begin{equation*}
+  S[x,p] = - \mathrm{i} \int _{\mathbb{R}} \mathbb{P} \mathrm{d} \mathbb{X},
+\end{equation*}
+which is called \emph{topological quantum mechanics}, where the path integral is defined as:
+\begin{equation*}
+  \left< \mathcal{O} \right> = \frac{\int \mathcal{D}[\mathbb{X}, \mathbb{P}] \, \mathcal{O} \exp\left( -\frac{1}{\hbar} S[\mathbb{X} , \mathbb{P}] \right)}{\int \mathcal{D}[\mathbb{X}, \mathbb{P}] \, \exp\left( -\frac{1}{\hbar} S[\mathbb{X}, \mathbb{P}] \right)},
+\end{equation*}
+where the green's function could be defined as:
+\begin{equation*}
+  G(t_1,t_2) = \frac{1}{2} \sgn(t_1 - t_2) =
+  \begin{cases}
+    \frac{1}{2}, & t_1 > t_2, \\
+    0, & t_1 = t_2, \\
+    -\frac{1}{2}, & t_1 < t_2.
+  \end{cases}
+\end{equation*}
+thus $\left< \mathbb{X}(t_1) \mathbb{P}(t_2)\right> = - \mathrm{i}\hbar G(t_1, t_2)$ and $\left< \mathbb{P}(t_1) \mathbb{X}(t_2)\right> = \mathrm{i} \hbar G(t_1 , t_2)$.
+
+We can use the Moyal product to construct the algebra of observables, whose product could be interpreted as the OPE and derived from the path integral. Consider $ f, g \in \mathbb{R}[x,p]$, thus, near the classical solution $(x,p)$ for each function, one can express the path integral as
+\begin{equation*}
+  \left< f(x + \mathbb{X}(t_1), p + \mathbb{P}(t_1)) g(x+\mathbb{X}(t_2), p + \mathbb{P}(t_2)) \right> = f \star g.
+\end{equation*}
+\begin{proof}
+  The process of Wick contraction could be realized by the operator
+  \begin{equation*}
+    \left( \frac{\partial }{\partial P_0^{L}}\right)_{ij} = \sum_{klpq} \mathrm{i} \hbar G_{kl}(t_i, t_{j}) \eta_{pq} \left( \frac{\partial }{\partial \left( \partial^{k} \phi_{p} \otimes \partial^{l} \phi_{q} \right)} \right)_{ij} \xrightarrow{f, g \in \mathbb{R}[x,p]} \mathrm{i} \hbar \sum_{pq} G(t_i, t_j) \omega_{pq} \left( \frac{\partial }{\partial \left( \phi_{p} \otimes \phi_{q} \right)} \right)_{ij},
+  \end{equation*}
+  where $ \phi = (\mathbb{X}, \mathbb{P})$ and $ \eta \equiv \omega$ gives the contribution of the correct sign in the Moyal product. The $ n$ links contraction would lead to the operator
+  \begin{equation*}
+    \text{$ n$ Links Wick Contraction} \leadsto \frac{1}{n!} \left( \frac{\partial }{\partial P^{L}_{0}} \right)^{n}_{ij},
+  \end{equation*}
+  thus the Feynman diagram could be rewritten as
+  \begin{equation*}
+    \left< f(x+\mathbb{X}(t_1), p + \mathbb{P}(t_1)) g(x + \mathbb{X}(t_2) , p + \mathbb{P}(t_2)) \right> = \mathrm{Mult} \left( \mathrm{e}^{\frac{\partial }{\partial P_{0}^{L}}} \left( f(\phi(t_1)) \otimes g(\phi(t_2))\right)\right),
+  \end{equation*}
+  where the $ \mathrm{Mult}$ is the multiplication of the algebra $ \mathcal{A}[[\hbar]]$. Write the definition of the contraction operator, we obtain OPE
+  \begin{equation*}
+    f(x,p) \star g(x,p) \sim f(x,p) \exp\left( \frac{\mathrm{i}\hbar}{2}\left( \overleftarrow{\partial_x} \overrightarrow{\partial_p} - \overleftarrow{\partial_p} \overrightarrow{\partial_x} \right) \right) g(x,p) + \cdots,
+  \end{equation*}
+  where the $ \cdots$ is the correction term in $ \hbar$ while $ f,g$ is not polynomial. If $ f, g \in \mathbb{R}[x,y]$ is polynomial, then the correction term is zero, and we have the Moyal product.
+\end{proof}
+
+% TODO: Hamiltonian as the deformation of the theory
+
+\subsection{Counter Term}
 
 \label{LastPage}
 \end{document}
