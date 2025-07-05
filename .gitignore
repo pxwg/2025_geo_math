@@ -18,6 +18,7 @@
 *.nav
 *.snm
 *.vrb
+*.auxlock
 *.DS_Store
 
 # Keep .gitignore
