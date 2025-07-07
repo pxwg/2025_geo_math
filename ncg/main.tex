@@ -1,0 +1,73 @@
+% !TeX program = xelatex
+\documentclass[10pt]{article}
+\input{../preamble.tex}
+\fancyhf{}
+% ltex: enabled=false
+\fancypagestyle{plain}{
+  \lhead{2025}
+  \chead{\centering{Introduction to Noncommutative Geometry}}
+  \rhead{\thepage\ of \pageref{LastPage}}
+  \lfoot{}
+  \cfoot{}
+\rfoot{}}
+\pagestyle{plain}
+%-------------------fonts-------------------
+\usepackage[sc]{mathpazo}
+\usepackage{courier}
+% \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\RequirePackage[font=small,format=plain,labelfont=bf,textfont=it]{caption}
+% ltex: enabled=true
+
+%-------------------basic info-------------------
+
+\title{\textbf{Introduction to Noncommutative Geometry}}
+\author{Xinyu Xiang}
+\date{Jul. 2025}
+
+%-------------------document---------------------
+
+\begin{document}
+\maketitle
+
+\section{Day I: Banach Space, Hilbert Space and C-star Algebra}
+
+\subsection{Banach Space and Hilbert Space}
+\begin{equation*}
+  \begin{aligned}
+    \text{Hilbert Space } \mathcal{H} & \longleftrightarrow \text{Banach Space $\mathcal{B}$ + Norm from Inner Product} \\
+    & \longleftrightarrow \text{Vector Space + Inner Product + Complete Norm},
+  \end{aligned}
+\end{equation*}
+where one have unique inner product $\left< ~,~ \right>$ from the norm $\| ~ \|$
+\begin{equation*}
+  \left< \phi, \psi \right> =
+\end{equation*}
+
+\subsection{C-star Algebra}
+
+\begin{definition}[Algebra]
+  An \textbf{algebra} $\mathcal{A}$ over a field $\mathbb{F}$ is a vector space over $\mathbb{F}$ equipped with a bilinear product $\mathcal{A} \times \mathcal{A} \to \mathcal{A}$, denoted by $a \cdot b$ or simply $ab$.
+\end{definition}
+
+\begin{definition}[Banach Algebra]
+  A Banach algebra is an algebra $ \mathcal{A}$ endowed with a norm $\| \cdot \|$ such that
+  \begin{equation*}
+    \| ab \| \leq \| a \| \| b \|, \quad \forall a, b \in \mathcal{A}.
+  \end{equation*}
+\end{definition}
+
+\begin{definition}[$ \mathbb{C}^{*}$ Algebra]
+  $ \mathbb{C}^{*}$ algebra $\longleftrightarrow$ Banach algebra over $ \mathbb{C}$ + $\forall x \in \mathbb{C}^{*}$, $ \phi: x \mapsto x^{*}$.
+\end{definition}
+
+\begin{example}[Matrix]
+
+\end{example}
+\begin{example}[Continues Linear Operator over Hilbert Space]
+
+\end{example}
+
+\label{LastPage}
+\end{document}
