@@ -1,8 +1,10 @@
-% !TeX program = LuaTeX
+% !TeX program = pdflatex
 % ltex: enabled=false
 \documentclass[10pt]{article}
 \input{../preamble.tex}
 \usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage[all,cmtip]{xy}
+\usepackage{tikz-cd}
 \tikzfeynmanset{warn luatex=false}
 \usetikzlibrary{positioning}
 \usepackage{tikz}
@@ -691,6 +693,158 @@ which could be interpreted as the renormalization of the coupling constant $ \la
 \begin{equation*}
   \lambda \rightarrow \lambda + \frac{\hbar \lambda^{2}}{\pi^{2}} \ln \epsilon, \quad \frac{\mathrm{d} \lambda}{\mathrm{d} \ln \epsilon} = \frac{\hbar \lambda^{2}}{\pi^{2}}.
 \end{equation*}
+
+\section{Day VII: BV-BRST Formalism}
+
+\subsection{A Toy Model}
+
+First, we consider a finite dimensional gauge theory equipped with a Lagrangian
+\begin{equation*}
+  f: V \rightarrow \mathbb{C},
+\end{equation*}
+where $ V $ is a finite dimensional vector space. The gauge redundancy is given by the action of the Lie group $ G$ on $ V$ such that $ f$ is $ G$ invariant.
+
+\subsubsection{Field Space and BRST}
+
+We consider the 'path integral' of this theory, which is given by
+\begin{equation*}
+  \int _{V/G} \mathrm{d} \mu \, \mathrm{e}^{\mathrm{i}f / \hbar}.
+\end{equation*}
+There are two approaches to compute this integral:
+\begin{enumerate}[(1)]
+  \item \textbf{Faddeev-Popov Method}: Find a subspace $ W \subset V$ such that points of $ W$ represents the gauge orbits of $ V$, i.e. $ V/G \cong W$, and construct a form $ \xi_{W}$ associate to $ W$ such that
+    \begin{equation*}
+      \int _{V/G} \mathrm{d} \mu \, \mathrm{e}^{\mathrm{i}f / \hbar} = \int _{V} \mathrm{d}\mu \, \delta(W) \xi_{W} \mathrm{e}^{\mathrm{i}f / \hbar},
+    \end{equation*}
+    which is associated with Faddeev-Popov method, where $ W$ is the gauge fixing condition and $ \xi_{W}$ is the action of Faddeev-Popov ghost field.
+    This method is very useful in the case of usual gauge theory e.g. Maxwell theory.
+
+    However, some issues would occur while one consider the gauge theory with some singular gauge orbits.
+    So we need to introduce the second method, to overcome the issue of singular gauge orbits.
+
+    % borzul thm could be written as a derived form
+    In mathematics, we would consider the quotient space by replacing it with the 'derived quotient', which would lead to BV-BRST formalism.
+
+  \item \textbf{BV-BRST Formalism}: Consider the function ring over $ V/G$
+    \begin{equation*}
+      \mathcal{O}(V/G) = \mathcal{O}(V)^{G}.
+    \end{equation*}
+    Assume $ G$ is a compact Lie group with Lie algebra $ \mathfrak{g}$, which has a fundamental vector field over $ V$ given by $ X_{u} \in V$, where $ u \in \mathfrak{g}$.
+    Thus, the $ G$ invariant function ring could be written as
+    \begin{equation*}
+      \mathcal{O}(V)^{G} = \left\{ f \in \mathcal{O}(V) \, | \, X_{u} f = 0, \forall u \in \mathfrak{g} \right\}.
+    \end{equation*}
+    Let $\left\{ e_i \right\}$ be a basis of $ V$, and $\left\{ c^{i} \right\}$ be the dual basis of $ V^{*}$, then we can define the differential operator
+    \begin{equation*}
+      \mathrm{d} _{\mathrm{CE}} : \phi \mapsto c^{i} \otimes X_{e^{i}} \phi \equiv c^{i} X_{i} \phi,
+    \end{equation*}
+    where $ X_{i} = X_{e_i}$.
+    Thus, the resolution could be written as a complex
+    \begin{equation*}
+      0 \rightarrow \mathcal{O}(V)^{G} \hookrightarrow \mathcal{O}(V) \xrightarrow{\mathrm{d} _{\mathrm{CE}}} \mathcal{O}(V) \otimes g^{*} \xrightarrow{\mathrm{d} _{\mathrm{CE}}} \mathcal{O}(V) \otimes \bigwedge\nolimits^{2} g^{*} \xrightarrow{\mathrm{d} _{\mathrm{CE}}} \cdots,
+    \end{equation*}
+    thus, the derived object could be
+    \begin{equation*}
+      C^{\bullet}(\mathfrak{g}, \mathcal{O}(V)) = \left( \bigwedge\nolimits^{2} \mathfrak{g} \otimes \mathcal{O}(V), \mathrm{d} _{\mathrm{CE}}\right) = \sym\left( (\mathfrak{g}[1])^{*} \right) \oplus \sym(V^{*}),
+    \end{equation*}
+    which implied that the derived quotient space $ V/G$ could be understood as the function ring over $ \mathfrak{g}^{*} \oplus V$.
+    Thus, the path integral over $ V/G$ could be rewritten as
+    \begin{equation*}
+      \int _{V/G} \mathrm{d} \mu \, \mathrm{e}^{\mathrm{i} f / \hbar} \leadsto \int _{\mathfrak{g}[1] \oplus V} \mathrm{d} \mu \, \mathrm{e}^{\mathrm{i} f / \hbar},
+    \end{equation*}
+    where $ H^{0}(\mathfrak{g}, \mathcal{O}(V)) = \mathcal{O}(V / G)$. Moreover, if $ G$ acts on $ V$ freely, $ \mathcal{O}(V / G) \cong^{q} C^{\bullet}(\mathfrak{g}, \mathcal{O}(V))$ is a quasi-isomorphism.
+    In physics, this is the field space of BV-BRST formalism, where the derived quotient space $ V/G$ is replaced by the derived field space $ \mathfrak{g}[1] \oplus V$, and $ \mathfrak{g}[1]$ is called BRST ghost.
+\end{enumerate}
+
+\subsubsection{Integration and BV}
+
+After identify the 'derived field space' $ \mathfrak{g}[1] \oplus V$, we want to consider the integration over it.
+However, the highest volume form is not a ideal object to study infinite dimensional integration. The dual of it would be better, which is called the polyvector field
+\begin{equation*}
+  \mathrm{PV}^{\bullet}(V) = \bigoplus_{p=0}^{\infty}\Gamma\left( V, \wedge^{p} TV \right),
+\end{equation*}
+equipped with Wedge Product: $\wedge: \mathrm{PV}^{p} \times \mathrm{PV}^{q} \rightarrow \mathrm{PV}^{p+q}$, and the isomorphism between the polyvector field and the de-Rham complex could be written as.
+% TODO: add diagram
+which leads to the BV operator, which is the generated divergence operator $\Delta_{\omega}$, where $ \omega$ is a volume form on $ V$.
+\begin{example}[Path Integral over $ V$ ]
+  Consider $ \omega = \mathrm{e}^{\rho(x)} \mathrm{d} x_1 \wedge \cdots \mathrm{d} x_n$, the dual of polyvector field is given by
+  \begin{equation*}
+    \mathrm{PV}^{\bullet}(V) = C^{\infty }(V)[\partial_{1}, \cdots ,\partial_{n}],
+  \end{equation*}
+  equipped with the wedge product $ \partial_{i} \wedge \partial_{j} = - \partial_{j} \wedge \partial_{i}$. For connivance, we denote $\partial_{i}$ with wedge product as Grassmann variable $ \theta_{i}$, thus the polyvector field could be written as
+  \begin{equation*}
+    \mathrm{PV}^{\bullet}(V) \ni \mu = \sum_{I} \mu_{I_1, \cdots ,I_k}(x) \theta_{I_1} \cdots \theta_{I_k}.
+  \end{equation*}
+  Under the notation above, $ \Delta$ could be written explicitly as
+  \begin{equation*}
+    \Delta_{\rho} = \frac{\partial }{\partial x^{i}} \frac{\partial }{\partial \theta_{i}} + \partial_{i} \rho(x) \frac{\partial }{\partial \theta_{i}},
+  \end{equation*}
+  satisfying $ \Delta^{2} = 0$.
+\end{example}
+
+The integration over $ V$ could be identified with the linear homomorphism
+\begin{equation*}
+  H^{d}_{\mathrm{dR}}(V) \leadsto \int : \Omega^{d}(V) \rightarrow \mathbb{C},
+\end{equation*}
+at the dual side, we can use the language of polyvector field to define the integration over $ V$ as
+\begin{equation*}
+  H^{0}_{\Delta}(V) \leadsto \int: \mathrm{PV}^{0}(V) \rightarrow \mathbb{C},
+\end{equation*}
+which is much better in the context of quantum field theory, since it is isolated from the (mostly infinite) dimension of the field space.
+
+\subsection{BV Algebra}
+
+\begin{definition}[BV Algebra]
+  A BV algebra is a graded commutative algebra $ (A, \cdot, \Delta, \left\{ ~.~ \right\})$, where
+  \begin{enumerate}[(1)]
+    \item $ A$ is a graded commutative algebra with $ a \cdot b = (-1)^{\left| a \right|\left| b \right|} b \cdot a$;
+    \item (BV Operator) $ \Delta : A \rightarrow A$ is a degree $ 1 $ operator satisfied $ \Delta^{2} = 0$;
+    \item (BV Bracket) $\left\{ ~,~ \right\} : A \otimes A \rightarrow A$ is a degree $ 1$ bilinear map
+      \begin{equation*}
+        \left\{ a, b \right\} = \Delta(a \cdot b) - \Delta(a) \cdot b - (-1)^{\left| a \right|} a \cdot \Delta(b),
+      \end{equation*}
+  \end{enumerate}
+\end{definition}
+\begin{proposition}
+  BV bracket satisfies the following properties:
+  \begin{enumerate}[(1)]
+    \item (Graded Symmetry) $\left\{ a,b \right\} = (-1)^{\left| a \right|\left| b \right|} \left\{ b, a \right\}$,
+    \item (Graded Leibniz Rule) $\left\{ a, bc \right\} = \left\{ a, b \right\} c + (-1)^{(\left| a \right|+1)\left| b \right|} a \left\{ b,c \right\}$,
+    \item (Compatible with BV Operator) $ \Delta\left\{ a,b \right\} = - \left\{ \Delta a, b \right\} - (-1)^{\left| a \right|} \left\{ a, \Delta b \right\}$.
+  \end{enumerate}
+\end{proposition}
+\begin{example}[Polyvector Field as BV Algebra]
+  $ A = \left( \mathrm{PV}^{-\bullet}(V), \Delta \right)$, where $ A^{-k} = \mathrm{PV}^{k}(V)$, and BV bracket is Schouten-Nijenhuis bracket (up to sign)
+  \begin{equation*}
+    \left\{ \alpha, \beta \right\} = (-1)^{\left| \alpha \right|+1} [\alpha, \beta]_{\mathrm{SN}}.
+  \end{equation*}
+  As we all know, the Schouten-Nijenhuis bracket is associated with the Poisson structure of function ring, thus the process to find the BV operator is the process of quantization of the Poisson algebra, which is associated with deformation quantization.
+\end{example}
+
+If we add a derivation $Q: A\rightarrow A$ satisfies $ Q^{2} = 0$, $\deg Q= 1$ and $ Q \Delta + \Delta Q = 0$, then we can define the BV algebra with BRST operator, which is called differential graded BV (DGBV) algebra.
+
+\begin{example}[Calabi-Yau Manifold]
+  Let $(X, \Omega)$ is a Calabi-Yau manifold, where $ \Omega$ is the holomorphic volume form. The algebra of polyvector field
+  \begin{equation*}
+    \mathrm{PV}^{k,l} (X) = \Omega^{0,l}_{\bar{\partial}}(X, \wedge^{k} T^{1,0} X),
+  \end{equation*}
+  where $ \Omega$ and $\partial$ leads to the BV operator $ \Delta$, and the Dolbeault operator $ \bar{\partial}$ leads to the BRST operator $ Q$, then $\left( \mathrm{PV}^{\bullet, - \bullet}, \bar{\partial}, \Delta \right)$ is a DGBV algebra.
+\end{example}
+
+\begin{example}[BRST Ghost and Anti-Field Formalism]
+  Consider the gauge theory with gauge group $ G$ and field space $ V$, the algebra of polyvector field is given by
+  \begin{equation*}
+    A = \sym^{\bullet}(\mathfrak{g}^{*}[-1]) \otimes \sym^{\bullet}(\mathfrak{g}[2]) = \mathbb{R}[c^{\alpha}, e_{\alpha}],
+  \end{equation*}
+  where $ c^{\alpha}$ is degree $ 1$  basis of $ \mathfrak{g}^{*}$ and $ e_{\alpha}$ is degree $-2$ basis of $ \mathfrak{g}$. The BV operator is given by
+  \begin{equation*}
+    \Delta = \frac{\partial }{\partial c^{\alpha}} \frac{\partial }{\partial e_{\alpha}}, \quad \Delta^{2} = 0, \quad \deg \Delta = 1,
+  \end{equation*}
+  thus we can define the BV bracket and form a BV algebra $ A = PV^{\bullet}(\mathfrak{g}[1])$.
+  This BV algebra over $(c^{\alpha}, e_{\alpha})$ is a odd version of the BV algebra over $(x^{i}, \theta_{i})$. Which is associated with the anti-field formalism.
+\end{example}
+
+Using the BV algebra, we could refactor the field space $ \mathfrak{g}[1] \otimes V$ into a BV algebra $ \mathrm{PV}(\mathfrak{g}[1]) \otimes \mathrm{PV}(V)$, which ensure us to define the integration over the field space i.e. the path integral.
 
 \label{LastPage}
 \end{document}
