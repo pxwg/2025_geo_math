@@ -891,5 +891,60 @@ Thus, $\left( A, \delta \right)$ formed a cochain complex.
   the first term encodes the variation of the action i.e., the Euler-Lagrange equation, and the second term encodes the gauge symmetry of the theory.
 \end{example}
 
+\subsection{Quantum Master Equation}
+
+\begin{definition}[Quantum Master Equation]
+  Let $(A, \Delta , \left\{ ~,~ \right\})$ be a BV algebra, the quantum action $ S \in A$ with degree $ 0$ satisfies the quantum master equation
+  \begin{equation*}
+    \left\{ S, S \right\} + 2 \hbar \Delta S = 0,
+  \end{equation*}
+  where $ S = S_0 + \hbar S_1 + \hbar^{2} S_2 + \mathcal{O}(\hbar^{3})$. While $ \hbar \rightarrow 0$ leads to the classical master equation.
+\end{definition}
+
+The quantum master equation could be refactored as
+\begin{equation*}
+  \Delta \mathrm{e}^{{S}/{\hbar}} = 0,
+\end{equation*}
+which implied that the exponential of the action functional is a closed form in the BV algebra.
+This is the key point of the quantum master equation, which leads to the algebraic description of path integral formulation in quantum field theory.
+
+After choosing a gauge, the integration over the BV field space equipped with shifted $-1$ degree symplectic form would reduce to the Lagrangian submanifold, thus the path integral could be written as
+\begin{equation*}
+  \int _{\mathcal{L}}^{\mathrm{BV}} \mathrm{e}^{S / \hbar} = \int _{\mathcal{L}'}^{\mathrm{BV}} \mathrm{e}^{S / \hbar},
+\end{equation*}
+where $ \mathcal{L}$ and $ \mathcal{L}'$ are two Lagrangian submanifolds of the BV field space, which are related by a gauge transformation and not change the path integral due to the quantum master equation.
+
+Assume $ S$ satisfies the quantum master equation, we can define the degree $ 1$ operator
+\begin{equation*}
+  \delta^{\hbar} = \hbar \Delta + \left\{ S, ~ \right\},
+\end{equation*}
+which satisfies $ ( \delta^{\hbar} )^{2} = 0$.
+\begin{proof}
+  TBD.
+\end{proof}
+The operator $ \delta^{\hbar}$ is called quantum BRST operator, which is a deformation of the classical BRST operator $ \delta$.
+However, this operator is not a derivation of the BV algebra, since it does not satisfy the Leibniz rule, i.e. $ \delta^{\hbar}(a \cdot b) \neq \delta^{\hbar} a \cdot b + (-1)^{\left| a \right|} a \cdot \delta^{\hbar} b$.
+
+\begin{definition}[Observables]
+  A classical observable is an element of $ H^{\bullet}(A, \delta)$. A quantum observable is an element of $ H^{\bullet}(A[[\hbar]], \delta^{\hbar})$, where $ A[[\hbar]]$ is the formal deformation of the BV algebra $ A$ with respect to $ \hbar$.
+\end{definition}
+
+\begin{example}[Landau-Ginzberg B-Model]
+  Let $ f: \mathbb{C}^{n} \rightarrow \mathbb{C}$ be a polynomial with an isolated critical point at $ 0 \in \mathbb{C}^{n}$, the Landau-Ginzberg B-model is a topological field theory with the BV algebra
+  \begin{equation*}
+    A = \mathbb{C}[z^{i}, \theta_{i}], \quad \theta_{i} \theta_{j} = - \theta_{j} \theta_{i}, \quad \deg z^{i} = 0, \quad \deg \theta_{i} = 1,
+  \end{equation*}
+  where $ \mathrm{e}^{f / \hbar}$ solved the quantum master equation. The classical observables are given by the cohomology of the BV algebra, where the classical BRST operator is given by $\delta = \frac{\partial f}{\partial z^{i}} \frac{\partial }{\partial \theta_{i}}$,
+  thus, the classical observables would be given by
+  \begin{equation*}
+    \mathrm{Obs}^{\mathrm{c}} = H^{\bullet}(A, \left\{ f, ~ \right\}) \cong \mathbb{C}[z^{i}] / \left( \partial_{z^{i}} f \right).
+  \end{equation*}
+  The quantum BRST operator is given by $ \delta^{\hbar} = \hbar \Delta + \left\{ f, ~ \right\}$, thus the quantum observables are given by
+  \begin{equation*}
+    \mathrm{Obs}^{\mathrm{q}} = H^{\bullet}(A[[\hbar]], \delta^{\hbar}) \cong \Omega^{n}_{\partial}[[\hbar]] / (\hbar\mathrm{d} + \mathrm{d} f \wedge) \Omega^{n-1}[[\hbar]],
+  \end{equation*}
+  which is the formal completion of the Brieskorn lattice. The $ \hbar$ filtration is Hodge filtration, and the BV integration is given by the integration over the Lefschetz thimble, which is the Lagrangian submanifold of the BV field space.
+\end{example}
+
 \label{LastPage}
 \end{document}
