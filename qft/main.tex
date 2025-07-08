@@ -846,5 +846,146 @@ If we add a derivation $Q: A\rightarrow A$ satisfies $ Q^{2} = 0$, $\deg Q= 1$ a
 
 Using the BV algebra, we could refactor the field space $ \mathfrak{g}[1] \otimes V$ into a BV algebra $ \mathrm{PV}(\mathfrak{g}[1]) \otimes \mathrm{PV}(V)$, which ensure us to define the integration over the field space i.e. the path integral.
 
+\section{Day VIII: Master Equation}
+
+We would begin with a toy model, which is a BV algebra $\left( A, \Delta, \left\{ ~,~ \right\} \right)$ with a degree $ 0 $ element $ S_0 \in A$, which is called the action functional, and satisfies the classical master equation
+\begin{equation*}
+  \left\{ S_0, S_0 \right\} = 0.
+\end{equation*}
+This classical master equation induced a degree $ 1$ derivation $ \delta = \left\{ S_0, ~ \right\}$ satisfied $ \delta^{2} = 0$.
+Thus, $\left( A, \delta \right)$ formed a cochain complex.
+\begin{example}[Polyvector on Lie Algebra]
+  Consider $ A = \mathrm{PV}^{-\bullet}(\mathfrak{g}[1]) = \sym^{\bullet}(\mathfrak{g}^{*}[-1]) \otimes \sym^{\bullet}(\mathfrak{g}[2]) \equiv \mathbb{R}[c^{\alpha}, e_{\alpha}]$.
+  The BV operator is given by $ \Delta = \partial_{e_{\alpha}} \partial_{c^{\alpha}}$.
+  Consider the action functional
+  \begin{equation*}
+    I[c^{\alpha}, e_{\alpha}] = \frac{1}{2} f_{\alpha \beta}^{\gamma} c^{\alpha} c^{\beta} e_{\gamma},
+  \end{equation*}
+  the master equation $\left\{ I_0, I_0 \right\} = 0$ induced Jacobi identity. Thus, the bracket could be computed as
+  \begin{equation*}
+    \delta(c^{\alpha}) = \left\{ I, c^{\alpha} \right\} = \frac{1}{2} f_{\alpha \beta}^{\gamma} c^{\alpha} c^{\beta}, \quad \delta(e_{\alpha}) = f_{\alpha \beta}^{\gamma} c^{\beta} e_{\gamma},
+  \end{equation*}
+  thus the derivation $\delta$ could be written as
+  \begin{equation*}
+    \delta = \frac{1}{2} f_{\alpha \beta}^{\gamma} c^{\alpha} c^{\beta} \frac{\partial }{\partial e_{\gamma}} + f_{\alpha \beta}^{\gamma} c^{\beta} e_{\gamma} \frac{\partial }{\partial c^{\alpha}},
+  \end{equation*}
+  restrict $ \delta$ to the $\sym(\mathfrak{g}^{*}[-1])$ part, we obtain a Chevalley-Eilenberg complex, and the full algebra formed a Chevalley-Eilenberg complex with module $\sym(\mathfrak{g}[2])$.
+\end{example}
+
+\begin{example}[Symmetry with Matter]
+  Consider Lie group acts on field space $ \mathcal{E}$, the infinitesimal version leads to the fundamental vector field $ V(X)$ where $ X \in \mathfrak{g}$ and $ V(X) \in \mathrm{Vect}(\mathcal{E})$.
+  Consider this theory with action function $ f: \mathcal{E} \rightarrow \mathbb{C}$.
+
+  Considering BV algebra $ A = \mathrm{PV}^{-\bullet}(\mathcal{E}) \otimes \mathrm{PV}^{- \bullet}(\mathfrak{g}[1]) = \mathbb{C}[x^{i}, \theta_{i}, c^{\alpha}, e_{\alpha}]$, the action
+  \begin{equation*}
+    S_0 = f(x) + c^{\alpha} V_{\alpha}^{i}(x) \theta_{i} + \frac{1}{2} f_{\alpha \beta}^{\gamma} c^{\alpha} c^{\beta} e_{\gamma},
+  \end{equation*}
+  satisfies the classical master equation.
+  \begin{proof}
+    TBD.
+  \end{proof}
+  Using the definition of $ S_0 $ above, the derivation $ \delta = \left\{ S_0, ~ \right\}$ is given by
+  \begin{equation*}
+    \delta = \partial_{i} f \frac{\partial }{\partial \theta_{i}} + \left\{ J, ~ \right\},
+  \end{equation*}
+  the first term encodes the variation of the action i.e., the Euler-Lagrange equation, and the second term encodes the gauge symmetry of the theory.
+\end{example}
+
+\subsection{Quantum Master Equation}
+
+\begin{definition}[Quantum Master Equation]
+  Let $(A, \Delta , \left\{ ~,~ \right\})$ be a BV algebra, the quantum action $ S \in A$ with degree $ 0$ satisfies the quantum master equation
+  \begin{equation*}
+    \left\{ S, S \right\} + 2 \hbar \Delta S = 0,
+  \end{equation*}
+  where $ S = S_0 + \hbar S_1 + \hbar^{2} S_2 + \mathcal{O}(\hbar^{3})$. While $ \hbar \rightarrow 0$ leads to the classical master equation.
+\end{definition}
+
+The quantum master equation could be refactored as
+\begin{equation*}
+  \Delta \mathrm{e}^{{S}/{\hbar}} = 0,
+\end{equation*}
+which implied that the exponential of the action functional is a closed form in the BV algebra.
+This is the key point of the quantum master equation, which leads to the algebraic description of path integral formulation in quantum field theory.
+
+After choosing a gauge, the integration over the BV field space equipped with shifted $-1$ degree symplectic form would reduce to the Lagrangian submanifold, thus the path integral could be written as
+\begin{equation*}
+  \int _{\mathcal{L}}^{\mathrm{BV}} \mathrm{e}^{S / \hbar} = \int _{\mathcal{L}'}^{\mathrm{BV}} \mathrm{e}^{S / \hbar},
+\end{equation*}
+where $ \mathcal{L}$ and $ \mathcal{L}'$ are two Lagrangian submanifolds of the BV field space, which are related by a gauge transformation and not change the path integral due to the quantum master equation.
+
+Assume $ S$ satisfies the quantum master equation, we can define the degree $ 1$ operator
+\begin{equation*}
+  \delta^{\hbar} = \hbar \Delta + \left\{ S, ~ \right\},
+\end{equation*}
+which satisfies $ ( \delta^{\hbar} )^{2} = 0$.
+\begin{proof}
+  TBD.
+\end{proof}
+The operator $ \delta^{\hbar}$ is called quantum BRST operator, which is a deformation of the classical BRST operator $ \delta$.
+However, this operator is not a derivation of the BV algebra, since it does not satisfy the Leibniz rule, i.e. $ \delta^{\hbar}(a \cdot b) \neq \delta^{\hbar} a \cdot b + (-1)^{\left| a \right|} a \cdot \delta^{\hbar} b$.
+
+\begin{definition}[Observables]
+  A classical observable is an element of $ H^{\bullet}(A, \delta)$. A quantum observable is an element of $ H^{\bullet}(A[[\hbar]], \delta^{\hbar})$, where $ A[[\hbar]]$ is the formal deformation of the BV algebra $ A$ with respect to $ \hbar$.
+\end{definition}
+
+\begin{example}[Landau-Ginzberg B-Model]
+  Let $ f: \mathbb{C}^{n} \rightarrow \mathbb{C}$ be a polynomial with an isolated critical point at $ 0 \in \mathbb{C}^{n}$, the Landau-Ginzberg B-model is a topological field theory with the BV algebra
+  \begin{equation*}
+    A = \mathbb{C}[z^{i}, \theta_{i}], \quad \theta_{i} \theta_{j} = - \theta_{j} \theta_{i}, \quad \deg z^{i} = 0, \quad \deg \theta_{i} = 1,
+  \end{equation*}
+  where $ \mathrm{e}^{f / \hbar}$ solved the quantum master equation. The classical observables are given by the cohomology of the BV algebra, where the classical BRST operator is given by $\delta = \frac{\partial f}{\partial z^{i}} \frac{\partial }{\partial \theta_{i}}$,
+  thus, the classical observables would be given by
+  \begin{equation*}
+    \mathrm{Obs}^{\mathrm{c}} = H^{\bullet}(A, \left\{ f, ~ \right\}) \cong \mathbb{C}[z^{i}] / \left( \partial_{z^{i}} f \right).
+  \end{equation*}
+  The quantum BRST operator is given by $ \delta^{\hbar} = \hbar \Delta + \left\{ f, ~ \right\}$, thus the quantum observables are given by
+  \begin{equation*}
+    \mathrm{Obs}^{\mathrm{q}} = H^{\bullet}(A[[\hbar]], \delta^{\hbar}) \cong \Omega^{n}_{\partial}[[\hbar]] / (\hbar\mathrm{d} + \mathrm{d} f \wedge) \Omega^{n-1}[[\hbar]],
+  \end{equation*}
+  which formally completes the Brieskorn lattice.
+  The $ \hbar$ filtration provides the Hodge filtration, and integration over the Lefschetz thimble gives the BV integration, where the thimble forms a Lagrangian submanifold of the BV field space.
+  % c.f. https://arxiv.org/pdf/1802.06751 for more details.
+
+\end{example}
+
+\subsection{Deformation Obstruction Theory}
+
+We now focus on the deformation process of the BV action, which would derive the quantum BV action $ S = S_0 + \hbar S_1 + \cdots $ from the classical BV action $ S_0$.
+
+Consider the first order deformation of the BV action $ S = S_0 + \hbar S_1$, we have the quantum master equation in first order
+\begin{equation*}
+  \Delta S_0 + \delta S_1 = 0,
+\end{equation*}
+which is easy to verify that this equation is consistent with $ \delta^{2} = 0$. This consistency condition implied that $ \Delta S_0 \in H^{1}(A, \delta)$. If $ H^{1}(A, \delta) = 0$, then we can find a solution $ S_1$ such that the quantum master equation holds.
+
+Now we assume $[\Delta S_0] = 0$ lies in the trivial class of $ H^{1}(A, \delta)$, then we can find a class of solutions (where $ \phi$ is the contribution from ghost)
+\begin{equation*}
+  S_1' = \delta \phi_1 + S_1,
+\end{equation*}
+thus, the one loop ($ \hbar$ order) solution of the quantum master equation is not unique, lying in the cohomology class $ H^{0}(A,\delta)$ while $ H^{1}(A, \delta)$ trivial. If $ H^{1}(A, \delta) \neq 0$, then the solution vanished.
+
+Consider the higher order deformation, we have the quantum master equation in $ k - 1$ order
+\begin{equation*}
+  S_{<k} = S_0 + \hbar S_1 + \cdots + \hbar^{k-1} S_{k-1},
+\end{equation*}
+and the quantum master equation could be written as
+\begin{equation*}
+  \hbar \Delta S_{<k} + \frac{1}{2} \left\{ S_{<k}, S_{<k} \right\} = \hbar \mathcal{O}_{k} + \mathcal{O}(\hbar^{k+1}), \quad \Delta \left( \left[ \hbar^{k-2} \mathcal{O}_{k} + \mathcal{O}(\hbar^{k-1}) \right] \mathrm{e}^{S_{<k} / \hbar} \right) = 0
+\end{equation*}
+where $ \mathcal{O}_{k}$ satisfied $ \delta \mathcal{O}_{k} = 0$.
+\begin{proof}
+  After applying $ \Delta$, the definition equation above could be written as
+\end{proof}
+Using $ S_{<k}$, we could solve the expression of $ S_k$, which satisfies
+\begin{equation*}
+  \hbar \Delta (S_{<k} + \hbar^{k} S_{k}) + \frac{1}{2} \left\{  S_{<k} + \hbar^{k} S_k, S_{<k} + \hbar^{k} S_k\right\} = \mathcal{O}(\hbar^{k+1}),
+\end{equation*}
+consider the $ \hbar^{k}$ order term, which by definition is $ \mathcal{O}_{k}$, the expression of it is
+\begin{equation*}
+  \frac{1}{\hbar^{k}}\left( \hbar \Delta S_{<k} + \frac{1}{2} \left\{ S_{<k}, S_{<k} \right\} \right)_{k} = \mathcal{O}_{k} = - \delta S_{k}.
+\end{equation*}
+This equation has the same form in the discussion at $ \hbar$ order, thus the result has no change i.e., while $ H^{1}(A, \delta)$ is trivial, the solution lies in $ H^{0}(A, \delta)$, otherwise there is no solution for the quantum master equation i.e., there is a quantum anomaly.
+
 \label{LastPage}
 \end{document}
