@@ -846,5 +846,50 @@ If we add a derivation $Q: A\rightarrow A$ satisfies $ Q^{2} = 0$, $\deg Q= 1$ a
 
 Using the BV algebra, we could refactor the field space $ \mathfrak{g}[1] \otimes V$ into a BV algebra $ \mathrm{PV}(\mathfrak{g}[1]) \otimes \mathrm{PV}(V)$, which ensure us to define the integration over the field space i.e. the path integral.
 
+\section{Day VIII: Master Equation}
+
+We would begin with a toy model, which is a BV algebra $\left( A, \Delta, \left\{ ~,~ \right\} \right)$ with a degree $ 0 $ element $ S_0 \in A$, which is called the action functional, and satisfies the classical master equation
+\begin{equation*}
+  \left\{ S_0, S_0 \right\} = 0.
+\end{equation*}
+This classical master equation induced a degree $ 1$ derivation $ \delta = \left\{ S_0, ~ \right\}$ satisfied $ \delta^{2} = 0$.
+Thus, $\left( A, \delta \right)$ formed a cochain complex.
+\begin{example}[Polyvector on Lie Algebra]
+  Consider $ A = \mathrm{PV}^{-\bullet}(\mathfrak{g}[1]) = \sym^{\bullet}(\mathfrak{g}^{*}[-1]) \otimes \sym^{\bullet}(\mathfrak{g}[2]) \equiv \mathbb{R}[c^{\alpha}, e_{\alpha}]$.
+  The BV operator is given by $ \Delta = \partial_{e_{\alpha}} \partial_{c^{\alpha}}$.
+  Consider the action functional
+  \begin{equation*}
+    I[c^{\alpha}, e_{\alpha}] = \frac{1}{2} f_{\alpha \beta}^{\gamma} c^{\alpha} c^{\beta} e_{\gamma},
+  \end{equation*}
+  the master equation $\left\{ I_0, I_0 \right\} = 0$ induced Jacobi identity. Thus, the bracket could be computed as
+  \begin{equation*}
+    \delta(c^{\alpha}) = \left\{ I, c^{\alpha} \right\} = \frac{1}{2} f_{\alpha \beta}^{\gamma} c^{\alpha} c^{\beta}, \quad \delta(e_{\alpha}) = f_{\alpha \beta}^{\gamma} c^{\beta} e_{\gamma},
+  \end{equation*}
+  thus the derivation $\delta$ could be written as
+  \begin{equation*}
+    \delta = \frac{1}{2} f_{\alpha \beta}^{\gamma} c^{\alpha} c^{\beta} \frac{\partial }{\partial e_{\gamma}} + f_{\alpha \beta}^{\gamma} c^{\beta} e_{\gamma} \frac{\partial }{\partial c^{\alpha}}.
+  \end{equation*}
+  restrict $ \delta$ to the $\sym(\mathfrak{g}^{*}[-1])$ part, we obtain a Chevalley-Eilenberg complex, and the full algebra formed a Chevalley-Eilenberg complex with module $\sym(\mathfrak{g}[2])$.
+\end{example}
+
+\begin{example}[Symmetry with Matter]
+  Consider Lie group acts on field space $ \mathcal{E}$, the infinitesimal version leads to the fundamental vector field $ V(X)$ where $ X \in \mathfrak{g}$ and $ V(X) \in \mathrm{Vect}(\mathcal{E})$.
+  Consider this theory with action function $ f: \mathcal{E} \rightarrow \mathbb{C}$.
+
+  Consider BV algebra $ A = \mathrm{PV}^{-\bullet}(\mathcal{E}) \otimes \mathrm{PV}^{- \bullet}(\mathfrak{g}[1]) = \mathbb{C}[x^{i}, \theta_{i}, c^{\alpha}, e_{\alpha}]$, the action
+  \begin{equation*}
+    S_0 = f(x) + c^{\alpha} V_{\alpha}^{i}(x) \theta_{i} + \frac{1}{2} f_{\alpha \beta}^{\gamma} c^{\alpha} c^{\beta} e_{\gamma},
+  \end{equation*}
+  satisfies the classical master equation.
+  \begin{proof}
+    TBD.
+  \end{proof}
+  Using the definition of $ S_0 $ above, the derivation $ \delta = \left\{ S_0, ~ \right\}$ is given by
+  \begin{equation*}
+    \delta = \partial_{i} f \frac{\partial }{\partial \theta_{i}} + \left\{ J, ~ \right\},
+  \end{equation*}
+  the first term encodes the variation of the action i.e., the Euler-Lagrange equation, and the second term encodes the gauge symmetry of the theory.
+\end{example}
+
 \label{LastPage}
 \end{document}
