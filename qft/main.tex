@@ -943,9 +943,49 @@ However, this operator is not a derivation of the BV algebra, since it does not 
   \begin{equation*}
     \mathrm{Obs}^{\mathrm{q}} = H^{\bullet}(A[[\hbar]], \delta^{\hbar}) \cong \Omega^{n}_{\partial}[[\hbar]] / (\hbar\mathrm{d} + \mathrm{d} f \wedge) \Omega^{n-1}[[\hbar]],
   \end{equation*}
-  which is the formal completion of the Brieskorn lattice. The $ \hbar$ filtration is Hodge filtration, and the BV integration is given by the integration over the Lefschetz thimble, which is the Lagrangian submanifold of the BV field space.
+  which formally completes the Brieskorn lattice.
+  The $ \hbar$ filtration provides the Hodge filtration, and integration over the Lefschetz thimble gives the BV integration, where the thimble forms a Lagrangian submanifold of the BV field space.
   % c.f. https://arxiv.org/pdf/1802.06751 for more details.
+
 \end{example}
+
+\subsection{Deformation Obstruction Theory}
+
+We now focus on the deformation process of the BV action, which would derive the quantum BV action $ S = S_0 + \hbar S_1 + \cdots $ from the classical BV action $ S_0$.
+
+Consider the first order deformation of the BV action $ S = S_0 + \hbar S_1$, we have the quantum master equation in first order
+\begin{equation*}
+  \Delta S_0 + \delta S_1 = 0,
+\end{equation*}
+which is easy to verify that this equation is consistent with $ \delta^{2} = 0$. This consistency condition implied that $ \Delta S_0 \in H^{1}(A, \delta)$. If $ H^{1}(A, \delta) = 0$, then we can find a solution $ S_1$ such that the quantum master equation holds.
+
+Now we assume $[\Delta S_0] = 0$ lies in the trivial class of $ H^{1}(A, \delta)$, then we can find a class of solutions (where $ \phi$ is the contribution from ghost)
+\begin{equation*}
+  S_1' = \delta \phi_1 + S_1,
+\end{equation*}
+thus, the one loop ($ \hbar$ order) solution of the quantum master equation is not unique, lying in the cohomology class $ H^{0}(A,\delta)$ while $ H^{1}(A, \delta)$ trivial. If $ H^{1}(A, \delta) \neq 0$, then the solution vanished.
+
+Consider the higher order deformation, we have the quantum master equation in $ k - 1$ order
+\begin{equation*}
+  S_{<k} = S_0 + \hbar S_1 + \cdots + \hbar^{k-1} S_{k-1},
+\end{equation*}
+and the quantum master equation could be written as
+\begin{equation*}
+  \hbar \Delta S_{<k} + \frac{1}{2} \left\{ S_{<k}, S_{<k} \right\} = \hbar \mathcal{O}_{k} + \mathcal{O}(\hbar^{k+1}), \quad \Delta \left( \left[ \hbar^{k-2} \mathcal{O}_{k} + \mathcal{O}(\hbar^{k-1}) \right] \mathrm{e}^{S_{<k} / \hbar} \right) = 0
+\end{equation*}
+where $ \mathcal{O}_{k}$ satisfied $ \delta \mathcal{O}_{k} = 0$.
+\begin{proof}
+  After applying $ \Delta$, the definition equation above could be written as
+\end{proof}
+Using $ S_{<k}$, we could solve the expression of $ S_k$, which satisfies
+\begin{equation*}
+  \hbar \Delta (S_{<k} + \hbar^{k} S_{k}) + \frac{1}{2} \left\{  S_{<k} + \hbar^{k} S_k, S_{<k} + \hbar^{k} S_k\right\} = \mathcal{O}(\hbar^{k+1}),
+\end{equation*}
+consider the $ \hbar^{k}$ order term, which by definition is $ \mathcal{O}_{k}$, the expression of it is
+\begin{equation*}
+  \frac{1}{\hbar^{k}}\left( \hbar \Delta S_{<k} + \frac{1}{2} \left\{ S_{<k}, S_{<k} \right\} \right)_{k} = \mathcal{O}_{k} = - \delta S_{k}.
+\end{equation*}
+This equation has the same form in the discussion at $ \hbar$ order, thus the result has no change i.e., while $ H^{1}(A, \delta)$ is trivial, the solution lies in $ H^{0}(A, \delta)$, otherwise there is no solution for the quantum master equation i.e., there is a quantum anomaly.
 
 \label{LastPage}
 \end{document}

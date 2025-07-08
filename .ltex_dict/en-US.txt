@@ -174,3 +174,4 @@ Brieskorn
 Ginzberg
 Landau
 Lefschetz
+Landau-Ginzberg
