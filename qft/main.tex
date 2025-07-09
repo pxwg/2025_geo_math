@@ -1179,5 +1179,33 @@ Which defines a homotopic RG flow between the two BV algebras labeled by $ r$ an
   \end{itemize}
 \end{definition}
 
+\begin{proposition}[Constructing Effective Solution]
+  \begin{enumerate}[(1)]
+    \item Construct the counter-term $ I^{\epsilon} \in \hbar \mathcal{O}_{loc}(\mathcal{E})[[\hbar]]$ such that
+      \begin{equation*}
+        \mathrm{e}^{I[r]^{\text{Naive}} / \hbar} = \lim_{\epsilon \to 0} \mathrm{e}^{\hbar \partial_{P_{\epsilon}}} \mathrm{e}^{(I_0 + I_{\epsilon})/ \hbar},
+      \end{equation*}
+      thus, $ I[r]^{\text{Naive}}$ satisfies homotopy RG flow, and the limit $ \epsilon \to 0$ is the regularization parameter.
+    \item Further correct $ I^{\epsilon}$  such that $ I[r]$ satisfies the effective quantum master equation, i.e.,
+      \begin{equation*}
+        (Q + \hbar \Delta_r) \mathrm{e}^{I[r] / \hbar} = 0,
+      \end{equation*}
+      thus, $ I[r]$ is the effective solution of perturbative quantization of $ I_0$.
+  \end{enumerate}
+  Step (1) is the so-called 'naive' solution, which is not a solution of the effective quantum master equation, but it satisfies the homotopy RG flow. Such a step is always possible.
+  Step (2) is quantization by perturbation, however, due to the existence of gauge anomaly, such a step is not always possible. Costello proved that the gauge anomaly is classified by $ H^{1}(\mathcal{O}_{loc}(\mathcal{E}), Q + \left\{ I_0, ~ \right\})$.
+\end{proposition}
+
+In practice, we choose a matrix on $ E \rightarrow X$, and define $ Q^{*}$ as a adjoint operator of $ Q$. We could thus define the Laplacian $ \Delta = Q^{*}Q + Q Q^{*}$ and the heat kernel $ K_r = \mathrm{e}^{-r \Delta}$, which could be used to define Poisson kernel as kernel of the operator
+\begin{equation*}
+  P^{L}_{0} = \int _{0}^{L} Q^{*} \mathrm{e}^{- t \Delta} \, \mathrm{d} t,
+\end{equation*}
+thus, we would obtain a smooth Poisson kernel $ K_r$ for each regularization $ r$
+\begin{equation*}
+  K_0 = K_r + Q P_r, \quad P_r = \int _{0}^{r} Q^{*} \mathrm{e}^{- t \Delta} \, \mathrm{d} t,
+\end{equation*}
+and the homotopic RG flow is given by $ P_{\epsilon}^{L} = \int _{\epsilon}^{L} Q^{*} \mathrm{e}^{- t \Delta} \, \mathrm{d} t$.
+After taking the limit $ L \to \infty$, we 'integrate out' all the high energy modes, in field space, this means we isolate harmonic space $ H$ from $ \mathcal{E} = H \oplus \im Q \oplus \im Q^{*}$, which is a finite dimensional space.
+
 \label{LastPage}
 \end{document}
