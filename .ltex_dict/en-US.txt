@@ -176,3 +176,5 @@ Landau
 Lefschetz
 Landau-Ginzberg
 RG
+Laplacian
+adjoint
