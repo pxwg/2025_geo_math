@@ -178,3 +178,6 @@ Landau-Ginzberg
 RG
 Laplacian
 adjoint
+Homotopy
+QME
+homotopically

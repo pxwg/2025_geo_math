@@ -1002,7 +1002,7 @@ The non-degeneracy of $ \omega$ implies the isomorphism
 \begin{equation*}
   \omega: V^{*} \xrightarrow{\sim } V[1],
 \end{equation*}
-which implies $\wedge^{2} V^{*} \xrightarrow{\sim } \wedge^{2}(V[1]) = \sym^{2}(V)[2]$, where the element in right hand side is defined as Poisson kernel.
+which implies $\wedge^{2} V^{*} \xrightarrow{\sim } \wedge^{2}(V[1]) = \sym^{2}(V)[2]$, where the element in right-hand side is defined as Poisson kernel.
 \begin{example}
   Consider the cotangent space $ T^{*}[-1]W \equiv W \oplus W^{*}[-1]$, the symplectic form is given by
   \begin{equation*}
@@ -1036,7 +1036,7 @@ where $ I = I_0 + \hbar I_1 + \cdots \in A[[\hbar]]$, where $ \delta^{\hbar} = Q
 
 \subsection{UV Divergence and BV Formalism}
 
-\subsection{Classical BV Formalism}
+\subsubsection{Classical BV Formalism}
 
 The quantization of a classical field theory could be described in the language of BV formalism
 \begin{equation*}
@@ -1052,14 +1052,14 @@ where
     \end{equation*}
     which is compatible with $ Q$.
 \end{enumerate}
-we would firstly consider the classical BV formalism.
+We would firstly consider the classical BV formalism.
 
 \begin{example}[Chern-Simons Theory Revisit]
   After gauge fixing, the field space of Chern-Simons theory could be written as \footnote{This is the manifold generalization of the finite dimensional example.}
   \begin{equation*}
     \mathcal{E} = \Omega^{\bullet}(M, \mathfrak{g})[1],
   \end{equation*}
-  the differential $ Q$ is given by the de-Rham differential, which is a elliptic degree $ 1$ operator, and the symplectic pairing is given by
+  the differential $ Q$ is given by the de-Rham differential, which is an elliptic degree $ 1$ operator, and the symplectic pairing is given by
   \begin{equation*}
     \omega(\alpha, \beta) = \int _{M} \left< \alpha \wedge \beta \right>,
   \end{equation*}
@@ -1074,7 +1074,7 @@ we would firstly consider the classical BV formalism.
   \end{equation*}
   where the complex could be therefore written as
   \begin{equation*}
-    \psi \in C^{\infty }(X) \xrightarrow{~\Delta~} C^{\infty }(X) \ni \psi^{*}.
+    \psi \in C^{\infty }(X) \xrightarrow{~\Delta~} C^{\infty }(X) \ni \psi^{*},
   \end{equation*}
   where $ \psi$ is the field and $ \psi^{*}$ is the anti field, which is a degree $1$ element.
 \end{example}
@@ -1106,14 +1106,14 @@ and thus the classical master equation $\left\{ ~, ~ \right\} : \mathcal{O}_{loc
   \begin{equation*}
     \mathrm{CS}[\mathcal{A}] = \int _{X} \frac{1}{2} \left< \mathcal{A}, \mathrm{d} A \right> + \frac{1}{6} \left< \mathcal{A}, [\mathcal{A}, \mathcal{A}] \right>,
   \end{equation*}
-  where $ \mathcal{A} \in \Omega^{\bullet}(X, \mathfrak{g})[1]$. The action functional could be rephrase as the solution of the classical master equation, where $ \mathcal{A}\mathrm{d} \mathcal{A}$ part could be viewed as 'free part' of Chern-Simons field theory, denoted by $ S_0$, and thus the master equation could be written as
+  where $ \mathcal{A} \in \Omega^{\bullet}(X, \mathfrak{g})[1]$. The action functional could be rephrased as the solution of the classical master equation, where $ \mathcal{A}\mathrm{d} \mathcal{A}$ part could be viewed as 'free part' of Chern-Simons field theory, denoted by $ S_0$, and thus the master equation could be written as
   \begin{equation*}
     Q I + \frac{1}{2} \left\{ I, I \right\} = 0,
   \end{equation*}
   where $ Q = \left\{ S_0,  \right\} = \mathrm{d}$, the condition of $ Q^{2} = 0$ is equivalent to the fact that $ \Omega^{\bullet}(X, \mathfrak{g})[1]$ is DGLA.
 \end{example}
 
-\subsection{Quantum BV Formalism: Homotopic Renormalization}
+\subsubsection{Quantum BV Formalism: Homotopic Renormalization}
 
 The quantization of the classical field theory would lead to define BV differential $ \Delta$ and its quantum master equation
 \begin{equation*}
@@ -1122,7 +1122,7 @@ The quantization of the classical field theory would lead to define BV different
 where $ I_{\hbar} \in \mathcal{O}(\mathcal{E})[[\hbar]]$.
 However, as we described above, the definition of BV operator is not natural in the context of quantum field theory, since there is no natural way to define the contraction between two distributions.
 
-Remember the quantum BV formalism in finite dimension is well defined.
+Remember the quantum BV formalism in finite dimension is well-defined.
 Costello's homotopic renormalization theory suggested that, one could construct a BV algebra by homotopically deforming Poisson kernel $ K_0$ form the known BV algebra to another unknown BV algebra, which is called homotopic renormalization.
 
 Consider a change of $ K_0$ by chain homotopy.
@@ -1159,12 +1159,12 @@ where
   K_0 = K_r + Q(P_r),
 \end{equation*}
 thus $ \Delta_{r}$ is the BV operator defined by contracting with $ K_r$, which is a smooth Poisson kernel, so that we could define $\left( \mathcal{O}(V), Q, \Delta_{r} \right)$ as a 'effective' BV algebra.
-Let $ r'$ be another regularization, we have an chain homotopy
+Let $ r'$ be another regularization, we have a chain homotopy
 \begin{equation*}
   K_0 = K_{r'} + Q(P_{r'}), \quad K_{r'} = K_{r} + Q(P_r^{r'}),
 \end{equation*}
 where $\partial_{P_{r}^{r'}}: \mathcal{O}(\mathcal{E}) \rightarrow \mathcal{O}(\mathcal{E})$ is contraction with the propagator $ P_{r}^{r'}$.
-Thus the Feynman diagram $ \mathrm{e}^{\hbar \partial_{P_{r}^{r'}}}$ is a chain homotopy between the two BV algebras $\left( \mathcal{O}(V), Q, \Delta_{r} \right)$ and $\left( \mathcal{O}(V), Q, \Delta_{r'} \right)$.
+Thus, the Feynman diagram $ \mathrm{e}^{\hbar \partial_{P_{r}^{r'}}}$ is a chain homotopy between the two BV algebras $\left( \mathcal{O}(V), Q, \Delta_{r} \right)$ and $\left( \mathcal{O}(V), Q, \Delta_{r'} \right)$.
 Which defines a homotopic RG flow between the two BV algebras labeled by $ r$ and $ r'$, defined by different regularization.
 \begin{definition}[Costello's Effective Solution]
   An effective solution of perturbative quantization of $I_0$ (which satisfies CME) is a family
@@ -1186,7 +1186,7 @@ Which defines a homotopic RG flow between the two BV algebras labeled by $ r$ an
         \mathrm{e}^{I[r]^{\text{Naive}} / \hbar} = \lim_{\epsilon \to 0} \mathrm{e}^{\hbar \partial_{P_{\epsilon}}} \mathrm{e}^{(I_0 + I_{\epsilon})/ \hbar},
       \end{equation*}
       thus, $ I[r]^{\text{Naive}}$ satisfies homotopy RG flow, and the limit $ \epsilon \to 0$ is the regularization parameter.
-    \item Further correct $ I^{\epsilon}$  such that $ I[r]$ satisfies the effective quantum master equation, i.e.,
+    \item Further, correct $ I^{\epsilon}$  such that $ I[r]$ satisfies the effective quantum master equation, i.e.,
       \begin{equation*}
         (Q + \hbar \Delta_r) \mathrm{e}^{I[r] / \hbar} = 0,
       \end{equation*}
@@ -1196,7 +1196,7 @@ Which defines a homotopic RG flow between the two BV algebras labeled by $ r$ an
   Step (2) is quantization by perturbation, however, due to the existence of gauge anomaly, such a step is not always possible. Costello proved that the gauge anomaly is classified by $ H^{1}(\mathcal{O}_{loc}(\mathcal{E}), Q + \left\{ I_0, ~ \right\})$.
 \end{proposition}
 
-In practice, we choose a matrix on $ E \rightarrow X$, and define $ Q^{*}$ as a adjoint operator of $ Q$. We could thus define the Laplacian $ \Delta = Q^{*}Q + Q Q^{*}$ and the heat kernel $ K_r = \mathrm{e}^{-r \Delta}$, which could be used to define Poisson kernel as kernel of the operator
+In practice, we choose a matrix on $ E \rightarrow X$, and define $ Q^{*}$ as an adjoint operator of $ Q$. We could thus define the Laplacian $ \Delta = Q^{*}Q + Q Q^{*}$ and the heat kernel $ K_r = \mathrm{e}^{-r \Delta}$, which could be used to define Poisson kernel as kernel of the operator
 % How to get Q(P) -> \Delta blahblahblah?????? answer: definition of kernel
 \begin{equation*}
   P^{L}_{0} = \int _{0}^{L} Q^{*} \mathrm{e}^{- t \Delta} \, \mathrm{d} t, \quad Q \left( P^{L}_{0} \right) = \int _{0}^{L} \Delta \mathrm{e}^{- t \Delta} \, \mathrm{d} t = K_0 - K_L,
