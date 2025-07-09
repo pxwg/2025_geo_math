@@ -988,7 +988,7 @@ consider the $ \hbar^{k}$ order term, which by definition is $ \mathcal{O}_{k}$,
 \end{equation*}
 This equation has the same form in the discussion at $ \hbar$ order, thus the result has no change i.e., while $ H^{1}(A, \delta)$ is trivial, the solution lies in $ H^{0}(A, \delta)$, otherwise there is no solution for the quantum master equation i.e., there is a quantum anomaly.
 
-\section{Effective Theory of Quantization}
+\section{Day : Effective Theory of Quantization}
 
 \subsection{Shifted Symplectic Form}
 
@@ -1003,6 +1003,181 @@ The non-degeneracy of $ \omega$ implies the isomorphism
   \omega: V^{*} \xrightarrow{\sim } V[1],
 \end{equation*}
 which implies $\wedge^{2} V^{*} \xrightarrow{\sim } \wedge^{2}(V[1]) = \sym^{2}(V)[2]$, where the element in right hand side is defined as Poisson kernel.
+\begin{example}
+  Consider the cotangent space $ T^{*}[-1]W \equiv W \oplus W^{*}[-1]$, the symplectic form is given by
+  \begin{equation*}
+    \omega = \mathrm{d} x^{i} \wedge \mathrm{d} \theta_{i},
+  \end{equation*}
+  where $ (x^{i}, \theta_{i})$ are the coordinates of $ W$ and $ W^{*}$ respectively. The Poisson kernel is given by
+  \begin{equation*}
+    \omega^{-1} = \frac{\partial }{\partial x^{i}} \otimes \frac{\partial }{\partial \theta_{i}} + \frac{\partial }{\partial \theta_{i}} \otimes \frac{\partial }{\partial x^{i}},
+  \end{equation*}
+  which is a degree $ 1$ element. Such an element is exactly the BV operator.
+  In fact, there is a natural DGBV structure $ (A, Q, \Delta)$, where
+  \begin{enumerate}[(1)]
+    \item $ A = \mathcal{O}(V) = \prod_{m \ge 0} \sym^{m}(V^{*})$ which is the formal power series on $ V$;
+    \item $ Q: A \rightarrow A$ is a degree $ 1$ derivation induced by $ Q : V \rightarrow V$;
+    \item BV operator $ \Delta: A \rightarrow A$ is given by contracting with the Poisson kernel $\omega^{-1}$, which is a degree $ 1$ operator, satisfying
+      \begin{equation*}
+        \Delta(\alpha_1 \otimes \cdots \otimes \alpha_{n}) = \sum_{i < j} \pm \left< K, \alpha_{i} \otimes \alpha _{j} \right> \alpha_1 \otimes \cdots \otimes \hat{\alpha }_{i} \otimes \cdots \otimes \hat{\alpha }_{j} \otimes \cdots \otimes \alpha_{n},
+      \end{equation*}
+    \item (Consistency) $ Q \Delta + \Delta Q = 0$.
+  \end{enumerate}
+\end{example}
+Consider a DGBV, given a degree $ 0$ element $ I_0 \in A$, which satisfying the classical master equation (with DG structure)
+\begin{equation*}
+  Q I_0 + \frac{1}{2} \left\{ I_0, I_0 \right\} = 0,
+\end{equation*}
+where the differential could be written as $ \delta = Q + \left\{ I_0, ~ \right\}$. Moreover, the quantum master equation in DGBV would be rephrased as
+\begin{equation*}
+  \left( Q + \hbar \Delta \right)\mathrm{e}^{I/\hbar} = 0,
+\end{equation*}
+where $ I = I_0 + \hbar I_1 + \cdots \in A[[\hbar]]$, where $ \delta^{\hbar} = Q + \hbar \Delta + \left\{ I, ~ \right\}$.
+
+\subsection{UV Divergence and BV Formalism}
+
+\subsection{Classical BV Formalism}
+
+The quantization of a classical field theory could be described in the language of BV formalism
+\begin{equation*}
+  \text{Classical Filed Theory $(\mathcal{E}, Q, \omega)$} \xrightarrow{\text{Quantization}} \text{$ \infty $ - Dimensional BV Algebra $(A, Q, \Delta)$},
+\end{equation*}
+where
+\begin{enumerate}[(1)]
+  \item $ \mathcal{E} = \Gamma(X, E)$, here $ E \rightarrow X$ is a graded vector bundle;
+  \item $\left( \mathcal{E}, Q \right)$ is an elliptic complex;
+  \item $ \omega$ is a local $-1$ symplectic pairing, where
+    \begin{equation*}
+      \omega(\alpha, \beta) = \int _{X} \alpha \wedge \beta,
+    \end{equation*}
+    which is compatible with $ Q$.
+\end{enumerate}
+we would firstly consider the classical BV formalism.
+
+\begin{example}[Chern-Simons Theory Revisit]
+  After gauge fixing, the field space of Chern-Simons theory could be written as \footnote{This is the manifold generalization of the finite dimensional example.}
+  \begin{equation*}
+    \mathcal{E} = \Omega^{\bullet}(M, \mathfrak{g})[1],
+  \end{equation*}
+  the differential $ Q$ is given by the de-Rham differential, which is a elliptic degree $ 1$ operator, and the symplectic pairing is given by
+  \begin{equation*}
+    \omega(\alpha, \beta) = \int _{M} \left< \alpha \wedge \beta \right>,
+  \end{equation*}
+  where $\left< ~,~ \right>$ is the Killing form on $ \mathfrak{g}$.
+  The topological quantum field theory could also be rephrased as a BV Chern-Simon (BF) theory in $ 1$ dimension.
+\end{example}
+
+\begin{example}[Scalar Field Theory]
+  Consider the scalar field theory with field space $ \mathcal{E} = \Gamma(X, \mathbb{R})[1]$, the derivation $ Q$ is given by Laplacian $\Delta $, and the symplectic pairing is given by
+  \begin{equation*}
+    \omega(\psi, \phi^{*}) = \int _{X} \sqrt{\left| g \right|} \mathrm{d} ^{d} x \, \psi \phi^{*},
+  \end{equation*}
+  where the complex could be therefore written as
+  \begin{equation*}
+    \psi \in C^{\infty }(X) \xrightarrow{~\Delta~} C^{\infty }(X) \ni \psi^{*}.
+  \end{equation*}
+  where $ \psi$ is the field and $ \psi^{*}$ is the anti field, which is a degree $1$ element.
+\end{example}
+
+After identifying the field space $ \mathcal{E}$, we need to introduce the notion of 'function', which in the toy model is $ \mathcal{O}(V)$. Using the continuous dual, the linear function on $ \mathcal{E}$ could be identified as
+\begin{equation*}
+  \mathcal{E}^{*} = \Hom(E, \mathbb{R}),
+\end{equation*}
+and the tensor product of the field space and the dual space is given by completed tensor product and its dual space
+\begin{equation*}
+  \mathcal{E}^{\otimes n} = \Gamma(X \times \cdots \times X, E^{\boxtimes n}) , \quad \left( \mathcal{E}^{*} \right)^{\otimes m} = \Hom_{X \times \cdots \times X} \left( \mathcal{E}^{\otimes n}, \mathbb{R} \right)
+\end{equation*}
+which would lead to the function ring $ \mathcal{O}(\mathcal{E}) = \prod_{n \ge 0} \sym^{n}(\mathcal{E}^{*})$, where $\sym^{n}(\mathcal{E}^{*}) = \left( \mathcal{E}^{*} \right)^{\otimes n} / \sim$
+We could define the derivation $ Q : \mathcal{O}(\mathcal{E}) \rightarrow \mathcal{O}(\mathcal{E})$ from $ Q : \mathcal{E} \rightarrow \mathcal{E}$, as what we have done in the finite dimensional case, and the symplectic pairing $ \omega$ could be extended to the field space as
+\begin{equation*}
+  \omega(\alpha, \beta) = \int _{X} \left< \alpha, \beta \right>,
+\end{equation*}
+and thus the Poisson kernel $ K$ is given by a delta function distribution\footnote{Since the 'inverse' of the integration is the Delta function.}.
+Since $ K $ is a distribution, there is no natural way to define BV operator $ \Delta : \mathcal{O}(\mathcal{E}) \rightarrow \mathcal{O}(\mathcal{E})$ since there is no natural way to define the contraction with a distribution.
+Which is the problem underlying the infinitely dimensional field space in quantum field theory.
+
+In quantum field theory, there is no such problem, since we just need to consider the so-called 'local field space' $ \mathcal{O}_{loc}(\mathcal{E}) \subset \mathcal{O}(\mathcal{E})$, whose elements would look like
+\begin{equation*}
+  \int _{X} \mathcal{L}(~): \mathcal{E} \rightarrow \mathbb{R},
+\end{equation*}
+and thus the classical master equation $\left\{ ~, ~ \right\} : \mathcal{O}_{loc}(\mathcal{E}) \times \mathcal{O}_{loc}(\mathcal{E}) \rightarrow \mathcal{O}_{loc}(\mathcal{E})$ defined on the local field space is make sense.
+\begin{example}[Chern-Simons Theory as BV Action]
+  After using BV formalism, the Chern-Simons theory could be written as a BV action
+  \begin{equation*}
+    \mathrm{CS}[\mathcal{A}] = \int _{X} \frac{1}{2} \left< \mathcal{A}, \mathrm{d} A \right> + \frac{1}{6} \left< \mathcal{A}, [\mathcal{A}, \mathcal{A}] \right>,
+  \end{equation*}
+  where $ \mathcal{A} \in \Omega^{\bullet}(X, \mathfrak{g})[1]$. The action functional could be rephrase as the solution of the classical master equation, where $ \mathcal{A}\mathrm{d} \mathcal{A}$ part could be viewed as 'free part' of Chern-Simons field theory, denoted by $ S_0$, and thus the master equation could be written as
+  \begin{equation*}
+    Q I + \frac{1}{2} \left\{ I, I \right\} = 0,
+  \end{equation*}
+  where $ Q = \left\{ S_0,  \right\} = \mathrm{d}$, the condition of $ Q^{2} = 0$ is equivalent to the fact that $ \Omega^{\bullet}(X, \mathfrak{g})[1]$ is DGLA.
+\end{example}
+
+\subsection{Quantum BV Formalism: Homotopic Renormalization}
+
+The quantization of the classical field theory would lead to define BV differential $ \Delta$ and its quantum master equation
+\begin{equation*}
+  Q I_0 + \frac{1}{2} \left\{ I_0, I_0 \right\} = 0 \leadsto Q I_{\hbar} + \hbar \Delta I_{\hbar} + \frac{1}{2} \left\{ I_{\hbar}, I_{\hbar} \right\}_{k} = 0,
+\end{equation*}
+where $ I_{\hbar} \in \mathcal{O}(\mathcal{E})[[\hbar]]$.
+However, as we described above, the definition of BV operator is not natural in the context of quantum field theory, since there is no natural way to define the contraction between two distributions.
+
+Remember the quantum BV formalism in finite dimension is well defined.
+Costello's homotopic renormalization theory suggested that, one could construct a BV algebra by homotopically deforming Poisson kernel $ K_0$ form the known BV algebra to another unknown BV algebra, which is called homotopic renormalization.
+
+Consider a change of $ K_0$ by chain homotopy.
+Let $ P \in \sym^{2}(V)$, where $\deg P = 0$.
+The deformation of the Poisson kernel $ K_0$ is given by
+\begin{equation*}
+  K_{P} = K_0 + Q P = K_0 + \left( Q \otimes I + I \otimes Q \right) P,
+\end{equation*}
+thus, we defined a new BV operator $ \Delta_{P}$ by contracting with the new Poisson kernel $ K_{P}$.
+$\left( \mathcal{O}(V), Q, \Delta_{P} \right)$ become a new DGBV.
+
+We define $\partial_{P}: \sym^{m}(V^{*}) \rightarrow \sym^{m-2}(V^{*})$, which is a degree $ 0$ second order operator acting on the algebra of functions on $ V$ by contracting with $ P$ i.e., computing the Feynman diagram with $ P$ as the propagator.
+\begin{proposition}[Chain Homotopy]
+  Operator $ \mathrm{e}^{^{\hbar \partial_{P}}}$ induced a chain homotopy between $\left( \mathcal{O}(V)[[\hbar]], Q, \Delta_0 \right)$ and $\left( \mathcal{O}(V)[[\hbar]], Q, \Delta_{P} \right)$.
+\end{proposition}
+The Chain homotopy implied that, if $ I \in \mathcal{O}(V)[[\hbar]]$ satisfies
+\begin{equation*}
+  (Q + \hbar \Delta_0) \mathrm{e}^{I / \hbar} = 0,
+\end{equation*}
+then $ I_{P} = \mathrm{e}^{\hbar \partial_{P}} I \in \mathcal{O}(V)[[\hbar]]$ satisfying
+\begin{equation*}
+  \left( Q + \hbar \Delta_{P} \right) \mathrm{e}^{I_{P} / \hbar} = 0,
+\end{equation*}
+where $ \mathrm{e}^{\hbar \partial_{P}}$ represents the process of computing the Feynman diagram i.e., 'integrate out' the high energy modes. Thus, this process is the mathematical description of the renormalization process in quantum field theory (in finite dimensional toy model).
+
+Now we consider BV algebra in quantum field theory, where $ \mathcal{E} = \Gamma(X,E)$.
+In order to define the BV operator smoothly. In this case, Costello's homotopic renormalization theory suggested that we could deform the Poisson kernel $ K_0$ by a chain homotopy, to give a new smooth Poisson kernel $ K_r$, such that
+\begin{equation*}
+  H^{\bullet}(\text{Distribution}, Q) = H^{\bullet}(\text{Smooth Functions}, Q),
+\end{equation*}
+where
+% existence???????
+\begin{equation*}
+  K_0 = K_r + Q(P_r),
+\end{equation*}
+thus $ \Delta_{r}$ is the BV operator defined by contracting with $ K_r$, which is a smooth Poisson kernel, so that we could define $\left( \mathcal{O}(V), Q, \Delta_{r} \right)$ as a 'effective' BV algebra.
+Let $ r'$ be another regularization, we have an chain homotopy
+\begin{equation*}
+  K_0 = K_{r'} + Q(P_{r'}), \quad K_{r'} = K_{r} + Q(P_r^{r'}),
+\end{equation*}
+where $\partial_{P_{r}^{r'}}: \mathcal{O}(\mathcal{E}) \rightarrow \mathcal{O}(\mathcal{E})$ is contraction with the propagator $ P_{r}^{r'}$.
+Thus the Feynman diagram $ \mathrm{e}^{\hbar \partial_{P_{r}^{r'}}}$ is a chain homotopy between the two BV algebras $\left( \mathcal{O}(V), Q, \Delta_{r} \right)$ and $\left( \mathcal{O}(V), Q, \Delta_{r'} \right)$.
+Which defines a homotopic RG flow between the two BV algebras labeled by $ r$ and $ r'$, defined by different regularization.
+\begin{definition}[Costello's Effective Solution]
+  An effective solution of perturbative quantization of $I_0$ (which satisfies CME) is a family
+  \begin{equation*}
+    I[r] \in \mathcal{O}(\mathcal{E})[[\hbar]]
+  \end{equation*}
+  for each choice of regularization $r$ such that:
+  \begin{itemize}
+    \item[(1)] (Effective QME) $(Q + \hbar\Delta_r) e^{I[r]/\hbar} = 0$ ;
+    \item[(2)] (Homotopy RG) $e^{I[r]/\hbar} = e^{\hbar \partial P_r} e^{I[r']/\hbar}$;
+    \item[(3)] $I[r]$ is asymptotic local when $r \to 0$ and $ \lim_{r \to 0} I_0[r] = I_0. $
+  \end{itemize}
+\end{definition}
 
 \label{LastPage}
 \end{document}
