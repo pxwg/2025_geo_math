@@ -175,3 +175,9 @@ Ginzberg
 Landau
 Lefschetz
 Landau-Ginzberg
+RG
+Laplacian
+adjoint
+Homotopy
+QME
+homotopically
