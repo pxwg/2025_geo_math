@@ -810,6 +810,7 @@ which is much better in the context of quantum field theory, since it is isolate
   \begin{enumerate}[(1)]
     \item (Graded Symmetry) $\left\{ a,b \right\} = (-1)^{\left| a \right|\left| b \right|} \left\{ b, a \right\}$,
     \item (Graded Leibniz Rule) $\left\{ a, bc \right\} = \left\{ a, b \right\} c + (-1)^{(\left| a \right|+1)\left| b \right|} a \left\{ b,c \right\}$,
+      % Consider the Graded Jacobian
     \item (Compatible with BV Operator) $ \Delta\left\{ a,b \right\} = - \left\{ \Delta a, b \right\} - (-1)^{\left| a \right|} \left\{ a, \Delta b \right\}$.
   \end{enumerate}
 \end{proposition}
@@ -986,6 +987,22 @@ consider the $ \hbar^{k}$ order term, which by definition is $ \mathcal{O}_{k}$,
   \frac{1}{\hbar^{k}}\left( \hbar \Delta S_{<k} + \frac{1}{2} \left\{ S_{<k}, S_{<k} \right\} \right)_{k} = \mathcal{O}_{k} = - \delta S_{k}.
 \end{equation*}
 This equation has the same form in the discussion at $ \hbar$ order, thus the result has no change i.e., while $ H^{1}(A, \delta)$ is trivial, the solution lies in $ H^{0}(A, \delta)$, otherwise there is no solution for the quantum master equation i.e., there is a quantum anomaly.
+
+\section{Effective Theory of Quantization}
+
+\subsection{Shifted Symplectic Form}
+
+Consider $(V, Q, \omega)$ be a (finite dimensional) symplectic vector space with (in classical mechanics, $ V = T^{*}[-1]W \equiv W \oplus W^{*}[-1]$):
+\begin{enumerate}[(1)]
+  \item $ Q: V \rightarrow V$ a degree $ 1$ operator, which is a derivation of the algebra of functions on $ V$ satisfying $ Q^{2} = 0$;
+  \item $ \omega : \bigwedge \nolimits^{2} V \rightarrow \mathbb{R}$ is a degree $ -1$ non-degenerate pairing i.e., $\omega(a,b) = 0$ unless $\left| a \right| + \left| b \right| = 1$.
+  \item (Compatibility) $ \omega$ is compatible with $ Q$, i.e. $ \omega(Qx, y) + (-1)^{\left| x \right|} \omega(x, Qy) = 0$ for all $ x, y \in V$.
+\end{enumerate}
+The non-degeneracy of $ \omega$ implies the isomorphism
+\begin{equation*}
+  \omega: V^{*} \xrightarrow{\sim } V[1],
+\end{equation*}
+which implies $\wedge^{2} V^{*} \xrightarrow{\sim } \wedge^{2}(V[1]) = \sym^{2}(V)[2]$, where the element in right hand side is defined as Poisson kernel.
 
 \label{LastPage}
 \end{document}
