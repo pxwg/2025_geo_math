@@ -988,7 +988,7 @@ consider the $ \hbar^{k}$ order term, which by definition is $ \mathcal{O}_{k}$,
 \end{equation*}
 This equation has the same form in the discussion at $ \hbar$ order, thus the result has no change i.e., while $ H^{1}(A, \delta)$ is trivial, the solution lies in $ H^{0}(A, \delta)$, otherwise there is no solution for the quantum master equation i.e., there is a quantum anomaly.
 
-\section{Day : Effective Theory of Quantization}
+\section{Day IX: Effective Theory of Quantization}
 
 \subsection{Shifted Symplectic Form}
 
@@ -1207,6 +1207,150 @@ thus, we would obtain a smooth Poisson kernel $ K_r$ for each regularization $ r
 \end{equation*}
 and the homotopic RG flow is given by $ P_{\epsilon}^{L} = \int _{\epsilon}^{L} Q^{*} \mathrm{e}^{- t \Delta} \, \mathrm{d} t$.
 After taking the limit $ L \to \infty$, we 'integrate out' all the high energy modes, in field space, this means we isolate harmonic space $ H$ from $ \mathcal{E} = H \oplus \im Q \oplus \im Q^{*}$, which is a finite dimensional space.
+
+\section{Day X: UV Finite Theory}
+
+Assume the theory is UV finite, the after homotopy RG, the action $ I[r]$,
+\begin{equation*}
+  \mathrm{e}^{I[r] / \hbar} = \mathrm{e}^{\hbar \partial_{P_r}} \mathrm{e}^{I_0 / \hbar},
+\end{equation*}
+would be interesting while $ r \rightarrow 0$ i.e., the canceling of the regularization. Thus, the renormalized quantum master equation would become
+\begin{equation*}
+  Q I[r] + \hbar \Delta_r I[r] + \frac{1}{2} \left\{ I[r], I[r] \right\} = 0 \xrightarrow{~ r \rightarrow 0 ~} Q I + \frac{1}{2} \left\{ I, I \right\} + \cdots = 0,
+\end{equation*}
+which would have a local expression $l_1^{\hbar}(I) + \frac{1}{2} l_2^{\hbar}(I, I) + \frac{1}{3!} l^{\hbar}_3 (I, I, I) \cdots = 0$,
+where $ \left\{ l_{i}^{\hbar} \right\}_{i \ge 0}$ would form an $ L_{\infty }$ algebra.
+
+\begin{example}[Example of UV Finite Theory]
+  \begin{enumerate}[(1)]
+    \item Topological Theory (Chern-Simons type theory), where BV field space would become $ \mathcal{E} = \Omega^{\bullet}_{\mathrm{dR}}(X, E)$;
+    \item Holomorphic field theory, where the BV field space would become $ \mathcal{E} = \Omega^{0,\bullet}_{\bar{\partial}}(X, E) $.
+  \end{enumerate}
+\end{example}
+
+\subsection{Topological Quantum Mechanics}
+
+\subsubsection{BV Field Space}
+
+Consider the field space as an ordinary (no degree shift) symplectic vector space $ \mathcal{E} = V$, the symplectic form is given by $\left< ~,~ \right>: \wedge^{2} V \rightarrow \mathbb{R}$.
+Consider the sigma model
+\begin{equation*}
+  \varphi: \mathbb{S}^{1}_{\mathrm{dR}} \rightarrow V,
+\end{equation*}
+where $ \mathbb{S}^{1}_{\mathrm{dR}} = \left( \mathbb{S}^{1}, \Omega_{\mathrm{dR}}^{\bullet}(\mathbb{S}^{1}) \right)$ i.e., an $ \mathbb{S}^{1}$ topology with local function ring $ \Omega^{\bullet}_{\mathrm{dR}}(\mathbb{S}^{1}) \cong T[1] \mathbb{S}^{1}$.
+This map could be written as $ \varphi \in \Omega_{\mathrm{dR}}^{\bullet}(\mathbb{S}^{1}) \otimes V$ i.e., given a function $ f(x) \in \mathcal{O}(V)$, $ \varphi^{*}(f) = f(\varphi)$.
+% Question: why T[1]M is a de-Rham complex?
+
+Such a field space $\left( \Omega_{\mathrm{dR}}^{\bullet}(\mathbb{S}^{1}) \otimes V, \mathrm{d}  \right)$ is a BV field space, where the $-1$ shifted symplectic form is given by
+\begin{equation*}
+  \omega(\alpha, \beta) = \int _{\mathbb{S}^{1}} \left< \alpha, \beta \right>,\quad \alpha, \beta \in \mathcal{E}.
+\end{equation*}
+Treating $ \Omega^{\bullet}(\mathbb{S}^{1})$ as ring of Grassmannian variables, we have a natural map
+\begin{equation*}
+  \mathcal{O}(V)[[\hbar]] \ni I \mapsto \hat{I}: \varphi \mapsto \int _{\mathbb{S}^{1}} I(\varphi) \in \mathcal{O}(\mathcal{E})[[\hbar]],
+\end{equation*}
+where $ \deg I = \deg \hat{I} + 1$.
+Thus, consider the deformed action
+\begin{equation*}
+  S = \int _{\mathbb{S}^{1}} \left( \frac{1}{2} \left< \varphi, \mathrm{d} \varphi \right> + I(\varphi) \right),
+\end{equation*}
+\begin{theorem}
+  After quantization, the deformed action would satisfy
+  \begin{enumerate}[(1)]
+    \item The following limit exists
+      \begin{equation*}
+        \mathrm{e}^{\hat{I}[L] / \hbar} = \lim_{\epsilon \to 0} \mathrm{e}^{\hbar \partial_{P_{\epsilon}}} \mathrm{e}^{\hat{I}_0 / \hbar},
+      \end{equation*}
+    \item $\left\{ I[L] \right\}_{L}$ satisfies the normalized quantum master equation $ \left[ I, I \right]_{\star} = 0$, where $ I \in \mathcal{O}(V)[[\hbar]]$ and $\star$ is the Moyal product on $ \mathcal{O}(V)[[\hbar]]$.
+  \end{enumerate}
+\end{theorem}
+
+\subsubsection{Application: Index Theorem}
+
+There is a natural generalization of the construction above.
+Let $\left( R, \mathrm{d} _{R} \right)$ be a DG communicative algebra. Consider the vector space $ V_{R} = R \otimes _{R} V$ with a connection $ \nabla : V_{R} \rightarrow V_{R}$ satisfying $ \nabla (a \otimes v) = \left( \mathrm{d} _{R} a \right) \otimes v + (-1)^{a} a \otimes \nabla b$.
+There is a natural symplectic structure $ \omega \in \wedge^{2} V^{*}$.
+Thus, one could define the space of fields
+\begin{equation*}
+  \mathcal{E}_{R} = \Omega^{\bullet}(\mathbb{S}^{1}) \otimes V_{R},
+\end{equation*}
+where the deformation of the action is given by
+\begin{equation*}
+  \mathcal{O}(V_{R}) \ni I \mapsto \hat{I}: \varphi \mapsto \int _{\mathbb{S}^{1}} I(\varphi) \in \mathcal{O}(\mathcal{E}_{R}),
+\end{equation*}
+where $\deg I = \deg \hat{I} + 1$ and $ \hat{I}(\varphi) \in R$.
+The BV quantization process would define a flat connection $ \nabla_{I} = \nabla + \frac{1}{\hbar}[I, ~]_{\star}$, which defined a Fedosov's connection.
+Here, renormalized quantum master equation gives a Fedosov's connection on Wayl bundle, and local quantum observables $\left( C^{\infty }(X)[[\hbar]], \star \right)$ gives a deformation quantization.
+
+Now we want to consider the index theorem in topological quantum mechanics, note that in a classical discussion of SUSY localization, one have
+\begin{equation*}
+  \text{Path Integral} \xrightarrow{\text{SUSY Localization}} \text{Ground Space},
+\end{equation*}
+thus, one could only consider the localized effective theory. After counting the localized part of the partition function, one would obtain the algebraic index theorem
+\begin{equation*}
+  \tr (1) = \int _{X} \mathrm{e}^{- \omega_{\hbar} / \hbar} \hat{A}(X),
+\end{equation*}
+where $ \omega_{\hbar} = - \omega_0 + \hbar \omega_1 + \hbar^{2} \omega_2 + \cdots $, and $\left\{ \omega_{i}\right\}$ are the moduli of the star product, which is characterized by $ \hbar H^{2}(X)_{\mathrm{dR}}[[\hbar]]$ i.e., deformed symplectic form.
+
+\subsection{Chiral Field Theory}
+
+Consider Riemannian manifold $(\Sigma, g)$, where $ \Sigma$ is a Riemann surface, the chiral field theory is an important object as a generalization of the topological quantum mechanics.
+\begin{example}[Free Chiral CFT]
+  \begin{enumerate}[(1)]
+    \item Chiral Boson $ \int _{\Sigma} \partial \phi \bar{\partial} \phi$;
+    \item $ \beta \gamma$ - system $ \int _{\Sigma} \beta \bar{\partial} \gamma$;
+    \item $ bc$ - system $ \int _{\Sigma} b \bar{\partial} c$.
+  \end{enumerate}
+\end{example}
+
+Now consider the $ \beta \gamma$ - $ bc$ system, where $ \beta ,\gamma \in \Omega^{0, \bullet}(E) \otimes V$. Consider the deformed action
+\begin{equation*}
+  S = S_{\mathrm{free}} + \int _{\Sigma} \mathcal{L}^{\mathrm{hol}}(\partial \phi, \beta, \gamma, b, c),
+\end{equation*}
+which is a holomorphic function of the fields, where $ S_{\mathrm{free}}$ is the free part of the action.
+We would prove that, the action above is UV finite and the master equation have some important properties.
+\begin{definition}[Vertex Algebra]
+  Consider a vertex algebra $ \mathcal{V}$, which have
+  \begin{enumerate}[(1)]
+    \item State-field correspondence
+      \begin{equation*}
+        \mathcal{V} \ni A \mapsto \sum_{n \in \mathbb{Z}} A_{n} z^{-n-1} \in \mathrm{End}(\mathcal{V})[[z, z^{-1}]];
+      \end{equation*}
+    \item Vacuum state $ \ket{0} \mapsto 1$;
+    \item Operator product expansion (OPE) for $ A, B \in \mathcal{V}$, $ A(z)B(w)$ is a formal Laurent series
+      \begin{equation*}
+        A(z) B(w) = \sum_{n \in \mathbb{Z}} \frac{\left( A_{(n)} B\right)(w)}{(z - w)^{n+1}},
+      \end{equation*}
+      where $ C_{n}(A, B, w)$ is a local operator in the vertex algebra.
+    \item Translation operator, locality...
+  \end{enumerate}
+\end{definition}
+\begin{example}
+  \begin{enumerate}[(1)]
+    \item (Chiral Boson) $\partial \phi(z) \partial \phi(w) \sim \frac{\hbar^{2}}{(z-w)^{2}} + \cdots $, where $ \mathcal{V} = \mathbb{C}[\partial \phi, \cdots ]$ ;
+    \item ($ \beta \gamma$ - system) $\beta(z) \gamma(w) \sim \frac{\hbar}{z-w} + \cdots $, where $ \mathcal{V} = \mathbb{C}[\beta, \gamma,\cdots ]$ ;
+    \item ($ bc$ - system) $b(z) c(w) \sim \frac{1}{z-w} + \cdots $, where $ \mathcal{V} = \mathbb{C}[b, c, \cdots ]$.
+  \end{enumerate}
+  All the vertex algebra above would be generated by their primary fields and their holomorphic derivations.
+\end{example}
+
+The chiral deformed theory is UV finite i.e., $ \mathrm{e}^{I[L] / \hbar} = \lim _{\epsilon \rightarrow 0} \mathrm{e}^{\hbar \partial_{P^{L}_{\epsilon}}} \mathrm{e}^{I / \hbar}$ exists, where the normalized quantum master equation implies
+\begin{equation*}
+  [\oint \mathcal{L}^{\mathrm{hol}}, \oint \mathcal{L}^{\mathrm{hol}}] = 0,
+\end{equation*}
+which formed a flat bundle $ \nabla +\frac{1}{\hbar} [\oint \mathcal{L}^{\mathrm{hol}}, ~]$ on the vertex algebra $ \mathcal{V}$.
+Thus, we could form a vertex algebra bundle $ \mathrm{VOA} \rightarrow X$, where $ \phi: \Sigma \rightarrow X$.
+\begin{example}[Dijkgraaf Chiral Deformation]
+  Consider the chiral deformation of the free chiral boson, where the deformed action is given by
+  \begin{equation*}
+    S = \int _{E_{\tau}} \frac{1}{2} \partial \phi \bar{\partial} \phi + \frac{1}{3!} \int _{E_{\tau}} \frac{\mathrm{d} ^{2} z}{\Im \tau} \, \left( \partial_{z} \phi \right)^{3},
+  \end{equation*}
+  where the free correlation function is given by
+  \begin{equation*}
+    \left< \partial \phi(z) \partial \phi(w) \right> = P(z, w) = \mathcal{P}(z-w, \tau) + \frac{\pi^2}{3} E^{*}_{3} (\tau, \bar{\tau}),
+  \end{equation*}
+  where $ \mathcal{P}$ is Weierstrass function.
+\end{example}
 
 \label{LastPage}
 \end{document}
