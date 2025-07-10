@@ -191,3 +191,5 @@ Riemannian
 Fedosov
 Grassmannian
 Holomorphic
+automorphism
+isomorphisms
