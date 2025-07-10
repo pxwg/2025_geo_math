@@ -1230,18 +1230,67 @@ where $ \left\{ l_{i}^{\hbar} \right\}_{i \ge 0}$ would form a $ L_{\infty }$ al
 
 \subsection{Topological Quantum Mechanics}
 
+\subsubsection{BV Field Space}
+
 Consider the field space as a ordinary (no degree shift) symplectic vector space $ \mathcal{E} = V$, the symplectic form is given by $\left< ~,~ \right>: \wedge^{2} V \rightarrow \mathbb{R}$.
 Consider the sigma model
 \begin{equation*}
   \varphi: \mathbb{S}^{1}_{\mathrm{dR}} \rightarrow V,
 \end{equation*}
-where $ \mathbb{S}^{1}_{\mathrm{dR}} = \left( \mathbb{S}^{1}, \Omega_{\mathrm{dR}}^{\bullet}(\mathbb{S}^{1}) \right)$ i.e., a $ \mathbb{S}^{1}$ topology with local function ring $ \Omega^{\bullet}_{\mathrm{dR}}(\mathbb{S}^{1})$.
+where $ \mathbb{S}^{1}_{\mathrm{dR}} = \left( \mathbb{S}^{1}, \Omega_{\mathrm{dR}}^{\bullet}(\mathbb{S}^{1}) \right)$ i.e., a $ \mathbb{S}^{1}$ topology with local function ring $ \Omega^{\bullet}_{\mathrm{dR}}(\mathbb{S}^{1}) \cong T[1] \mathbb{S}^{1}$.
 This map could be written as $ \varphi \in \Omega_{\mathrm{dR}}^{\bullet}(\mathbb{S}^{1}) \otimes V$ i.e., given a function $ f(x) \in \mathcal{O}(V)$, $ \varphi^{*}(f) = f(\varphi)$.
+% Question: why T[1]M is a de-Rham complex?
 
 Such a field space $\left( \Omega_{\mathrm{dR}}^{\bullet}(\mathbb{S}^{1}) \otimes V, \mathrm{d}  \right)$ is a BV field space, where the $-1$ shifted symplectic form is given by
 \begin{equation*}
-  \omega(\alpha, \beta) = \int _{\mathbb{S}^{1}} \left< \alpha, \beta \right>,\quad \alpha, \beta \in \mathcal{E},
+  \omega(\alpha, \beta) = \int _{\mathbb{S}^{1}} \left< \alpha, \beta \right>,\quad \alpha, \beta \in \mathcal{E}.
 \end{equation*}
+Treating $ \Omega^{\bullet}(\mathbb{S}^{1})$ as ring of Grassmannian variables, we have a natural map
+\begin{equation*}
+  \mathcal{O}(V)[[\hbar]] \ni I \mapsto \hat{I}: \varphi \mapsto \int _{\mathbb{S}^{1}} I(\varphi) \in \mathcal{O}(\mathcal{E})[[\hbar]],
+\end{equation*}
+where $ \deg I = \deg \hat{I} + 1$.
+Thus, consider the deformed action
+\begin{equation*}
+  S = \int _{\mathbb{S}^{1}} \left( \frac{1}{2} \left< \varphi, \mathrm{d} \varphi \right> + I(\varphi) \right),
+\end{equation*}
+\begin{theorem}
+  After quantization, the deformed action would satisfy
+  \begin{enumerate}[(1)]
+    \item The following limit exists
+      \begin{equation*}
+        \mathrm{e}^{\hat{I}[L] / \hbar} = \lim_{\epsilon \to 0} \mathrm{e}^{\hbar \partial_{P_{\epsilon}}} \mathrm{e}^{\hat{I}_0 / \hbar},
+      \end{equation*}
+    \item $\left\{ I[L] \right\}_{L}$ satisfies the normalized quantum master equation $ \left[ I, I \right]_{\star} = 0$, where $ I \in \mathcal{O}(V)[[\hbar]]$ and $\star$ is the Moyal product on $ \mathcal{O}(V)[[\hbar]]$.
+  \end{enumerate}
+\end{theorem}
+
+\subsubsection{Application: Index Theorem}
+
+There is a natural generalization of the construction above.
+Let $\left( R, \mathrm{d} _{R} \right)$ be a DG communicative algebra. Consider the vector space $ V_{R} = R \otimes _{R} V$ with a connection $ \nabla : V_{R} \rightarrow V_{R}$ satisfying $ \nabla (a \otimes v) = \left( \mathrm{d} _{R} a \right) \otimes v + (-1)^{a} a \otimes \nabla b$.
+There is a natural symplectic structure $ \omega \in \wedge^{2} V^{*}$.
+Thus, one could define the space of fields
+\begin{equation*}
+  \mathcal{E}_{R} = \Omega^{\bullet}(\mathbb{S}^{1}) \otimes V_{R},
+\end{equation*}
+where the deformation of the action is given by
+\begin{equation*}
+  \mathcal{O}(V_{R}) \ni I \mapsto \hat{I}: \varphi \mapsto \int _{\mathbb{S}^{1}} I(\varphi) \in \mathcal{O}(\mathcal{E}_{R}),
+\end{equation*}
+where $\deg I = \deg \hat{I} + 1$ and $ \hat{I}(\varphi) \in R$.
+The BV quantization process would define a flat connection $ \nabla_{I} = \nabla + \frac{1}{\hbar}[I, ~]_{\star}$, which defined a Fedosov's connection.
+Here, renormalized quantum master equation gives a Fedosov's connection on Wayl bundle, and local quantum observables $\left( C^{\infty }(X)[[\hbar]], \star \right)$ gives a deformation quantization.
+
+Now we want to consider the index theorem in topological quantum mechanics, note that in a classical discussion of SUSY localization, one have
+\begin{equation*}
+  \text{Path Integral} \xrightarrow{\text{SUSY Localization}} \text{Ground Space},
+\end{equation*}
+thus, one could only consider the localized effective theory. After counting the localized part of the partition function, one would obtain the algebraic index theorem
+\begin{equation*}
+  \tr (1) = \int _{X} \mathrm{e}^{- \omega_{\hbar} / \hbar} \hat{A}(X),
+\end{equation*}
+where $ \omega_{\hbar} = - \omega_0 + \hbar \omega_1 + \hbar^{2} \omega_2 + \cdots $, and $\left\{ \omega_{i}\right\}$ are the moduli of the star product.
 
 \label{LastPage}
 \end{document}
