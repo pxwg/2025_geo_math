@@ -191,3 +191,8 @@ Riemannian
 Fedosov
 Grassmannian
 Holomorphic
+automorphism
+isomorphisms
+non-perturbative
+#xpension
+expension/!

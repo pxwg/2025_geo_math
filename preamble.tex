@@ -25,7 +25,7 @@
 \usepackage{mathtools} % amsmath 扩展
 \usepackage{physics} % 物理公式简化
 \usepackage{mathrsfs} % 数学花体字
-\usepackage{bbm} % 黑板粗体
+% \usepackage{bbm} % 黑板粗体
 \usepackage{cancel} % 公式划除线
 \numberwithin{equation}{section} % 按节编号公式
 \usepackage[sc]{mathpazo}
@@ -44,6 +44,9 @@
 \usepackage{pgfplots} % 绘图支持
 \pgfplotsset{compat=newest} % 使用最新版本特性
 % \usepackage[compat=1.1.0,warn luatex=false]{tikz-feynman} % Feynman 图
+\usepackage{tikz} % TikZ 绘图
+\usetikzlibrary{arrows,shapes,positioning,calc,decorations.pathreplacing,patterns} % TikZ 库
+\usepackage{tikz-cd} % commutative diagrams
 \usepackage{quiver} % 交换图
 
 %% ----------------------------------------------------------------------
