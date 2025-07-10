@@ -589,7 +589,7 @@ where $\left< ~ \right>$ denotes the expectation value with respect to the free 
   \left< \mathcal{O} \right> \rightarrow \sqrt{\det(Q)} \int _{\mathbb{R}^{n}} \prod_{i=1}^{n} \frac{\mathrm{d} x_i}{\sqrt{2 \pi \hbar}} \mathcal{O}(x) \mathrm{e}^{- \frac{1}{\hbar} S_0[x]},
 \end{equation*}
 while $ S_0 = \frac{1}{2} Q(x)$ is the free part i.e., quadratic part of the action.
-Here, each term in the expansion is well defined and could be computed by Wick's contraction.
+Here, each term in the expansion is well-defined and could be computed by Wick's contraction.
 Such a process could be explained by the Feynman diagram, where each term in the expansion corresponds to a multiplication of  Feynman diagrams, and each Feynman diagram denotes a pattern of Wick's contraction.
 
 \begin{definition}[Diagram]
@@ -604,8 +604,8 @@ Such a process could be explained by the Feynman diagram, where each term in the
 \end{definition}
 
 % 额外计数的可能性，因此需要考虑对称性
-Using diagram to represent the process of Wick's contraction, one might meeting the problem of over-counting.
-A proper way to avoid the over-counting is to consider the symmetry of the diagram i.e., the automorphism of a diagram and isomorphisms between different diagrams.
+Using diagram to represent the process of Wick's contraction, one might meet the problem of over-counting.
+A proper way to avoid the over-counting is to consider the symmetry of the diagram i.e., the automorphism of a diagram and isomorphism between different diagrams.
 
 \begin{definition}[Isomorphism of Diagrams]
   A graph isomorphism between two graphs is a pair of bijective maps
@@ -631,7 +631,7 @@ An automorphism of a graph is a graph isomorphism $ \sigma_{\Gamma} : \Gamma \ri
 \end{equation*}
 
 Using the language above, we can describe the perturbation theory in terms of diagrams.
-Consider the theory in this section, given a graph $ \Gamma$, we can associate a Feynman diagram to it, which is a collection of vertices and edges, where each vertex corresponds to a interaction term $ I(x)$ and each edge corresponds to a contraction between two fields, which would correspond to $ Q^{-1}$.
+Consider the theory in this section, given a graph $ \Gamma$, we can associate a Feynman diagram to it, which is a collection of vertices and edges, where each vertex corresponds to an interaction term $ I(x)$ and each edge corresponds to a contraction between two fields, which would correspond to $ Q^{-1}$.
 After summing over all indices, we would obtain the contribution of this contraction pattern.
 Such an identification is called the Feynman rules, which is a set of rules to associate a Feynman diagram $ \Gamma$  to a term in perturbative expansion $ \omega_{\Gamma}$.
 
@@ -649,7 +649,7 @@ In general, while the interaction term is
 \begin{equation*}
   I(x) = \frac{\lambda_3}{3!} I_3(x) + \frac{\lambda_4}{4!} I_4(x) + \cdots,
 \end{equation*}
-then the series expension will have all possible graphs, which could be computed by the Feynman rules
+then the series expansion will have all possible graphs, which could be computed by the Feynman rules
 \begin{equation*}
   \left< \mathrm{e}^{\frac{1}{\hbar} \sum_{m \ge 3} \frac{1}{m!} \lambda_{m} I_{m}(x)} \right> = \exp \left( \sum_{\Gamma \text{ Connected}}  \left( \prod_{m \ge 3} \lambda_{m}^{|V(\Gamma)_{m}|} \right) \hbar^{l(\Gamma) - 1} \frac{\omega_{\Gamma}}{\left| \mathrm{Aut}(\Gamma) \right|}\right),
 \end{equation*}
