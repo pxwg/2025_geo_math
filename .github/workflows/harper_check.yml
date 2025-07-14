@@ -14,11 +14,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Install Harper LS
-      run: cargo install harper-ls --locked
-      
-    - name: Update Harper dictionary
-      run: python ./harper_update_dict.py
+    - name: Download and extract Harper CLI
+      run: |
+        curl -L https://github.com/Automattic/harper/releases/download/v0.50.0/harper-cli-aarch64-unknown-linux-gnu.tar.gz -o harper-cli.tar.gz
+        mkdir -p harper-cli
+        tar -xzf harper-cli.tar.gz -C harper-cli
+        chmod +x harper-cli/harper-cli
+        export PATH="$PWD/harper-cli:$PATH"
       
     - name: Find and check all .typ files
       run: |
