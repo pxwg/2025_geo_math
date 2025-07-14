@@ -15,8 +15,8 @@ jobs:
       uses: actions/checkout@v4
       
     - name: Install Typst
-      run: cargo install typst
-      
+      run: cargo install --locked typst-cli      
+        
     - name: Find and compile all .typ files
       run: |
         overall_exit_code=0
