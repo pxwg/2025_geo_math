@@ -22,6 +22,12 @@ jobs:
         chmod +x harper-cli/harper-cli
         echo "export PATH=\"$PWD/harper-cli:\$PATH\"" >> $GITHUB_ENV
 
+    - name: Verify Harper CLI
+      run: |
+        source $GITHUB_ENV
+        harper-cli --help
+
+
     - name: Find and check all .typ files
       run: |
         overall_exit_code=0
