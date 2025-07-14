@@ -476,7 +476,7 @@ We can consider the Chevalley-Eilenberg complex for a DGLA $\left( \mathfrak{g},
 \begin{definition}[Chevalley-Eilenberg Complex]
   For a DGLA $\left( \mathfrak{g}, \mathrm{d} , [~,~] \right)$, the Chevalley-Eilenberg complex is defined as
   \begin{equation*}
-    C^{\bullet}(\mathfrak{g}) = \mathrm{Sym}^{\bullet}\left( g^{*}[-1] \right) = \bigwedge\nolimits^{\bullet} \mathbf{g}^{*} [-\bullet],
+    C^{\bullet}(\mathfrak{g}) = \mathrm{Sym}^{\bullet}\left( \mathfrak{g}^{*}[-1] \right) = \bigwedge\nolimits^{\bullet} \mathfrak{g}^{*} [-\bullet],
   \end{equation*}
   % TODO: understand the relation with Bg
   equipped with the CE differential $ \mathrm{d} _{\mathrm{CE}} = \mathrm{d}_1+\mathrm{d}_2$, where
@@ -497,6 +497,13 @@ We can consider the Chevalley-Eilenberg complex for a DGLA $\left( \mathfrak{g},
 \begin{remark}
   If $ \mathfrak{g}$ degenerated to the ordinary Lie algebra, which would be 'bosonic' fields.
   However, the basic object to build CE complex for ordinary Lie algebra is 'fermionic' fields. So we need to impose $[-1]$ into the definition of CE complex of DGLA.
+
+  Another generalized consideration could be finished by this. Consider $ L_{\infty}$ algebra, one can assume $ d_{m} : \mathfrak{g}^{*}[-1] \rightarrow \sym^{m}(\mathfrak{g}^{*}[-1])[1] = \wedge^{m} \mathfrak{g}^{*}[-m+1]$ is the dual of $ l_{m}$, which is degree $ 1$.
+  Thus, we could shift $[1]$ then obtain the dual side
+  \begin{equation*}
+    l_{m} : \wedge\nolimits^{m} \mathfrak{g} \rightarrow \mathfrak{g}^{*}[2 - m],
+  \end{equation*}
+  which implied that, while we treat the dual side of $ L_{\infty}$ algebra as $ \mathfrak{g}^{*}[-1]$ embedded with a degree $1$ derivation, the original $ L_{\infty }$ algebra would have degree $ 2-m$ product $ l_{m} $, which is compatible with our original consideration for ordinary $ L_{\infty }$ algebra.
 \end{remark}
 
 \begin{definition}[DGLA-module]

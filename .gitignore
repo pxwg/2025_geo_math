@@ -21,6 +21,10 @@
 *.auxlock
 *.DS_Store
 
+# Ignore local dictionary files
+.harper_dict_local/*
+*.back
+
 # Keep .gitignore
 !.gitignore
 !README.md

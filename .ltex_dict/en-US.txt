@@ -196,3 +196,10 @@ isomorphisms
 non-perturbative
 #xpension
 expension/!
+AST
+LaTeX
+Language
+neovim
+nvim
+treesitter
+typst
