@@ -11,7 +11,7 @@
 #let color_flavors = flavors.mocha
 #let flavor(colored, color_flavors) = {
   if colored == "false" {
-    catppuccin.with(flavors.lattie)
+    catppuccin.with(flavors.latte)
   } else { catppuccin.with(color_flavors) }
 }
 
