@@ -16,12 +16,12 @@ jobs:
       
     - name: Download and extract Harper CLI
       run: |
-        curl -L https://github.com/Automattic/harper/releases/download/v0.50.0/harper-cli-aarch64-unknown-linux-gnu.tar.gz -o harper-cli.tar.gz
+        curl -L https://github.com/Automattic/harper/releases/download/v0.50.0/harper-cli-x86_64-unknown-linux-gnu.tar.gz -o harper-cli.tar.gz
         mkdir -p harper-cli
         tar -xzf harper-cli.tar.gz -C harper-cli
         chmod +x harper-cli/harper-cli
         echo "export PATH=\"$PWD/harper-cli:\$PATH\"" >> $GITHUB_ENV
-      
+
     - name: Find and check all .typ files
       run: |
         overall_exit_code=0
