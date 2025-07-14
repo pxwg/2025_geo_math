@@ -1,0 +1,59 @@
+name: Typst Compile
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  typst-compile:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install Typst
+      run: cargo install typst
+      
+    - name: Find and compile all .typ files
+      run: |
+        overall_exit_code=0
+        
+        # 查找所有 .typ 文件
+        typ_files=$(find . -name "*.typ" -type f)
+        
+        if [ -z "$typ_files" ]; then
+          echo "❌ No .typ files found!"
+          exit 1
+        fi
+        
+        echo "Found the following .typ files:"
+        echo "$typ_files"
+        echo ""
+        
+        # 对每个文件执行编译
+        while IFS= read -r file; do
+          if [ -n "$file" ]; then
+            echo "=========================================="
+            echo "🔍 Compiling: $file"
+            echo "=========================================="
+            
+            if typst c --input colored=false "$file"; then
+              echo "✅ $file compiled successfully"
+            else
+              echo "❌ $file failed to compile"
+              overall_exit_code=1
+            fi
+            echo ""
+          fi
+        done <<< "$typ_files"
+        
+        # 如果有任何文件失败，让整个 job 失败
+        if [ $overall_exit_code -ne 0 ]; then
+          echo "💥 One or more files failed to compile"
+          exit 1
+        else
+          echo "🎉 All files compiled successfully"
+        fi
