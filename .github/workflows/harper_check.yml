@@ -49,7 +49,7 @@ jobs:
             echo "🔍 Checking: $file"
             echo "=========================================="
             
-            if ./harper-cli/harper-cli lint -o SpellCheck,AnA,SentenceCapitalization,UnclosedQuotes,WrongQuotes,RepeatedWords,Spaces -f ./.harper_dict/ "$file"; then
+            if ./harper-cli/harper-cli lint --only-lint-with SpellCheck,AnA,SentenceCapitalization,UnclosedQuotes,WrongQuotes,RepeatedWords,Spaces --file-dict-path ./.harper_dict/ "$file"; then
               echo "✅ $file passed Harper check"
             else
               echo "❌ $file failed Harper check"
