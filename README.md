@@ -12,4 +12,9 @@
 
 ## CI
 
-- CI 会在每次推送到主分支时自动运行，使用[ltex](https://valentjn.github.io/ltex/index.html)检查笔记的拼写与语法错误。在`.ltex_dict/`中添加新单词可以避免拼写错误。可以在正文使用注释 `% ltex: enabled=false` 来禁用某些部分的检查。
+- CI 会在每次推送到主分支时自动运行，使用 [ltex](https://valentjn.github.io/ltex/index.html) 检查 `.tex` 笔记的拼写与语法错误。在`.ltex_dict/`中添加新单词可以避免拼写错误。可以在正文使用注释 `% ltex: enabled=false` 来禁用某些部分的检查。使用[harper-cli](https://github.com/automattic/harper) 检查 `.typ` 笔记的拼写与语法错误。
+
+## 编辑
+
+- `Typst` 笔记请使用 `typst c ./qft/note.typ --input colored=true` 命令编译，将得到 `note.pdf` 文件，
+- `LaTeX` 笔记使用标准流程即可。
