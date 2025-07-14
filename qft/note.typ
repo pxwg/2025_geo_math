@@ -161,7 +161,7 @@
   fill: rgb(color_flavors.colors.crust.rgb),
   inset: (x: 8pt, y: 8pt),
   [
-    *Warning*: Lots of possible typos!!!!!!!!!!!!
+    *Warning*: Lots of potential typos!!!!!!!!!!!!
 
     *Notations*:
     - $X$: a smooth manifold, usually a compact manifold.
