@@ -26,7 +26,6 @@ jobs:
       run: |
         ./harper-cli/harper-cli --help
 
-
     - name: Find and check all .typ files
       run: |
         overall_exit_code=0
@@ -50,7 +49,7 @@ jobs:
             echo "🔍 Checking: $file"
             echo "=========================================="
             
-            if harper-cli lint -o SpellCheck,AnA,SentenceCapitalization,UnclosedQuotes,WrongQuotes,RepeatedWords,Spaces -f ./.harper_dict/ "$file"; then
+            if ./harper-cli/harper-cli lint -o SpellCheck,AnA,SentenceCapitalization,UnclosedQuotes,WrongQuotes,RepeatedWords,Spaces -f ./.harper_dict/ "$file"; then
               echo "✅ $file passed Harper check"
             else
               echo "❌ $file failed Harper check"
