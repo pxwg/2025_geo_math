@@ -539,14 +539,9 @@ which could be easily verified that $upright(d)_(upright(C E))^2 = 0$.
   $⟨upright(d)_(upright(C E)) phi_2 \, c_1 and c_2⟩ = ⟨phi_2 \, [c_1 \, c_2]⟩$
   and Leibniz's law, so that:
   $
-    angle.l
-    diff_("CE")^2 phi,
-    c_1 and c_2 times.circle m_1
-    angle.r = angle.l
-    phi,
-    rho([c_1, c_2]) m + (-1)(rho(c_1) rho(c_2) m + rho(c_2) rho(c_1) m)
-    angle.r stretch(->)^( frak(g) "rep."
-    ) 0,
+    angle.l diff_("CE")^2 phi, c_1 and c_2 times.circle m_1 angle.r = angle.l
+    phi, rho([c_1, c_2]) m + (-1)(rho(c_1) rho(c_2) m + rho(c_2) rho(c_1) m)
+    angle.r stretch(->)^( frak(g) "rep.") 0,
   $
   $
     ⟨upright(d)_(upright(C E))^2 phi \, c_1 and c_2 and c_3⟩ stretch(->)^(upright("Jacobian")) 0 \,
