@@ -24,8 +24,7 @@ jobs:
 
     - name: Verify Harper CLI
       run: |
-        source $GITHUB_ENV
-        harper-cli --help
+        ./harper-cli/harper-cli --help
 
 
     - name: Find and check all .typ files
