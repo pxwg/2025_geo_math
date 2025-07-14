@@ -20,7 +20,7 @@ jobs:
         mkdir -p harper-cli
         tar -xzf harper-cli.tar.gz -C harper-cli
         chmod +x harper-cli/harper-cli
-        export PATH="$PWD/harper-cli:$PATH"
+        echo "export PATH=\"$PWD/harper-cli:\$PATH\"" >> $GITHUB_ENV
       
     - name: Find and check all .typ files
       run: |
