@@ -138,9 +138,22 @@
 
 #let sym = "Sym"
 
-//----------------------main project ----------------------//
+//----------------------basic info ----------------------//
 
-#align(center)[= Quantum Field Theory]
+#let title = "Quantum Field Theory"
+#let author = "Lectured by Prof. Si Li and Noted by Xinyu Xiang"
+#let date = "Jul. 2025"
+
+#set document(title: title, author: author, date: auto)
+
+#align(center, text(17pt)[*#title*])
+
+#align(center)[
+  #author \
+  #date
+]
+
+//----------------------main project ----------------------//
 
 #box(
   stroke: 1pt + rgb(color_flavors.colors.blue.rgb),
@@ -148,7 +161,7 @@
   fill: rgb(color_flavors.colors.crust.rgb),
   inset: (x: 8pt, y: 8pt),
   [
-    *Warning*: Lots of possible typos!!!!!!!!!!!!
+    *Warning*: Lots of potential typos!!!!!!!!!!!!
 
     *Notations*:
     - $X$: a smooth manifold, usually a compact manifold.
@@ -161,9 +174,9 @@
   ],
 )
 
-== Day I: Overall Discussion and Mathematical Preliminaries
+= Day I: Overall Discussion and Mathematical Preliminaries
 
-=== Actions and Path Integrals
+== Actions and Path Integrals
 
 Action $S: cal(E) arrow bb(k)$ where $cal(E)$ always has infinite dimension, and $bb(K)$ is a field (usually $bb(R)$ or $bb(C)$).
 
@@ -177,14 +190,14 @@ $
 #example(
   name: "Some Examples of Classical Field Theories",
   [
-    - Scalar Field Theory $cal(E) = C^infinity(X)$
+    - Scalar Field Theory $cal(E) = C^infinity (X)$
     - Gauge Theory $cal(E) = "Conn"(P,X)$
     - $sigma$ Model $cal(E) = "Maps"(Sigma, X)$
     - Gravity $cal(E) = "Metrics"(X)$ (Better descriptions does not depend on the background)
   ],
 )
 
-=== Observables
+== Observables
 
 Observables are functions on the space of fields, i.e. $cal(O) in C^infinity (cal(E))$.
 
@@ -219,7 +232,7 @@ Consider the $dim X = 2$ case in detailed
   ],
 )
 
-=== de Rham Cohomology
+== de Rham Cohomology
 
 Chain of differential forms $Omega^bullet (X)$
 $
@@ -294,7 +307,7 @@ Important: An *Integration* arises from the de Rham cohomology!
   ],
 )
 
-=== Cartan Formula
+== Cartan Formula
 
 Vector fields could act on smooth functions via
 $
@@ -310,7 +323,7 @@ $
 $
 Lie derivative is homotopy trivial i.e. chain homotopic.
 
-==== Proof of Poincaré Lemma
+=== Proof of Poincaré Lemma
 
 Use Cartan Formula, one can proof Poincaré Lemma.
 
@@ -327,7 +340,7 @@ $
 $
 Thus, the closed form $alpha$ is exact, which implies that the de Rham cohomology $H^p(bb(R)^n)$ is trivial for $p>0$. The same idea could be applied to the de Rham cohomology on compact support $H^p_c (RR^n)$.
 
-== Day II: Classical Field Theory
+= Day II: Classical Field Theory
 
 Assume $cal(E) = Gamma(E, X)$, i.e. a section of a bundle $E -> X$, where $X$ is an oriented manifold.
 The action is written as $S[phi] = integral_X cal(L)[phi(x)]$, where $phi in.rev cal(E)$.
@@ -337,7 +350,7 @@ Lagrangian $cal(L)$ satisfies:
 
 The solution of Euler-Lagrange equation forms $"Crit"(S)$, which denotes the critical locus of the action $S$.
 
-=== Examples
+== Examples
 
 #example(
   name: "Phase Space Quantum Mechanics",
@@ -380,9 +393,9 @@ The solution of Euler-Lagrange equation forms $"Crit"(S)$, which denotes the cri
   ],
 )
 
-=== Symmetry (1)
+== Symmetry (1)
 
-==== Global Symmetry and Noether's Theorem
+=== Global Symmetry and Noether's Theorem
 
 Consider a classical action $S: cal(E) -> bb(R)$ with a group action $G arrow.hook cal(E)$ such that $S[g(phi)] = S[phi]$. Then $G$ is a global symmetry of the action $S$.
 
@@ -416,14 +429,14 @@ $
 $
 and $hat(J)$ is the Noether current, satisfying the same equation as $J_alpha$ up to an exact form.
 
-== Day III: Breaking
+= Day III: Breaking
 
-== Day IV: Symmetry (2)
+= Day IV: Symmetry (2)
 First, we will consider finite dimensional case. We consider $G$ as a
 finite dimensional Lie group, $frak(g)$ is the Lie algebra of $G$ and
 $W$ is finite dimensional representation of $G$.
 
-=== Chevalley-Eilenberg Cohomology
+== Chevalley-Eilenberg Cohomology
 
 Consider $frak(g)^(\*) equiv "Hom" (frak(g) \, bb(K))$. Consider the
 exterior algebra
@@ -540,7 +553,7 @@ which could be easily verified that $upright(d)_(upright(C E))^2 = 0$.
   $
   where we note that the dual of $c_1 and c_2$ has degree $1$ graded.
 ]
-=== Differential Graded Lie Algebra
+== Differential Graded Lie Algebra
 
 We define a $bb(Z)$-graded vector space
 $ W = xor.big_(n in bb(Z)) W_n \, $ where $W_n$ is degree of $n$
@@ -747,9 +760,9 @@ $(frak(g) \, upright(d) \, [med \, med])$.
     $upright(d)_(upright(C E)) (a times.circle m) = (upright(d)_(frak(g)) a) m + (- 1)^(lr(|a|)) a upright(d)_M m$,
 ]
 
-== Homotopic Lie Algebra ($L_oo$ Algebra)
+= Homotopic Lie Algebra ($L_oo$ Algebra)
 
-=== Coderivation Side
+== Coderivation Side
 
 The original definition could be viewed as a homotopic generalization of
 the Lie algebra, which is a DGLA $V$ with 'higher brackets'
@@ -787,9 +800,9 @@ is the sign of the permutation $sigma$. The coproduct is coassociative,
 i.e.
 $ (Delta times.circle I d) Delta = (I d times.circle Delta) Delta . $
 
-=== Derivation Side
+== Derivation Side
 
-= Day V: Perturbation Theory
+Day V: Perturbation Theory
 <day-v-perturbation-theory>
 Consider a finite dimensional toy model for quantum field theory, where
 the path integral is defined as
@@ -919,9 +932,9 @@ $
 where $lr(|V (Gamma)_m|)$ is the number of vertices of type $I_m (x)$ in
 the graph $Gamma$.
 
-= Day VI: UV Divergence
+Day VI: UV Divergence
 <day-vi-uv-divergence>
-== Perturbative Quantum Field Theory
+= Perturbative Quantum Field Theory
 <perturbative-quantum-field-theory>
 We would consider the perturbative theory of a scalar field theory,
 where $cal(E) = C^oo (X)$, $X = bb(R)^d$ and the action is given by
@@ -953,7 +966,7 @@ $
 which would twist the observables to a new form which could be also
 computed by Feynman diagrams.
 
-== Canonical Quantization
+= Canonical Quantization
 <canonical-quantization>
 In classical mechanics, one would consider the phase space
 $(M \, omega)$, where $omega$ is the symplectic form, which defined a
@@ -1032,7 +1045,7 @@ $
   $f \, g$ is not polynomial. If $f \, g in bb(R) [x \, y]$ is polynomial,
   then the correction term is zero, and we have the Moyal product.
 ]
-== Counter Term in Perturbative $phi.alt^4$
+= Counter Term in Perturbative $phi.alt^4$
 <counter-term-in-perturbative-phi4>
 If one consider the tree level Feynman diagram, we could proof that
 there is no UV divergence. However, if one consider the loop level
@@ -1071,7 +1084,7 @@ $
   lambda arrow.r lambda + frac(planck.reduce lambda^2, pi^2) ln epsilon.alt \, quad frac(upright(d) lambda, upright(d) ln epsilon.alt) = frac(planck.reduce lambda^2, pi^2) .
 $
 
-== Day XI: Factorization Algebra
+= Day XI: Factorization Algebra
 
 First, we would define the prefactorization algebra in the open set category $"Ops"(M)$ whose objects are open subsets $U subset M$ and morphisms are inclusions $U subset V$.
 
