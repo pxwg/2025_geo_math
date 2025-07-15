@@ -1,4 +1,9 @@
-#import "../preamble.typ": *
+#import "@preview/physica:0.9.5": *
+#import "@preview/commute:0.3.0": arr, commutative-diagram, node
+#import "../preamble.typ": (
+  color_flavors, color_scheme, conf, definition, example, proof, proposition,
+  remark, theorem,
+)
 #show: color_scheme
 
 //----------------------basic info ----------------------//
@@ -7,12 +12,14 @@
 #let author = "Lectured by Prof. Si Li and Noted by Xinyu Xiang"
 #let date = "Jul. 2025"
 
-#set document(title: title, author: author, date: auto)
-#align(center, text(17pt)[*#title*])
-#align(center)[
-  #author \
-  #date
-]
+#show: doc => conf(
+  title: title,
+  author: author,
+  date: date,
+  year: "2025",
+  textsize: 10pt,
+  doc,
+)
 
 //-----------------------symbols----------------------//
 
@@ -735,7 +742,6 @@ automorphism of a diagram and isomorphism between different diagrams.
   $
   which are compatible with the inclusion maps:
   #align(center)[#commutative-diagram(
-      padding: 0.4em,
       node((0, 0), $"HE"(Gamma)$),
       node((0, 1), $"HE"(Gamma')$),
       node((1, 0), $"V"(Gamma)$),
