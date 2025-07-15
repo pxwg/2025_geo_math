@@ -1,142 +1,5 @@
-// Complie with `typst c ./qft/note.typ --input colored=true --root ../` to get pdf version
-#import "@preview/commute:0.3.0": arr, commutative-diagram, node
-
-// Packages
-#import "@preview/physica:0.9.5": *
-// #import "../preamble.typ"
-// colors controled by the `colored` variable passed in the command line or by default
-// which is `false` and help to manage the default (preview in url) and uncolored (published in pdf) version
-// TODO: better false (pdf) color flavors to contral definition block etc.
-// TODO: become a package to be used in other documents
-#import "@preview/catppuccin:1.0.0": catppuccin, flavors
-
-// Get the `colored` variable from the command line input
-// Then determine the color scheme based on the `colored` variable
-#let coloreds = sys.inputs
-#let get_input(input_dict) = {
-  for (key, value) in input_dict {
-    if key == "colored" {
-      return value
-    }
-  }
-  return true
-}
-
-#let colored = get_input(coloreds)
-
-#let get_color_scheme(input_value) = {
-  if input_value == "false" {
-    (
-      background: catppuccin.with(flavors.latte),
-      flavors: flavors.latte,
-    )
-  } else {
-    (
-      background: catppuccin.with(flavors.mocha),
-      flavors: flavors.mocha,
-    )
-  }
-}
-#let showed_flavors(colored) = {
-  if colored == "false" {
-    flavors.latte
-  } else {
-    flavors.mocha
-  }
-}
-#show: get_color_scheme(colored).background
-#let color_flavors = get_color_scheme(colored).flavors
-
-// ### Example:
-// ```typst
-// #definition(name: 'prefactorization algebra',[
-//   A prefactorization algebra $cal(F)$ on $M$ would assign to each open subset $U$ with a vector space $cal(F)$, together with a maps
-//   $
-//     m_V^(U_1, U_2, dots, U_n): cal(F)(U_1) times.circle cal(F)(U_2) times.circle dots times.circle cal(F)(U_n) --> cal(F)(V),
-//   $
-// ])
-// ```
-#let definition(name: none, body) = {
-  box(
-    stroke: 1pt + rgb(color_flavors.colors.blue.rgb),
-    width: 100%,
-    fill: rgb(color_flavors.colors.crust.rgb),
-    inset: (x: 8pt, y: 8pt),
-    [
-      #if name != none [*Definition* (#emph(name))] else [*Definition*]
-      #body
-    ],
-  )
-}
-#let example(name: none, body) = {
-  box(
-    stroke: 1pt + rgb(color_flavors.colors.maroon.rgb),
-    width: 100%,
-    fill: rgb(color_flavors.colors.crust.rgb),
-    inset: (x: 8pt, y: 8pt),
-    [
-      #if name != none [*Example* (#emph(name))] else [*Example*]
-      #body
-    ],
-  )
-}
-#let theorem(name: none, body) = {
-  box(
-    stroke: 1pt + rgb(color_flavors.colors.peach.rgb),
-    width: 100%,
-    fill: rgb(color_flavors.colors.crust.rgb),
-    inset: (x: 8pt, y: 8pt),
-    [
-      #if name != none [*Theorem* (#emph(name))] else [*Theorem*]
-      #body
-    ],
-  )
-}
-
-#let proposition(name: none, body) = {
-  box(
-    stroke: 1pt + rgb(color_flavors.colors.green.rgb),
-    width: 100%,
-    fill: rgb(color_flavors.colors.crust.rgb),
-    inset: (x: 8pt, y: 8pt),
-    [
-      #if name != none [*Proportion* (#emph(name))] else [*Proportion*]
-      #body
-    ],
-  )
-}
-
-#let f = flavors.mocha.colors.flamingo
-
-#let remark(name: none, body) = {
-  box(
-    stroke: 1pt + rgb(color_flavors.colors.flamingo.rgb),
-    width: 100%,
-    fill: rgb(color_flavors.colors.crust.rgb),
-    inset: (x: 8pt, y: 8pt),
-    [
-      #if name != none [*Remark* (#emph(name))] else [*Remark*]
-      #body
-    ],
-  )
-}
-
-
-#let proof(name: none, body) = {
-  block(
-    stroke: 1pt + rgb(color_flavors.colors.lavender.rgb),
-    width: 100%,
-    fill: rgb(color_flavors.colors.crust.rgb),
-    inset: (x: 8pt, y: 8pt),
-  )[
-    #if name != none [_Proof_ (#emph(name)). ] else [_Proof_. ]
-    #body
-    #h(1fr)
-    $qed$
-  ]
-}
-
-#let sym = "Sym"
+#import "../preamble.typ": *
+#show: color_scheme
 
 //----------------------basic info ----------------------//
 
@@ -145,13 +8,15 @@
 #let date = "Jul. 2025"
 
 #set document(title: title, author: author, date: auto)
-
 #align(center, text(17pt)[*#title*])
-
 #align(center)[
   #author \
   #date
 ]
+
+//-----------------------symbols----------------------//
+
+#let sym = "Sym"
 
 //----------------------main project ----------------------//
 
@@ -161,8 +26,6 @@
   fill: rgb(color_flavors.colors.crust.rgb),
   inset: (x: 8pt, y: 8pt),
   [
-    *Warning*: Lots of potential typos!!!!!!!!!!!!
-
     *Notations*:
     - $X$: a smooth manifold, usually a compact manifold.
     - $cal(E)$: the space of fields, usually infinite dimensional.
@@ -327,18 +190,20 @@ Lie derivative is homotopy trivial i.e. chain homotopic.
 
 Use Cartan Formula, one can proof Poincaré Lemma.
 
-*Proof:*
-Rescaling invariance of $bb(R)^n$ leads to the Euler vector field $E = x^i frac(diff, diff x^i)$. One can consider the associated diffeomorphism $phi_t$, where we assume $phi_0 = 1$ and thus $phi^*_(-infinity) alpha = 0$. Thus, the closed form $alpha$ could be rewritten as:
-$
-  alpha & = phi^*_0 alpha - phi^*_(-infinity) alpha \
-        & = integral_(-infinity)^0 frac("d", "d" t) phi_t^* alpha "d" t \
-        & = integral_(-infinity)^0 cal(L)_E (phi^*_t alpha) "d" t,
-$
-using the Cartan formula and $"d" phi^* = phi^* "d"$, we have
-$
-  alpha = "d" integral_(-infinity)^0 phi^*_t iota_E alpha "d" t = "d" beta.
-$
-Thus, the closed form $alpha$ is exact, which implies that the de Rham cohomology $H^p(bb(R)^n)$ is trivial for $p>0$. The same idea could be applied to the de Rham cohomology on compact support $H^p_c (RR^n)$.
+#proof(
+  name: "Poincaré Lemma",
+)[Rescaling invariance of $bb(R)^n$ leads to the Euler vector field $E = x^i frac(diff, diff x^i)$. One can consider the associated diffeomorphism $phi_t$, where we assume $phi_0 = 1$ and thus $phi^*_(-infinity) alpha = 0$. Thus, the closed form $alpha$ could be rewritten as:
+  $
+    alpha & = phi^*_0 alpha - phi^*_(-infinity) alpha \
+          & = integral_(-infinity)^0 frac("d", "d" t) phi_t^* alpha "d" t \
+          & = integral_(-infinity)^0 cal(L)_E (phi^*_t alpha) "d" t,
+  $
+  using the Cartan formula and $"d" phi^* = phi^* "d"$, we have
+  $
+    alpha = "d" integral_(-infinity)^0 phi^*_t iota_E alpha "d" t = "d" beta.
+  $
+  Thus, the closed form $alpha$ is exact, which implies that the de Rham cohomology $H^p(bb(R)^n)$ is trivial for $p>0$. The same idea could be applied to the de Rham cohomology on compact support $H^p_c (RR^n)$.
+]
 
 = Day II: Classical Field Theory
 
@@ -539,14 +404,9 @@ which could be easily verified that $upright(d)_(upright(C E))^2 = 0$.
   $⟨upright(d)_(upright(C E)) phi_2 \, c_1 and c_2⟩ = ⟨phi_2 \, [c_1 \, c_2]⟩$
   and Leibniz's law, so that:
   $
-    angle.l
-    diff_("CE")^2 phi,
-    c_1 and c_2 times.circle m_1
-    angle.r = angle.l
-    phi,
-    rho([c_1, c_2]) m + (-1)(rho(c_1) rho(c_2) m + rho(c_2) rho(c_1) m)
-    angle.r stretch(->)^( frak(g) "rep."
-    ) 0,
+    angle.l diff_("CE")^2 phi, c_1 and c_2 times.circle m_1 angle.r = angle.l
+    phi, rho([c_1, c_2]) m + (-1)(rho(c_1) rho(c_2) m + rho(c_2) rho(c_1) m)
+    angle.r stretch(->)^( frak(g) "rep.") 0,
   $
   $
     ⟨upright(d)_(upright(C E))^2 phi \, c_1 and c_2 and c_3⟩ stretch(->)^(upright("Jacobian")) 0 \,
