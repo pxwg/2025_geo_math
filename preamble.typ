@@ -1,22 +1,50 @@
-#let colored = sys.inputs.keys()
-
 // Packages
 #import "@preview/physica:0.9.5": *
-// #import "../preamble.typ"
+#import "@preview/commute:0.3.0": arr, commutative-diagram, node
+#import "@preview/catppuccin:1.0.0": catppuccin, flavors
+
 // colors controled by the `colored` variable passed in the command line or by default
 // which is `false` and help to manage the default (preview in url) and uncolored (published in pdf) version
-// TODO: better false (pdf) color flavors to contral definition block etc.
 // TODO: become a package to be used in other documents
-#import "@preview/catppuccin:1.0.0": catppuccin, flavors
-#let color_flavors = flavors.mocha
-#let flavor(colored, color_flavors) = {
-  if colored == "false" {
-    catppuccin.with(flavors.latte)
-  } else { catppuccin.with(color_flavors) }
+
+// Get the `colored` variable from the command line input
+// Then determine the color scheme based on the `colored` variable
+#let coloreds = sys.inputs
+#let get_input(input_dict) = {
+  for (key, value) in input_dict {
+    if key == "colored" {
+      return value
+    }
+  }
+  return true
 }
 
-// #show: catppuccin.with(color_flavors)
-#show: flavor(colored, color_flavors)
+#let colored = get_input(coloreds)
+
+#let get_color_scheme(input_value) = {
+  if input_value == "false" {
+    (
+      background: catppuccin.with(flavors.latte),
+      flavors: flavors.latte,
+    )
+  } else {
+    (
+      background: catppuccin.with(flavors.mocha),
+      flavors: flavors.mocha,
+    )
+  }
+}
+#let showed_flavors(colored) = {
+  if colored == "false" {
+    flavors.latte
+  } else {
+    flavors.mocha
+  }
+}
+
+#let color_scheme = get_color_scheme(colored).background
+#let color_flavors = get_color_scheme(colored).flavors
+#show: color_scheme
 
 // ### Example:
 // ```typst
@@ -46,7 +74,7 @@
     fill: rgb(color_flavors.colors.crust.rgb),
     inset: (x: 8pt, y: 8pt),
     [
-      #if name != none [*example* (#emph(name))] else [*example*]
+      #if name != none [*Example* (#emph(name))] else [*Example*]
       #body
     ],
   )
@@ -62,4 +90,45 @@
       #body
     ],
   )
+}
+
+#let proposition(name: none, body) = {
+  box(
+    stroke: 1pt + rgb(color_flavors.colors.green.rgb),
+    width: 100%,
+    fill: rgb(color_flavors.colors.crust.rgb),
+    inset: (x: 8pt, y: 8pt),
+    [
+      #if name != none [*Proportion* (#emph(name))] else [*Proportion*]
+      #body
+    ],
+  )
+}
+
+#let remark(name: none, body) = {
+  box(
+    stroke: 1pt + rgb(color_flavors.colors.flamingo.rgb),
+    width: 100%,
+    fill: rgb(color_flavors.colors.crust.rgb),
+    inset: (x: 8pt, y: 8pt),
+    [
+      #if name != none [*Remark* (#emph(name))] else [*Remark*]
+      #body
+    ],
+  )
+}
+
+
+#let proof(name: none, body) = {
+  block(
+    stroke: 1pt + rgb(color_flavors.colors.lavender.rgb),
+    width: 100%,
+    fill: rgb(color_flavors.colors.crust.rgb),
+    inset: (x: 8pt, y: 8pt),
+  )[
+    #if name != none [_Proof_. (#emph(name)). ] else [_Proof_. ]
+    #body
+    #h(1fr)
+    $qed$
+  ]
 }
