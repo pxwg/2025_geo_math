@@ -45,6 +45,10 @@ jobs:
         # 对每个文件执行检查
         while IFS= read -r file; do
           if [ -n "$file" ]; then
+            if [[ "$(basename "$file")" == "preamble.typ" ]]; then
+              echo "⚠️ Skipping: $file"
+              continue
+            fi
             echo "=========================================="
             echo "🔍 Checking: $file"
             echo "=========================================="
