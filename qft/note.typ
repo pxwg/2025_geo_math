@@ -4,7 +4,6 @@
   color_flavors, color_scheme, conf, definition, example, proof, proposition,
   remark, theorem,
 )
-#import "../preamble.typ": *
 #show: color_scheme
 
 //----------------------basic info ----------------------//
@@ -257,7 +256,7 @@ The solution of Euler-Lagrange equation forms $"Crit"(S)$, which denotes the cri
   name: "Chern-Simons Theory",
   [
     Consider $X$ a 3-manifold and $frak(g)$ a semisimple Lie algebra.
-    Denote $P$ as a principal $frak(g)$-bundle over $X$, then the space of fields is $cal(E) = upright("Conn")(P, X)$.
+    Denote $P$ as a principal $frak(g)$-bundle over $X$, then the space of fields is $cal(E) = "Conn"(P, X)$.
     Assume $frak(g)$ is equipped with a non-degenerate invariant bilinear form $lr(angle.l dot.c, dot.c angle.r)$ (Killing form), then the action is
     $
       "CS"[A] = integral_X frac(1, 2) lr(angle.l A, F_A angle.r) + frac(1, 6) lr(angle.l A, [A, A] angle.r)
